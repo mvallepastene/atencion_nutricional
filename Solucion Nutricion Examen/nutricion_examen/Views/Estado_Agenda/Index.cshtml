@@ -1,0 +1,16 @@
+﻿@model IEnumerable<nutricion_examen.Models.Estado_Agenda>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Estado</h2>
+
+<select class="form-control">
+    @foreach (var item in Model)
+    {<option><span class="glyphicon glyphicon-check"></span>@item.Nombre_Estado</option> }
+    
+</select>
+
+
+
+
