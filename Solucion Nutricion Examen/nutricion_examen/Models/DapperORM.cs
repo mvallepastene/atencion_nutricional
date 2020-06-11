@@ -11,6 +11,10 @@ namespace nutricion_examen.Models
     public class DapperORM
     {
 
+       /// <summary>
+       /// para conectarnos a la base de datos, lo haremos mediante una cadena de string
+       /// </summary>
+
         private static readonly string connectionString = @"Data Source=(LOCAL);Initial Catalog=CONTROL_NUTRI;Integrated Security=True";
 
         /// <summary>
