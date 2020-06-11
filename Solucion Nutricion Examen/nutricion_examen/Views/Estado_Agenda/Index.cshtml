@@ -5,9 +5,9 @@
 
 <h2>Estado</h2>
 
-<select>
+<select class="form-control">
     @foreach (var item in Model)
-    {<option>@item.Nombre_Estado</option> }
+    {<option><span class="glyphicon glyphicon-check"></span>@item.Nombre_Estado</option> }
     
 </select>
 
