@@ -12,7 +12,7 @@ namespace nutricion_examen.Controllers
     {
         // GET: Estado_Agenda
         public ActionResult Index()
-        {
+        { 
             return View(DapperORM.ReturnList<Estado_Agenda>("traer_estado"));
         }
 
@@ -36,7 +36,8 @@ namespace nutricion_examen.Controllers
             {
                 // TODO: Add insert logic here
                 DynamicParameters param = new DynamicParameters();
-                param.Add("@nom_estado",estado_agenda.Nombre_Estado);
+                param.Add("@NOM_ESTADO", estado_agenda.Nombre_Estado);
+               
                 DapperORM.ExecuteWithoutReturn("sp_agregar_estado", param);
 
                 return RedirectToAction("Index");
