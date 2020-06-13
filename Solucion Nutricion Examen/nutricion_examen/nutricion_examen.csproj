@@ -128,8 +128,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Acceso.cs" />
     <Compile Include="Models\DapperORM.cs" />
+    <Compile Include="Models\EncuestaR24H.cs" />
     <Compile Include="Models\Estado_Agenda.cs" />
+    <Compile Include="Models\Ficha_Medica_Paciente.cs" />
+    <Compile Include="Models\Nutricionista.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
