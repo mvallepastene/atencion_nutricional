@@ -6,23 +6,11 @@
 <h2>Estado</h2>
 
 <select class="form-control">
-    @foreach (var item in Model)
+    @foreach (var lista in Model)
     {
-        <option>@item.Nombre_Estado</option>
-}
-
+        <option>@lista.Nombre_Estado</option>
+    }
 </select>
-
-<div class="row">
-    <form id="fromulario">
-        <div class="form-group">
-            <input id="name" name="name" type="text" class="form-control" />
-            <button type="button"id="btn" name="btn" class="btn btn-primary">
-                Enviar
-            </button>
-        </div>
-    </form>
-</div>
 
 
 
