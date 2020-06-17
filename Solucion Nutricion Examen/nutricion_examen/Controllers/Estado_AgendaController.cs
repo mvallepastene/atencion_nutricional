@@ -25,7 +25,7 @@ namespace nutricion_examen.Controllers
         // GET: Estado_Agenda/Create
         public ActionResult Create(int id = 0)
         {
-           if(id == 0)
+            if (id == 0)
             {
                 return View();
             }
