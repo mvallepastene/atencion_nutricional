@@ -19,5 +19,15 @@ namespace nutricion_examen.Models
         public DateTime Fecha_Creacion_Ficha { get; set; }
         public int Id_Nutricionista { get; set; }
         public int Id_Paciente { get; set; }
+        public float Peso_Ideal { get; set; }
+        public float Peso_Maximo_Aceptable { get; set; }
+        public float Energia { get; set; }
+        public float Proteinas { get; set; }
+        public float Carbohidratos { get; set; }
+        public float Lipidos { get; set; }
+        public float Total { get; set; }
+        public float Porc_Amdr { get; set; }
+        public float Calculo_Regimen_Asignado { get; set; }
+        public float Porc_Adecuacion { get; set; }
     }
 }
