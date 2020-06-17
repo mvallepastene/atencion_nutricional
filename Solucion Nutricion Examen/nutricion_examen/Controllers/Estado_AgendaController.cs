@@ -20,37 +20,47 @@ namespace nutricion_examen.Controllers
         public ActionResult Details(int id)
         {
             return View();
+            
         }
 
         // GET: Estado_Agenda/Create
-        public ActionResult Create()
+        public ActionResult Create(int id = 0)
         {
-            return View();
+            if (id == 0)
+            {
+                return View();
+            }
+            else
+            {
+                DynamicParameters param = new DynamicParameters();
+                param.Add("@id", id);
+                return View(DapperORM.ReturnList<Estado_Agenda>("sp_traer_estadoById", param).FirstOrDefault<Estado_Agenda>());
+                // var estados = DapperORM.ReturnList<Estado_Agenda>("sp_traer_estadoById", param).FirstOrDefault<Estado_Agenda>();
+                //return Json(new { data = estados }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         // POST: Estado_Agenda/Create
         [HttpPost]
         public ActionResult Create(Estado_Agenda estado_agenda)
         {
-            try
-            {
+            
                 // TODO: Add insert logic here
                 DynamicParameters param = new DynamicParameters();
+                param.Add("@id", estado_agenda.Id_Estado);
                 param.Add("@nom_estado",estado_agenda.Nombre_Estado);
-                DapperORM.ExecuteWithoutReturn("sp_agregar_estado", param);
+                DapperORM.ExecuteWithoutReturn("sp_agregar_o_actualizar", param);
 
                 return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            
         }
 
         // GET: Estado_Agenda/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            DynamicParameters param = new DynamicParameters();
+            param.Add("@id", id);
+            return View(DapperORM.ReturnList<Estado_Agenda>("sp_traer_estadoById", param));
         }
 
         // POST: Estado_Agenda/Edit/5

@@ -168,8 +168,9 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Estado_Agenda\Index.cshtml" />
     <Content Include="Views\Estado_Agenda\Create.cshtml" />
+    <Content Include="Views\Estado_Agenda\Index.cshtml" />
+    <Content Include="Views\Estado_Agenda\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
