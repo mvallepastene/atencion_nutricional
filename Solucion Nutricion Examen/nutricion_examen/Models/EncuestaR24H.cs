@@ -16,5 +16,6 @@ namespace nutricion_examen.Models
         public int Cantidad_Gr_Ml_Total { get; set; }
         public string Observaciones { get; set; }
         public int Id_Ficha { get; set; }
+        public string Total { get; set; }
     }
 }

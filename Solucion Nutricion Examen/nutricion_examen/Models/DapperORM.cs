@@ -61,6 +61,7 @@ namespace nutricion_examen.Models
             {
                 con.Open();
                 return con.Query<T>(procedureName, param, commandType: CommandType.StoredProcedure);
+               
             }
         }
     }
