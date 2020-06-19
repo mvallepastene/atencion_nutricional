@@ -123,10 +123,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AgendaController.cs" />
     <Compile Include="Controllers\Estado_AgendaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PacienteController.cs" />
+    <Compile Include="Controllers\NutricionistaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -181,14 +180,13 @@
     <Content Include="Views\Estado_Agenda\Create.cshtml" />
     <Content Include="Views\Estado_Agenda\Index.cshtml" />
     <Content Include="Views\Estado_Agenda\Edit.cshtml" />
-    <Content Include="Views\Paciente\Index.cshtml" />
-    <Content Include="Views\Paciente\Create.cshtml" />
-    <Content Include="Views\Paciente\Edit.cshtml" />
+    <Content Include="Views\Nutricionista\Index.cshtml" />
+    <Content Include="Views\Nutricionista\Create.cshtml" />
+    <Content Include="Views\Nutricionista\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Agenda\" />
-    <Folder Include="Views\Default\" />
+    <Folder Include="Views\pr\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
