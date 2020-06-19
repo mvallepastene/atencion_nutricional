@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc.Routing.Constraints;
 
 namespace nutricion_examen.Models
 {
@@ -27,7 +28,9 @@ namespace nutricion_examen.Models
         public float Lipidos { get; set; }
         public float Total { get; set; }
         public float Porc_Amdr { get; set; }
-        public float Calculo_Regimen_Asignado { get; set; }
         public float Porc_Adecuacion { get; set; }
+        public float Circunferencia_Cin { get; set; }
+        public string Clasificacion_Cc { get; set; }
+        public float Calc_Requerimientos { get; set; }
     }
 }
