@@ -3,27 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Dapper;
 using nutricion_examen.Models;
+using Dapper;
+
 
 namespace nutricion_examen.Controllers
 {
-    public class Estado_AgendaController : Controller
+    public class NutricionistaController : Controller
     {
-        // GET: Estado_Agenda
+        // GET: Nutricionista
         public ActionResult Index()
-        { 
-            return View(DapperORM.ReturnList<Estado_Agenda>("traer_estado"));
+        {
+            return View(DapperORM.ReturnList<Nutricionista>("sp_traer_nutri"));
         }
 
-        // GET: Estado_Agenda/Details/5
+        // GET: Nutricionista/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Estado_Agenda/Create
-        public ActionResult Create(int id = 0)
+        // GET: Nutricionista/Create
+        public ActionResult Create(int id= 0)
         {
             if (id == 0)
             {
@@ -33,33 +34,36 @@ namespace nutricion_examen.Controllers
             {
                 DynamicParameters param = new DynamicParameters();
                 param.Add("@id", id);
-                return View(DapperORM.ReturnList<Estado_Agenda>("sp_traer_estadoById", param).FirstOrDefault<Estado_Agenda>());
+                return View(DapperORM.ReturnList<Nutricionista>("sp_traer_nutri_byId", param).FirstOrDefault<Nutricionista>());
             }
         }
-
-        // POST: Estado_Agenda/Create
+        // POST: Nutricionista/Create
         [HttpPost]
-        public ActionResult Create(Estado_Agenda estado_agenda)
+        public ActionResult Create(Nutricionista nutricionista)
         {
-           
-                // TODO: Add insert logic here
-                DynamicParameters param = new DynamicParameters();
-                param.Add("@id", estado_agenda.Id_Estado);
-                param.Add("@NOM_ESTADO", estado_agenda.Nombre_Estado);
-               
-                DapperORM.ExecuteWithoutReturn("sp_agregar_o_actualizar", param);
+            DynamicParameters param = new DynamicParameters();
+            param.Add("@id", nutricionista.Id_Nutricionista);
+            param.Add("@rut", nutricionista.Rut);
+            param.Add("@nombre", nutricionista.Nombre);
+            param.Add("@apellido", nutricionista.Apellido);
+            param.Add("@edad", nutricionista.Edad);
+            param.Add("@fecha_nac", nutricionista.Fecha_Nacimiento);
+            param.Add("@tel", nutricionista.Numero_Tel);
+            param.Add("@email", nutricionista.Email);
+            param.Add("@especialidad", nutricionista.Especialidad);
 
-                return RedirectToAction("Index");
-            
+            DapperORM.ExecuteWithoutReturn("sp_agregar_actualizar_nutri", param);
+
+            return RedirectToAction("Index");
         }
 
-        // GET: Estado_Agenda/Edit/5
+        // GET: Nutricionista/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Estado_Agenda/Edit/5
+        // POST: Nutricionista/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -75,13 +79,13 @@ namespace nutricion_examen.Controllers
             }
         }
 
-        // GET: Estado_Agenda/Delete/5
+        // GET: Nutricionista/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Estado_Agenda/Delete/5
+        // POST: Nutricionista/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

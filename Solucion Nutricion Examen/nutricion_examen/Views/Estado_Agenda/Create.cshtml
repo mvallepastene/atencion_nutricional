@@ -1,5 +1,6 @@
 ﻿@model nutricion_examen.Models.Estado_Agenda
 
+
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
@@ -40,6 +41,9 @@
     </div>
         <div class="form-group">
             <input type="submit" id="btnSend" value="Enviar" class="btn btn-default" />
+        </div> 
+        <div class="form-group">
+            <input type="text" class="form-control" id="labelResult"/>
         </div>
     </form>
 </div>
@@ -54,7 +58,7 @@
         });
         $('#btnSend').click(function () {
             let dato = $('#test').val();
-            console.log(dato);
+            $('#labelResult').val(dato);
         })
     </script>
 }
