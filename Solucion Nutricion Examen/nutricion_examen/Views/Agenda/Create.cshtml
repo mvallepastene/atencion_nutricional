@@ -1,0 +1,123 @@
+﻿@model nutricion_examen.Models.Agenda
+
+    <form id="frmAgenda">
+        <div class="form-group">
+            <label for="exampleInput">Rut</label>
+            <input type="text" class="form-control" id="rut" name="rut">
+
+        </div>
+        <div class="form-group">
+            <label for="exampleInput">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre">
+        </div>
+        <div class="form-group">
+            <label for="exampleInput">Apellido</label>
+            <input type="text" class="form-control" id="apellido" name="apellido">
+        </div>
+        <div class="form-group">
+            <label for="exampleInput">Fecha de Nacimiento</label>
+            <input type="date" class="form-control" id="fechNac" name="fecha_nacimiento">
+        </div>
+        <div class="form-group">
+            <label for="exampleInput">Numero de teléfono</label>
+            <input type="text" class="form-control" id="telefono" name="numero_tel">
+        </div>
+        <div class="form-group">
+            <label for="exampleInput">E-Mail</label>
+            <input type="email" class="form-control" id="email" name="email">
+        </div>
+        <div class="form-group">
+            <label for="exampleInput">Fecha Cita</label>
+            <input type="date" class="form-control" id="fechcita" name="fecha_cita">
+        </div>
+        <div class="form-group">
+            <label for="exampleInput">Hora Cita</label>
+            <input type="text" class="form-control" id="horacita" name="hora_cita">
+        </div>
+        <div class="form-group">
+            <label for="exampleInput">Estado Agenda</label>
+            <select class="form-control" id="EstadoAgenda" name="id_estado">
+                <option value="1">Hora Agendada</option>
+            </select>
+        </div>
+
+
+
+        <button type="button" id="btnGrabar" onclick="insertarAgenda()" class="btn btn-primary">Guardar</button>
+</form>
+
+    
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        //CARGA FUNCIONES AL ARRANCAR DOCUMENTO
+        $(document).ready(function () {
+            cargarSelect();
+
+            $('#EstadoAgenda').prop('disabled', true)
+
+        });
+
+
+        //FUNCIONES
+
+        /**
+         * Funcion que carga el select de Estado de Agenda
+         */
+
+        function cargarSelect() {
+            $.ajax({
+                url: '@Url.Action("ListaEstadoAgenda", "Agenda")',
+                type: 'get',
+                dataType: 'json',
+                success: function (data) {
+                    var selecage = $('#EstadoAgenda');
+                    var datos = data.data;
+                    //console.log(datos);
+                    $(datos).each(function (i, a) {
+                        selecage.append('<option value="' + a.Id_Estado + '">' + a.Nombre_Estado + '  </opcion>')
+                    })
+                }
+
+            });
+
+        }
+
+        /*
+        evrnto click del boton guardar
+        */
+        function insertarAgenda() {
+            //quita el postback al boton
+            $('#btnGrabar').click(function (e) {
+                e.preventDefault();
+            });
+
+            //juntar datos que contiene el formulario (Trabaja con los name de los controles)
+            var formData = new FormData(document.getElementById("frmAgenda"));
+
+             //ejecutamos jQuery para enviar la informacion mediante Ajax
+            $.ajax({
+                url: '@Url.Action("Create","Agenda")',
+                type: 'post',
+                data: formData,
+                contentType: false,
+                processData: false,
+                cache: false,
+                success: function () {
+                    //alertify.success("Agenda Creada");
+                    alert("Agenda Creada...!!!!")
+                }
+
+
+            });
+
+
+        }
+
+    </script>
+
+}
