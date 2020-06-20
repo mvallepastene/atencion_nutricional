@@ -14,8 +14,8 @@ namespace nutricion_examen.Controllers
         public ActionResult Index()
         {
             //hacemos la peticion a la bd
-            var result = DapperORM.ReturnList<Agenda>("sp_traer_Agenda");
-            return Json(new {data = result }, JsonRequestBehavior.AllowGet);
+           
+            return View(DapperORM.ReturnList<Agenda>("sp_traer_Agenda"));
         }
 
         // GET: Agenda/Details/5
@@ -39,8 +39,16 @@ namespace nutricion_examen.Controllers
 
             DynamicParameters param = new DynamicParameters();
             param.Add("@id_agenda", agenda.Id_Agenda);
-            
-            DapperORM.ExecuteWithoutReturn("sp_agregar_actualizar_Paciente", param);
+            param.Add("@rut", agenda.Rut);
+            param.Add("@nombre", agenda.Nombre);
+            param.Add("@apellido", agenda.Apellido);
+            param.Add("@fecha_nacimiento", agenda.Fecha_Nacimiento);
+            param.Add("@numero_tel", agenda.Numero_Tel);
+            param.Add("@email", agenda.Email);
+            param.Add("@fecha_cita", agenda.Fecha_Cita);
+            param.Add("@hora_cita", agenda.Hora_Cita);
+            param.Add("@id_estado", agenda.Id_Estado);
+            DapperORM.ExecuteWithoutReturn("sp_agregarOActualiza_Agenda", param);
 
 
             return RedirectToAction("Index");
@@ -89,6 +97,12 @@ namespace nutricion_examen.Controllers
             {
                 return View();
             }
+        }
+        [HttpGet]
+        public ActionResult ListaEstadoAgenda()
+        {
+            var result = DapperORM.ReturnList<Estado_Agenda>("traer_estado");
+            return Json(new { data = result }, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -12,8 +12,11 @@ namespace nutricion_examen.Controllers
     {
         // GET: Estado_Agenda
         public ActionResult Index()
-        { 
+        {
+            //hacemos la peticion a la bd
+            
             return View(DapperORM.ReturnList<Estado_Agenda>("traer_estado"));
+           
         }
 
         // GET: Estado_Agenda/Details/5
