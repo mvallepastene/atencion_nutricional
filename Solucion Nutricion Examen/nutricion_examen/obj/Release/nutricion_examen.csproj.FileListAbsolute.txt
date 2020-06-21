@@ -172,3 +172,4 @@ C:\Users\56978\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutricio
 C:\Users\56978\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutricion Examen\nutricion_examen\obj\Release\nutricion_examen.csproj.CopyComplete
 C:\Users\56978\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutricion Examen\nutricion_examen\obj\Release\nutricion_examen.dll
 C:\Users\56978\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutricion Examen\nutricion_examen\obj\Release\nutricion_examen.pdb
+C:\Users\56978\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutricion Examen\nutricion_examen\obj\Release\nutricion_examen.csprojAssemblyReference.cache
