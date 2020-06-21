@@ -99,11 +99,23 @@
             //juntar datos que contiene el formulario (Trabaja con los name de los controles)
             var formData = new FormData(document.getElementById("frmAgenda"));
 
+            var agenda = {
+                "Rut": $('#rut').val(),
+                "Nombre": $('#nombre').val(),
+                "Apellido":$('#apellido').val(),
+                "Fecha_Nacimiento": $('#fechNac').val(),
+                "Numero_Tel": $('#telefono').val() ,
+                "Email": $('#email').val(),
+                "Fecha_Cita": $('#fechcita').val() ,
+                "Hora_Cita": $('#horacita').val() ,
+                "Id_Estado": $('#EstadoAgenda').val() 
+            }
+
              //ejecutamos jQuery para enviar la informacion mediante Ajax
             $.ajax({
                 url: '@Url.Action("Create","Agenda")',
                 type: 'post',
-                data: formData,
+                data: agenda,
                 contentType: false,
                 processData: false,
                 cache: false,
