@@ -39,12 +39,12 @@ namespace nutricion_examen.Models
         /// <param name="procedureName"></param>
         /// <param name="param"></param>
         /// <returns></returns>
-        public static T ExecuteReturnScalar<T>(string procedureName, DynamicParameters param = null)
+        public static int ExecuteReturnScalar<T>(string procedureName, DynamicParameters param = null)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
-                return (T)Convert.ChangeType(con.Execute(procedureName, param, commandType: CommandType.StoredProcedure), typeof(T));
+                return (int)Convert.ToInt32(con.Execute(procedureName, param, commandType: CommandType.StoredProcedure));
 
             }
         }

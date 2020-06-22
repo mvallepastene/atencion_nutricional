@@ -9,7 +9,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+  <!--  <div class="navbar navbar-inverse navbar-fixed-top navbar-dark bg-dark mt-0">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,7 +17,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("CONTROL NUTRICIONAL", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a href="/" class"navbar-brand">CONTROL NUTRICIONAL</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -27,14 +27,40 @@
                 </ul>
             </div>
         </div>
-    </div>
-    <div class="container">
+    </div> -->
+
+    <nav class = "navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> CENTRO NUTRICIONAL </font> </ fuente> </a>
+  <button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target = "# navbarColor01" aria-controls = "navbarColor01" aria-extended = "false" aria-label = "Navegación de palanca ">
+    <span class = "navbar-toggler-icon"> </span>
+  </button>
+
+  <div class = "collapse navbar-collapse" id = "navbarColor01">
+    <ul class = "navbar-nav mr-auto">
+      <li class = "nav-item active">
+        <a class="nav-link" href="@Url.Action("Index","Home")"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> Home </font> </font> <span class = "sr-only"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> (Actual) </font> </font> </ span > </a>
+      </li>
+        <li class = "nav-item active">
+        <a class="nav-link" href="@Url.Action("Index","Estado_Agenda")"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> Estado Agenda </font> </font> <span class = "sr-only"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> (Actual) </font> </font> </ span > </a>
+      </li>
+        <li class = "nav-item active">
+        <a class="nav-link" href="@Url.Action("Index","Home")"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> Home </font> </font> <span class = "sr-only"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> (Actual) </font> </font> </ span > </a>
+      </li>
+      
+    </ul>
+    
+  </div>
+</nav>
+    
         @RenderBody()
+        
+        
+    
+
+    <footer class="text-center">
         <hr />
-        <footer>
             <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
         </footer>
-    </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
