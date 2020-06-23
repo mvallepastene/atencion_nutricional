@@ -23,8 +23,9 @@ namespace nutricion_examen
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/bootstrap.min.css",
+                      "~/Content/site.css",
+                      "~/Content/alertifyjs/css/alertify.css"));
         }
     }
 }

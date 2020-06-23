@@ -48,10 +48,10 @@ namespace nutricion_examen.Controllers
             param.Add("@fecha_cita", agenda.Fecha_Cita);
             param.Add("@hora_cita", agenda.Hora_Cita);
             param.Add("@id_estado", agenda.Id_Estado);
-            DapperORM.ExecuteWithoutReturn("sp_agregarOActualiza_Agenda", param);
+            var res = (int)DapperORM.ExecuteReturnScalar<Agenda>("sp_agregarOActualiza_Agenda", param);
 
 
-            return RedirectToAction("Index");
+            return Json(new { r = res }, JsonRequestBehavior.AllowGet);
           
         }
 

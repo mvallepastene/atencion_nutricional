@@ -1,56 +1,67 @@
 ﻿@model nutricion_examen.Models.Agenda
+<div class="container mt-5">
+    <div class="row">
 
-    <form id="frmAgenda">
-        <div class="form-group">
-            <label for="exampleInput">Rut</label>
-            <input type="text" class="form-control" id="rut" name="rut">
-
-        </div>
-        <div class="form-group">
-            <label for="exampleInput">Nombre</label>
-            <input type="text" class="form-control" id="nombre" name="nombre">
-        </div>
-        <div class="form-group">
-            <label for="exampleInput">Apellido</label>
-            <input type="text" class="form-control" id="apellido" name="apellido">
-        </div>
-        <div class="form-group">
-            <label for="exampleInput">Fecha de Nacimiento</label>
-            <input type="date" class="form-control" id="fechNac" name="fecha_nacimiento">
-        </div>
-        <div class="form-group">
-            <label for="exampleInput">Numero de teléfono</label>
-            <input type="text" class="form-control" id="telefono" name="numero_tel">
-        </div>
-        <div class="form-group">
-            <label for="exampleInput">E-Mail</label>
-            <input type="email" class="form-control" id="email" name="email">
-        </div>
-        <div class="form-group">
-            <label for="exampleInput">Fecha Cita</label>
-            <input type="date" class="form-control" id="fechcita" name="fecha_cita">
-        </div>
-        <div class="form-group">
-            <label for="exampleInput">Hora Cita</label>
-            <input type="text" class="form-control" id="horacita" name="hora_cita">
-        </div>
-        <div class="form-group">
-            <label for="exampleInput">Estado Agenda</label>
-            <select class="form-control" id="EstadoAgenda" name="id_estado">
-                <option value="1">Hora Agendada</option>
-            </select>
-        </div>
+        <form id="frmAgenda" class="form-normal">
 
 
 
-        <button type="button" id="btnGrabar" onclick="insertarAgenda()" class="btn btn-primary">Guardar</button>
-</form>
+            <div class="form-group">
+                <label for="exampleInputName2">Rut</label>
+                <input type="text" class="form-control" id="rut" name="rut">
+            </div>
+            <div class="form-group">
+                <label for="">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre">
+            </div>
+            <div class="form-group">
+                <label for="exampleInput">Apellido</label>
+                <input type="text" class="form-control" id="apellido" name="apellido">
+            </div>
+            <div class="form-group">
+                <label for="exampleInput">Fecha de Nacimiento</label>
+                <input type="date" class="form-control" id="fechNac" name="fecha_nacimiento">
+            </div>
+            <div class="form-group">
+                <label for="exampleInput">Numero de teléfono</label>
+                <input type="text" class="form-control" id="telefono" name="numero_tel">
+            </div>
 
-    
+            <div class="form-group">
+                <label for="exampleInput">E-Mail</label>
+                <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="exampleInput">Fecha Cita</label>
+                <input type="date" class="form-control" id="fechcita" name="fecha_cita">
+            </div>
+            <div class="form-group">
+                <label for="exampleInput">Hora Cita</label>
+                <input type="text" class="form-control" id="horacita" name="hora_cita">
+            </div>
+            <div class="form-group">
+                <label for="exampleInput">Estado Agenda</label>
+                <select class="form-control" id="EstadoAgenda" name="id_estado">
+                    <option value="0">Selecciona Estado</option>
+                </select>
+            </div>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+
+
+            <button type="button" id="btnGrabar" onclick="insertarAgenda()" class="btn btn-primary">Guardar</button>
+
+
+        </form>
+
+        <div class="mt-4">
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
 </div>
+
+
+
+
 
 @section scripts{
     <script type="text/javascript">
@@ -58,7 +69,9 @@
         $(document).ready(function () {
             cargarSelect();
 
-            //$('#EstadoAgenda').prop('disabled', true)
+            // $('#EstadoAgenda').prop('disabled', true)
+            $('#fechNac').val("01-01-1990");
+            $('#fechcita').val("01-01-2050");
 
         });
 
@@ -99,19 +112,7 @@
             //juntar datos que contiene el formulario (Trabaja con los name de los controles)
             var formData = new FormData(document.getElementById("frmAgenda"));
 
-            var agenda = {
-                "Rut": $('#rut').val(),
-                "Nombre": $('#nombre').val(),
-                "Apellido":$('#apellido').val(),
-                "Fecha_Nacimiento": $('#fechNac').val(),
-                "Numero_Tel": $('#telefono').val() ,
-                "Email": $('#email').val(),
-                "Fecha_Cita": $('#fechcita').val() ,
-                "Hora_Cita": $('#horacita').val() ,
-                "Id_Estado": $('#EstadoAgenda').val() 
-            }
-
-             //ejecutamos jQuery para enviar la informacion mediante Ajax
+            //ejecutamos jQuery para enviar la informacion mediante Ajax
             $.ajax({
                 url: '@Url.Action("Create","Agenda")',
                 type: 'post',
@@ -119,9 +120,13 @@
                 contentType: false,
                 processData: false,
                 cache: false,
-                success: function () {
-                    //alertify.success("Agenda Creada");
-                    alert("Agenda Creada...!!!!")
+                success: function (r) {
+                    if (r != null) {
+                        alertify.success("Agenda Creada");
+                    } else {
+                        alertify.error("Ha Ocurrido un Error")
+                    }
+                    //alert("Agenda Creada...!!!!")
                 }
 
 
