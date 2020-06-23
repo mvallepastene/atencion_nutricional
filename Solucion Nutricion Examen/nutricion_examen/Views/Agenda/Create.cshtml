@@ -58,7 +58,7 @@
         $(document).ready(function () {
             cargarSelect();
 
-            $('#EstadoAgenda').prop('disabled', true)
+            //$('#EstadoAgenda').prop('disabled', true)
 
         });
 
@@ -115,7 +115,7 @@
             $.ajax({
                 url: '@Url.Action("Create","Agenda")',
                 type: 'post',
-                data: agenda,
+                data: formData,
                 contentType: false,
                 processData: false,
                 cache: false,
