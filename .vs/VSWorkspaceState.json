@@ -1,13 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Solucion Nutricion Examen\\nutricion_examen\\Content",
-    "\\Solucion Nutricion Examen\\nutricion_examen\\Content\\alertifyjs",
-    "\\Solucion Nutricion Examen\\nutricion_examen\\Content\\alertifyjs\\css",
-    "\\Solucion Nutricion Examen\\nutricion_examen\\Controllers",
-    "\\Solucion Nutricion Examen\\nutricion_examen\\Views",
-    "\\Solucion Nutricion Examen\\nutricion_examen\\Views\\Shared"
+    "\\Solucion Nutricion Examen",
+    "\\Solucion Nutricion Examen\\nutricion_examen",
+    "\\Solucion Nutricion Examen\\nutricion_examen\\fonts",
+    "\\Solucion Nutricion Examen\\nutricion_examen\\Views"
   ],
-  "SelectedNode": "\\Solucion Nutricion Examen",
+  "SelectedNode": "\\Solucion Nutricion Examen\\nutricion_examen\\Views\\Agenda",
   "PreviewInSolutionExplorer": false
 }
