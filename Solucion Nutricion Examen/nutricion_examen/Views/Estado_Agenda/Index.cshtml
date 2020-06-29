@@ -1,42 +1,144 @@
 ﻿@model IEnumerable<nutricion_examen.Models.Estado_Agenda>
 
-    <div class="container mt-5">
+    
         <div class="row">
-            
-<!--<p class="btn btn-success">
-    @Html.ActionLink("Create New", "Create")
-</p>-->
+          <div class="col-12">
+              <p class="float-center">
+    @Html.ActionLink("Create New", "Create", new {@class="btn btn-primary"})
+</p>
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Lista de Estados</h3>
 
-            <a href="@Url.Action("Create","Estado_Agenda")" class="btn btn-success"> Nuevo Estado</a>
-<table class="table table-hover">
-    <tr class="text-center">
-        <th>
-            ID Estado
-        </th>
-        <th>
-            Nombre Estado
-        </th>
-        <th>
-            Acciones
-        </th>
-    </tr>
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
-@foreach (var item in Model) {
-    <tr class="text-center">
-        <td>
-            @Html.DisplayFor(modelItem => item.Id_Estado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre_Estado)
-        </td>
-        <td class="text-right">
-            @Html.ActionLink("Edit", "Create", new { id=item.Id_Estado}, new {@class = "btn btn-warning" }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ },new {@class = "btn btn-info" }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ },new {@class = "btn btn-danger" })
-        </td>
-    </tr>
-}
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0" style="height: 500px;">
+                <table class="table table-head-fixed text-nowrap" id="tblEstados">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nombre Estado</th>
+                      
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      @foreach (var item in Model) {
+                    <tr>
+                      <td>@item.Id_Estado</td>
+                      <td>@item.Nombre_Estado</td>
+                      
+                        <td>
+                            <span class="btn btn-warning" title="Edit" data-toggle="modal" data-target="#modal-default" onclick="cargarData(@item.Id_Estado)"><i class="fas fa-pen"></i></span>
+                            |
+                            <span class="btn btn-danger" title="Delete"><i class="fas fa-trash"></i></span>
+                        </td>
+                    </tr>
+                      }
+                    
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>     
+    
 
-</table>
+    <!-- Modal -->
+
+    <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Actualiza Estado</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+               <form>
+                    <input type="hidden" id="id_estadoU" name="id_estadoU"/>
+              <div class="form-group">
+                  <input type="text" class="form-control" id="estadoU" name="estadoU"/>
+              </div>
+               </form>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              <button type="button" id="btnSave" class="btn btn-primary" data-dismiss="modal">Grabar Cambios</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
         </div>
-    </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+
+    @section scripts{
+    <script type="text/javascript">
+
+        function cargarData(id) {
+            
+            $.ajax({
+                url: '@Url.Action("Details","Estado_Agenda")',
+                data: 'id=' + id,
+                success: function (data) {
+                    var dato = data.data;
+                    $(dato).each(function (i, e) {
+                        $('#id_estadoU').val(e.Id_Estado);
+                        $('#estadoU').val(e.Nombre_Estado);
+                    })
+                }
+            });
+        }
+
+        //Funcion que crea el objeto actualizado
+
+        $('#btnSave').click(function (e) {
+            e.preventDefault();
+            actualizarEstado();
+        });
+
+
+        function actualizarEstado() {
+            
+            var estado = {
+                Id_Estado: $('#id_estadoU').val(),
+                Nombre_Estado: $('#estadoU').val()
+            }
+
+            console.log(estado);
+
+            $.ajax({
+                url: '@Url.Action("Edit","Estado_Agenda")',
+                data: estado,
+                type:'post',
+                dataType:'json',
+                success: function (r) {
+                    
+                    if (r.r == 1) {
+                        location.reload();
+                        alertify.success("Actualizado Correctamente");
+
+                    } else {
+                      
+                        alertify.error("Falló al Actualizar");
+                        
+                    }
+                }
+            })
+        }
+
+    </script>
+    }
