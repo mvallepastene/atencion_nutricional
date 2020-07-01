@@ -1,13 +1,11 @@
 ﻿@model IEnumerable<nutricion_examen.Models.Agenda>
 
-<div class="container mt-5">
+
     
         
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+
+<!--<table class="table">
     <tr>
         
         <th>
@@ -78,9 +76,55 @@
     </tr>
 }
 
-</table>
+</table>-->
+    <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Responsive Hover Table</h3>
 
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
-    
-
-</div>
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                     <th>Rut</th>
+                      <th>Nombre</th>
+                     
+                     <th>Fecha de Nacimiento</th>
+                     
+                      <th>Fecha Cita</th>
+                      <th>Hora Cita</th>
+                      <th>Estado</th>
+                       <th>Detalle</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      @foreach(var item in Model){
+                    <tr>
+                      <td>@item.Id_Agenda</td>
+                      <td>@item.Nombre @item.Apellido</td>
+                      <td>@item.Fecha_Nacimiento</td>
+                      <td>@item.Fecha_Cita</td>
+                      <td>@item.Hora_Cita</td>
+                        <td>@item.Id_Estado</td>
+                        <td><span class="btn btn-info"><i class="fas fa-info"></i></span></td>
+                    </tr>
+                      }
+                   
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
