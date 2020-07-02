@@ -2009,8 +2009,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Estado_Agenda\Create.cshtml" />
     <Content Include="Views\Estado_Agenda\Edit.cshtml" />
@@ -2025,6 +2023,8 @@
     <Content Include="Views\Agenda\Index.cshtml" />
     <Content Include="Views\Agenda\Create.cshtml" />
     <Content Include="Views\FrontEnd\Index.cshtml" />
+    <Content Include="Views\Home\LogIn.cshtml" />
+    <Content Include="Views\Home\LogOut.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
