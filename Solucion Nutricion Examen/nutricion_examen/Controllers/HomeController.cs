@@ -52,11 +52,12 @@ namespace nutricion_examen.Controllers
                     }
 
                     return RedirectToAction("Index", "Home");
+                    
                 }
                 else
                 {
-                    return RedirectToAction("LogIn", new { message = "No encontramos sus datos ingresados" });
 
+                    return RedirectToAction("LogIn", new { message = "No encontramos sus datos ingresados" });
                 }
 
             }
@@ -73,6 +74,41 @@ namespace nutricion_examen.Controllers
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Register(string message = "")
+        {
+            ViewBag.Message = message;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(Acceso ac)
+        {
+            try
+            {
+                DynamicParameters param = new DynamicParameters();
+                param.Add("@usr", ac.Usuario);
+                param.Add("@psw", ac.Pass);
+                param.Add("@tipo", ac.Tipo_Usuario);
+
+                
+                    int result = DapperORM.ExecuteReturnScalar<Acceso>("sp_createUsuario", param);
+                if (result != 0)
+                {
+                    return Json(new { res = result }, JsonRequestBehavior.AllowGet);
+                } else
+                {
+                    return RedirectToAction("Registrer", new { message = "El Usuario Existe!" });
+                }
+                
+            }
+            catch (Exception ex)
+            {
+
+                return RedirectToAction("Registrer", new { message = "Error de aplicacion" });
+            }
+            return RedirectToAction("Login", "Home");
         }
     }
 }
