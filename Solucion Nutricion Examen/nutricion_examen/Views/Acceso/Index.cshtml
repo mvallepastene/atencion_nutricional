@@ -4,9 +4,9 @@
 }
 
     <div class="col-12">
-        <p class="float-center">
-            @Html.ActionLink("Create New", "Create", new { @class = "btn btn-primary" })
-        </p>
+        <div>
+            <a href="@Url.Action("Create","Estado_Agenda")" class="btn btn-default"><i class="glyphicon glyphicon-new-window"></i>Nuevo</a>
+        </div>
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Lista de Estados</h3>
@@ -67,6 +67,8 @@
     </div>
 
     <script type="text/javascript">
+
+        //funcion que elimina de la bd el acceso seleccionado
         function deleteUser(id) {
 
             $.ajax({

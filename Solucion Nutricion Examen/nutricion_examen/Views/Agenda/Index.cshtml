@@ -44,8 +44,10 @@
                       <td>@item.Fecha_Nacimiento</td>
                       <td>@item.Fecha_Cita</td>
                       <td>@item.Hora_Cita</td>
-                        <td>@item.Id_Estado</td>
-                        <td><span class="btn btn-info"><i class="fas fa-info"></i></span></td>
+                        @if(@item.Id_Estado == 1){
+                        <td>Activo</td>
+                        }
+                        <td><span class="btn btn-info" title="ver detalle"><i class="fas fa-eye"></i></span></td>
                     </tr>
                       }
                    
