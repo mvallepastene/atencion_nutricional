@@ -91,15 +91,25 @@
                             </a>
 
                         </li>
-                        <li class="nav-item">
-                            <a href="@Url.Action("Index","Paciente")" class="nav-link">
-                                <i class="nav-icon fas fa-user"></i>
+                         <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Pacientes
-                <!--<span class="right badge badge-danger">New</span>-->
+                       <i class="fas fa-angle-left right"></i>
+                                    <!--<span class="badge badge-info right">6</span>-->
                                 </p>
                             </a>
-                        </li>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Index","Paciente")" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Lista de Pacientes</p>
+                                    </a>
+                                </li>
+                               
+                                </ul>
+                                </li>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-copy"></i>
@@ -116,17 +126,77 @@
                                         <p>Lista de Agendas</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Top Navigation + Sidebar</p>
-                                    </a>
-                                </li>
+                                                               
                                 
                             </ul>
                         </li>
-                       
-                    </ul>
+
+
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-briefcase-medical"></i>
+                                <p>
+                                    Nutricionistas
+                <i class="fas fa-angle-left right"></i>
+                                    <!--<span class="badge badge-info right">6</span>-->
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Index","Nutricionista")" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Listado de Nutricionistas</p>
+                                    </a>
+                                </li>
+                               
+                            </ul>
+                            </li>
+
+                            <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tools"></i>
+                                <p>
+                                    Configuraciones
+                       <i class="fas fa-angle-left right"></i>
+                                    <!--<span class="badge badge-info right">6</span>-->
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Index","Acceso")" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Usuarios Registrados</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Index","Estado_Agenda")" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Estados Agenda</p>
+                                    </a>
+                                </li>
+                                </ul>
+                                </li>
+
+                                 <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-binoculars"></i>
+                                <p>
+                                    Reportes
+                       <i class="fas fa-angle-left right"></i>
+                                    <!--<span class="badge badge-info right">6</span>-->
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Reportes</p>
+                                    </a>
+                                </li>
+                               
+                                </ul>
+                                     </li>
+
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>
@@ -188,7 +258,7 @@
 
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
-  $.widget.bridge('uibutton', $.ui.button)
+        $.widget.bridge('uibutton', $.ui.button)
     </script>
 
     <script src="~/Content/alertifyjs/alertify.min.js"></script>

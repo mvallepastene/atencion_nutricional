@@ -1,0 +1,88 @@
+﻿@model IEnumerable<nutricion_examen.Models.Acceso>
+@{
+    ViewBag.Title = "Index";
+}
+
+    <div class="col-12">
+        <div>
+            <a href="@Url.Action("Create","Estado_Agenda")" class="btn btn-default"><i class="glyphicon glyphicon-new-window"></i>Nuevo</a>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Lista de Estados</h3>
+
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap" id="tblEstados">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Usuario</th>
+                            <th>Pass</th>
+                            <th>Tipo Usuario</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>@item.Id_Acceso</td>
+                            <td>@item.Usuario</td>
+                            <td>@item.Pass</td>
+
+                            @if (@item.Tipo_Usuario == '1')
+                            {
+                                <td>
+                                    Administrador
+                                </td>
+                            }
+                            else
+                            {
+                             <td>Nutricionista </td>
+                            }
+
+                            <td>
+                                <span class="btn btn-danger" title="Delete" onclick="deleteUser(@item.Id_Acceso)"><i class="fas fa-trash"></i></span>
+                            </td>
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+
+    <script type="text/javascript">
+
+        //funcion que elimina de la bd el acceso seleccionado
+        function deleteUser(id) {
+
+            $.ajax({
+                url: '@Url.Action("Delete", "Acceso")',
+                type: 'post',
+                data: 'id=' + id,
+                success: function (r) {
+                    if (r.res == 1) {
+                        alert("Usuario Eliminado");
+                        location.reload();
+                    }
+                }
+
+            });
+        }
+    </script>
+
