@@ -22,7 +22,12 @@ namespace nutricion_examen.Controllers
         // GET: Estado_Agenda/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            DynamicParameters param = new DynamicParameters();
+            param.Add("@id", id);
+            List<Estado_Agenda> ag = new List<Estado_Agenda>();
+            ag = DapperORM.ReturnList<Estado_Agenda>("sp_traer_estadoById", param).ToList();
+            return Json(new { data = ag }, JsonRequestBehavior.AllowGet);
+            
         }
 
         // GET: Estado_Agenda/Create
@@ -56,27 +61,18 @@ namespace nutricion_examen.Controllers
             
         }
 
-        // GET: Estado_Agenda/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
         // POST: Estado_Agenda/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Estado_Agenda estado)
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            DynamicParameters param = new DynamicParameters();
+            param.Add("@id", estado.Id_Estado);
+            param.Add("@nom_estado", estado.Nombre_Estado);
+            int status = DapperORM.ExecuteReturnScalar<Estado_Agenda>("sp_Actualiza_EstadoAgenda", param);
+            return Json(new {r = status }, JsonRequestBehavior.AllowGet);
         }
+
+       
 
         // GET: Estado_Agenda/Delete/5
         public ActionResult Delete(int id)
