@@ -8,8 +8,10 @@ using Dapper;
 
 namespace nutricion_examen.Controllers
 {
+    
     public class AgendaController : Controller
     {
+        [Authorize]
         // GET: Agenda
         public ActionResult Index()
         {
@@ -17,7 +19,7 @@ namespace nutricion_examen.Controllers
            
             return View(DapperORM.ReturnList<Agenda>("sp_traer_Agenda"));
         }
-
+        [Authorize]
         // GET: Agenda/Details/5
         public ActionResult Details(int id)
         {
@@ -54,7 +56,7 @@ namespace nutricion_examen.Controllers
             return RedirectToAction("Index");
           
         }
-
+        [Authorize]
         // GET: Agenda/Edit/5
         public ActionResult Edit(int id)
         {
@@ -98,6 +100,7 @@ namespace nutricion_examen.Controllers
                 return View();
             }
         }
+        [Authorize]
         [HttpGet]
         public ActionResult ListaEstadoAgenda()
         {

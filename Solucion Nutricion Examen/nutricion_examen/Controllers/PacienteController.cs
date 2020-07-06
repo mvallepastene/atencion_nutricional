@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace nutricion_examen.Controllers
 {
+    [Authorize]
     public class PacienteController : Controller
     {
         // GET: Paciente

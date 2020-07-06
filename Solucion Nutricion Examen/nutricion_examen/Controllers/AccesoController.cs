@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace nutricion_examen.Controllers
 {
+    [Authorize]
     public class AccesoController : Controller
     {
         // GET: Acceso
