@@ -1,6 +1,8 @@
-﻿@model nutricion_examen.Models.Paciente
+﻿@model nutricion_examen.Models.Agenda
 
-
+@{ 
+    int edad = (DateTime.Now.Year - Model.Fecha_Nacimiento.Year);
+}
    <!-- right column -->
 <div class="col-md-12 col-sm-6">
     <!-- general form elements disabled -->
@@ -16,27 +18,27 @@
                         <!-- text input -->
                         <div class="form-group">
                             <label>Rut</label>
-                            <input type="text" id="rut" name="rut" class="form-control" placeholder="">
+                            <input type="text" id="rut" name="rut" class="form-control" placeholder="" value="@Model.Rut ">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label>Nombre</label>
-                            <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Enter ...">
+                            <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Enter ..." value="@Model.Nombre">
                         </div>
                     </div>
 
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label>Apellido</label>
-                            <input type="text" id="apellido" name="apellido" class="form-control" placeholder="Enter ...">
+                            <input type="text" id="apellido" name="apellido" class="form-control" placeholder="Enter ..." value="@Model.Apellido">
                         </div>
                     </div>
 
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label>Edad</label>
-                            <input type="text" id="edad" name="edad" class="form-control" placeholder="Enter ...">
+                            <input type="text" id="edad" name="edad" class="form-control" placeholder="Enter ..." value="@edad">
                         </div>
                     </div>
 
@@ -44,7 +46,7 @@
                         <div class="form-group">
                             <label>Fecha de Nacimiento:</label>
                             <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                <input type="text" id="fechNac" name="fecha_nacimiento" class="form-control datetimepicker-input" data-target="#reservationdate" />
+                                <input type="text" id="fechNac" name="fecha_nacimiento" class="form-control datetimepicker-input" data-target="#reservationdate" value="@Model.Fecha_Nacimiento"/>
                                 <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                 </div>
@@ -55,7 +57,7 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label>Numero de Teléfono</label>
-                            <input type="text" id="telefono" name="numero_tel" class="form-control" placeholder="Enter ...">
+                            <input type="text" id="telefono" name="numero_tel" class="form-control" placeholder="Enter ..." value="@Model.Numero_Tel">
                         </div>
                     </div>
 
@@ -89,7 +91,7 @@
                                         <i class="fa fa-envelope"></i>
                                     </span>
                                 </div>
-                                <input type="email" class="form-control" id="comuna" name="comuna" placeholder="Enter ...">
+                                <input type="email" class="form-control" id="comuna" name="comuna" placeholder="Enter ..." value="@Model.Email">
                             </div>
 
                         </div>
@@ -108,10 +110,7 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Asignar Agenda</label>
-                            <select class="form-control" id="agendas" name="id_agenda">
-                                <option value="0">Selecione Agenda</option>
-                            </select>
+                            <input type="hidden" id="id_estado" value="@Model.Id_Estado" />
                         </div>
                     </div>
 
@@ -140,12 +139,14 @@
         //CARGA FUNCIONES AL ARRANCAR DOCUMENTO
         $(document).ready(function () {
             cargarSelect();
+            
 
         });
 
 
         //FUNCIONES
 
+       
         /**
          * Funcion que carga el select de las agendas
          */
@@ -172,12 +173,12 @@
          evrnto click del boton guardar
          */
         function insertarPaciente() {
-            //quita el postback al boton
+            //quita la petición al servidor
             $('#btnGrabar').click(function (e) {
                 e.preventDefault();
             });
 
-            //juntar datos que contiene el formulario
+            //juntar datos que contiene el formulario en una nueva variable
             var formData = new FormData(document.getElementById("frmPaciente"));
 
 

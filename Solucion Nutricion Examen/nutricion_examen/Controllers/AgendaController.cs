@@ -8,8 +8,10 @@ using Dapper;
 
 namespace nutricion_examen.Controllers
 {
+    
     public class AgendaController : Controller
     {
+        [Authorize]
         // GET: Agenda
         public ActionResult Index()
         {
@@ -17,11 +19,18 @@ namespace nutricion_examen.Controllers
            
             return View(DapperORM.ReturnList<Agenda>("sp_traer_Agenda"));
         }
-
+        [Authorize]
         // GET: Agenda/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            //Generamos el paramatro dinamico que le enviaremos al stored procedure sp_getAgendaById
+            DynamicParameters param = new DynamicParameters();
+            param.Add("@id", id);
+
+            List<Agenda> ag = new List<Agenda>();
+
+            ag = DapperORM.ReturnList<Agenda>("sp_getAgendaById", param).ToList();
+            return Json(new { data = ag },JsonRequestBehavior.AllowGet);
         }
 
         // GET: Agenda/Create
@@ -54,7 +63,7 @@ namespace nutricion_examen.Controllers
             return RedirectToAction("Index");
           
         }
-
+        [Authorize]
         // GET: Agenda/Edit/5
         public ActionResult Edit(int id)
         {
@@ -98,6 +107,7 @@ namespace nutricion_examen.Controllers
                 return View();
             }
         }
+        [Authorize]
         [HttpGet]
         public ActionResult ListaEstadoAgenda()
         {

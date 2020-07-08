@@ -1,62 +1,193 @@
 ﻿@model IEnumerable<nutricion_examen.Models.Agenda>
 
 
-    
-      
 
-    <div class="col-12">
 
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Registro de Agendas</h3>
 
-                <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
+<div class="col-12">
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Registro de Agendas</h3>
+
+            <div class="card-tools">
+                <div class="input-group input-group-sm" style="width: 150px;">
                     <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
                     <div class="input-group-append">
-                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                        <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
                     </div>
-                  </div>
                 </div>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body table-responsive p-0">
-                <table class="table table-hover text-nowrap">
-                  <thead>
-                    <tr>
-                     <th>Rut</th>
-                      <th>Nombre</th>
-                     
-                     <th>Fecha de Nacimiento</th>
-                     
-                      <th>Fecha Cita</th>
-                      <th>Hora Cita</th>
-                      <th>Estado</th>
-                       <th>Detalle</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                      @foreach(var item in Model){
-                    <tr>
-                      <td>@item.Id_Agenda</td>
-                      <td>@item.Nombre @item.Apellido</td>
-                      <td>@item.Fecha_Nacimiento</td>
-                      <td>@item.Fecha_Cita</td>
-                      <td>@item.Hora_Cita</td>
-                        @if(@item.Id_Estado == 1){
-                        <td>Activo</td>
-                        }
-                        <td><span class="btn btn-info" title="ver detalle"><i class="fas fa-eye"></i></span></td>
-                    </tr>
-                      }
-                   
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
             </div>
-            <!-- /.card -->
-          </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body table-responsive p-0">
+            <table class="table table-hover text-nowrap">
+                <thead>
+                    <tr>
+                        <th>Rut</th>
+                        <th>Nombre</th>
 
+                        <th>Fecha de Nacimiento</th>
+
+                        <th>Fecha Cita</th>
+                        <th>Hora Cita</th>
+                        <th>Estado</th>
+                        <th>Detalle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id_Agenda</td>
+                            <td>@item.Nombre @item.Apellido</td>
+                            <td>@item.Fecha_Nacimiento</td>
+                            <td>@item.Fecha_Cita</td>
+                            <td>@item.Hora_Cita</td>
+                            @if (@item.Id_Estado == 1)
+                            {
+                                <td>Activo</td>
+                            }
+                            <td><span class="btn btn-info" title="ver detalle" data-toggle="modal" data-target="#modal-default" onclick="cargarDetalle(@item.Id_Agenda)"><i class="fas fa-eye"></i></span></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+</div>
+
+<!--MODAL-->
+<div class="modal fade bd-example-modal-lg" id="modal-default">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Detalle Agenda</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" id="id_agenda" name="id_agenda" />
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <!-- text input -->
+                            <div class="form-group">
+                                <label>Rut</label>
+                                <input type="text" id="rut" name="rut" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Enter ...">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Apellido</label>
+                                <input type="text" id="apellido" name="apellido" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Fecha de Nacimiento</label>
+                                <input type="text" id="fec_nac" name="fec_nac" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Numero Telefónico</label>
+                                  <input type="text" id="num_tel" name="num_tel" class="form-control" />
+                               </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>E-Mail</label>
+                                <input type="text" id="email" name="email" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Fecha Cita</label>
+                                <input type="text" id="fec_cita" name="fec_cita" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Hora Cita</label>
+                                <input type="text" id="hora_cita" name="hora_cita" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Estado</label>
+                                <input type="text" class="form-control" id="estado" name="estado" disabled>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                
+                <form action="@Url.Action("Create","Paciente")" method="get">
+                    <input type="hidden" id="id" name="id" />
+                    <input type="submit" id="btnSave" class="btn btn-primary" value="Generar Paciente" />
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+@section scripts{
+    <script type="text/javascript">
+
+        //Funciones
+
+        function cargarDetalle(id) {
+          
+            $.ajax({
+                url: '@Url.Action("Details","Agenda")',
+                data: 'id=' + id,
+                type: 'get',
+                success: function (data) {
+                       var datos = data.data;
+                    $(datos).each(function (i, a) {
+                        $('#rut').val(a.Rut);
+                        $("#nombre").val(a.Nombre);
+                        $("#apellido").val(a.Apellido);
+                        $("#fec_nac").val(a.Fecha_Nacimiento);
+                        $("#num_tel").val(a.Numero_Tel);
+                        $("#email").val(a.Email);
+                        $("#fec_cita").val(a.Fecha_Cita);
+                        $("#hora_cita").val(a.Hora_Cita);
+                        if (a.Id_Estado == 1) 
+                            $("#estado").val("Activo");
+                        else
+                            $("#estado").val("Sin Estado");
+                        $('#id').val(a.Id_Agenda);
+                    });
+                }
+            });
+        }
+
+    </script>
     
+    }
