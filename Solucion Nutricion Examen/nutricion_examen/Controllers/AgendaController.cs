@@ -23,7 +23,14 @@ namespace nutricion_examen.Controllers
         // GET: Agenda/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            //Generamos el paramatro dinamico que le enviaremos al stored procedure sp_getAgendaById
+            DynamicParameters param = new DynamicParameters();
+            param.Add("@id", id);
+
+            List<Agenda> ag = new List<Agenda>();
+
+            ag = DapperORM.ReturnList<Agenda>("sp_getAgendaById", param).ToList();
+            return Json(new { data = ag },JsonRequestBehavior.AllowGet);
         }
 
         // GET: Agenda/Create

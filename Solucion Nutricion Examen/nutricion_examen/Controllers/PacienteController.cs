@@ -35,7 +35,9 @@ namespace nutricion_examen.Controllers
             {
                 DynamicParameters param = new DynamicParameters();
                 param.Add("@id", id);
-                return View(DapperORM.ReturnList<Paciente>("sp_traer_PacienteById", param).FirstOrDefault<Paciente>());
+                //var res = DapperORM.ReturnList<Agenda>("sp_getAgendaById",param).FirstOrDefault<Agenda>();
+                //return Json(new {datos = res },JsonRequestBehavior.AllowGet);
+                return View(DapperORM.ReturnList<Agenda>("sp_getAgendaById", param).FirstOrDefault<Agenda>());
             }
         }
         // POST: Paciente/Create
