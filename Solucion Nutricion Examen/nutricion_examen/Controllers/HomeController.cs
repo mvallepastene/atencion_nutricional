@@ -99,16 +99,16 @@ namespace nutricion_examen.Controllers
                     return Json(new { res = result }, JsonRequestBehavior.AllowGet);
                 } else
                 {
-                    return RedirectToAction("Registrer", new { message = "El Usuario Existe!" });
+                    return RedirectToAction("Register", new { message = "El Usuario Existe!" });
                 }
                 
             }
             catch (Exception ex)
             {
 
-                return RedirectToAction("Registrer", new { message = "Error de aplicacion" });
+                return RedirectToAction("Register", new { message = "Error de aplicacion" });
             }
-            return RedirectToAction("Login", "Home");
+           // return RedirectToAction("Login", "Home");
         }
     }
 }

@@ -8,56 +8,164 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>Nutri la Vida</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/estilos.css" />
+    <link rel="shortcut icon" href="~/Content/img/broccoli2.png" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand">Centro de Nutrición... Nutri la Vida</a>
-  <form class="form-inline">
-    <a href="@Url.Action("Index","Home")" title="Administración"> <span><i class="fa fa-home"></i></span></a>
-  </form>
-</nav>
-    <div class="container">
-        <div class="card-group mt-3">
-            <div class="card text-center border-info">
-                <div class="card-header">
-    <h4 class="card-title">Registro de Agenda</h4>
-  </div>
-  <div class="card-body">
-    <form>
-  <div class="form-group">
-    <div class="col">
-        <label for="formGroupExampleInput">Example label</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col">
-        <label for="formGroupExampleInput2">Another label</label>
-    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
-    </div>
-  </div>
-</form>
-  </div>
+    <header>
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand">Página principal</a>
+            <a href="#"> Inicio</a>
+            <a href="#"> Nosotros</a>
+            <a href="#"> Recetas Saludables</a>
+            <a href="#"> Que dicen nuestros pacientes</a>
+            <a href="#"> Servicios</a>
+            <a href="#"> Agendar Hora</a>
 
-            </div>
-  
-</div>
-    </div>
+            <form class="form-inline">
+                <a href="@Url.Action("Index","Home")" title="Administración"> <span><i class="fa fa-home"></i></span></a>
+            </form>
+        </nav>
 
-    <footer class="footer mt-5">
-        <div class="col col-md-12 text-center">
-            <div class="">
-                 <p class=""> &copy; 2020 - Todos los Derechos Reservados.</p>
+        <section class="text-header">
+            <h1>Centro de Nutrición: "Nutri La Vida"</h1>
+            <h2>El secreto está en crear hábitos saludables, no restricciones</h2>
+        </section>
+        
+        <div class="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
+        <path d="M-7.62,61.67 C303.89,195.88 -114.27,161.34 536.39,-14.30 L524.54,192.92 L-12.69,168.25 Z" style="stroke: none; fill: #fff;"></path></svg></div>
+    </header>
+    <main>
+        <section class="contenedor sobre-nosotros">
+            <h2 class="titulo">Acerca de Nosotros</h2>
+            <div class="contenedor-sobre-nosotros">
+                <img src="~/Content/img/img7.png" alt="" class="img-nosotros" />
+                <div class="content-text">
+                    <h3><span>1</span>Nosotros</h3>
+                    <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta)</p>
+                    <h3><span>2</span>Misión</h3>
+                    <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta)</p>
+                    <h3><span>3</span>Visión</h3>
+                    <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta)</p>
+                </div>
             </div>
-           
+        </section>
+
+        <section class="servicios">
+            <div class="contenedor">
+                <h2 class="titulo">Nuestros servicios</h2>
+                <div class="servicio-cont">
+                    <div class="servicio-ind">
+                        <img src="~/Content/img/atencion.png" alt="" />
+                        <h3>Nombre</h3>
+                        <p>Es un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño.</p>
+                    </div>
+                    <div class="servicio-ind">
+                        <img src="~/Content/img/auriculo1.png" alt="" />
+                        <h3>Nombre</h3>
+                        <p>Es un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño.</p>
+                    </div>
+                    <div class="servicio-ind">
+                        <img src="~/Content/img/educacion.png" alt="" />
+                        <h3>Nombre</h3>
+                        <p>Es un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="recetas">
+            <div class="contenedor">
+                <h2 class="titulo">Recetas Saludables</h2>
+                <div class="recetas-saludables">
+                    <div class="img-receta">
+                        <img src="~/Content/img/img1.png" alt="" />
+                        <div class="hover-receta">
+                            <img src="~/Content/img/cereza2.png" alt="" />
+                            <p>Recetas</p>
+                        </div>
+                    </div>
+                    <div class="img-receta">
+                        <img src="~/Content/img/img2.png" alt="" />
+                        <div class="hover-receta">
+                            <img src="~/Content/img/cereza2.png" alt="" />
+                            <p>Recetas</p>
+                        </div>
+                    </div>
+                    <div class="img-receta">
+                        <img src="~/Content/img/img3.png" alt="" />
+                        <div class="hover-receta">
+                            <img src="~/Content/img/cereza2.png" alt="" />
+                            <p>Recetas</p>
+                        </div>
+                    </div>
+                    <div class="img-receta">
+                        <img src="~/Content/img/img4.png" alt="" />
+                        <div class="hover-receta">
+                            <img src="~/Content/img/cereza2.png" alt="" />
+                            <p>Recetas</p>
+                        </div>
+                    </div>
+                    <div class="img-receta">
+                        <img src="~/Content/img/img5.png" alt="" />
+                        <div class="hover-receta">
+                            <img src="~/Content/img/cereza2.png" alt="" />
+                            <p>Recetas</p>
+                        </div>
+                    </div>
+                    <div class="img-receta">
+                        <img src="~/Content/img/img6.png" alt="" />
+                        <div class="hover-receta">
+                            <img src="~/Content/img/cereza2.png" alt="" />
+                            <p>Recetas</p>
+                        </div>
+                    </div>
+                    <div class="img-receta">
+                        <img src="~/Content/img/img7.png" alt="" />
+                        <div class="hover-receta">
+                            <img src="~/Content/img/cereza2.png" alt="" />
+                            <p>Recetas</p>
+                        </div>
+                    </div>
+                    <div class="img-receta">
+                        <img src="~/Content/img/img8.png" alt="" />
+                        <div class="hover-receta">
+                            <img src="~/Content/img/cereza2.png" alt="" />
+                            <p>Recetas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+    <footer>
+        <div class="contenedor-footer">
+            <div class="content-foot">
+                <h4>Teléfono</h4>
+                <p>+562 2222222</p>
+            </div>
+            <div class="content-foot">
+                <h4>E-Mail</h4>
+                <p>contacto@nutrilavida.cl</p>
+            </div>
+            <div class="content-foot">
+                <h4>Ubicación</h4>
+                <p>Santiago, Región Metropolitana</p>
+            </div>
         </div>
+        <h2 class="titulo-final"> &copy; 2020 - Todos los Derechos Reservados.</h2>
     </footer>
+  
+            
 
- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
 </html>

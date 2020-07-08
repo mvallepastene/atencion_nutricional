@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace nutricion_examen.Controllers
 {
+    [Authorize]
     public class AccesoController : Controller
     {
         // GET: Acceso
@@ -19,7 +20,7 @@ namespace nutricion_examen.Controllers
         // GET: Acceso/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+             return View();
         }
 
         [HttpPost]

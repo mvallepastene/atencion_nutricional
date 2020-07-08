@@ -9,6 +9,7 @@ using Dapper;
 
 namespace nutricion_examen.Controllers
 {
+    [Authorize]
     public class NutricionistaController : Controller
     {
         // GET: Nutricionista

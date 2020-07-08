@@ -10,6 +10,7 @@ namespace nutricion_examen.Controllers
 {
     public class Estado_AgendaController : Controller
     {
+        [Authorize]
         // GET: Estado_Agenda
         public ActionResult Index()
         {
