@@ -16,7 +16,7 @@ namespace nutricion_examen.Controllers
         {
             //hacemos la peticion a la bd
             
-            return View(DapperORM.ReturnList<Estado_Agenda>("traer_estado"));
+            return View(DapperORM.ReturnList<Estado_Agenda>("sp_traer_Estados"));
            
         }
 
