@@ -127,6 +127,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccesoController.cs" />
     <Compile Include="Controllers\AgendaController.cs" />
+    <Compile Include="Controllers\EncuestaR24HController.cs" />
     <Compile Include="Controllers\Estado_AgendaController.cs" />
     <Compile Include="Controllers\FrontEndController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -2052,6 +2053,8 @@
     <Content Include="Views\Home\LogOut.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Acceso\Index.cshtml" />
+    <Content Include="Views\Encuesta_R24h\Create.cshtml" />
+    <Content Include="Views\Encuesta_R24h\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
