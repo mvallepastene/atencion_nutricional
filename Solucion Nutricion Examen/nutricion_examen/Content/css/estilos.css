@@ -242,9 +242,13 @@ header .text-header{
     margin:20px 20px 0 0;
     color:black;
 }
+/*AGENDA */
 
-    @media screen and (max-width:900px) {
-        header{
+
+
+
+@media screen and (max-width:900px) {
+    header{
         background-position:center;
     }
     .contenedor-sobre-nosotros{

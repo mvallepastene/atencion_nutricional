@@ -22,9 +22,10 @@
             <a href="#"> Inicio</a>
             <a href="#"> Nosotros</a>
             <a href="#"> Recetas Saludables</a>
-            <a href="#"> Que dicen nuestros pacientes</a>
             <a href="#"> Servicios</a>
-            <a href="#"> Agendar Hora</a>
+            <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#modalagenda">
+                Agendar Hora
+            </button>
 
             <form class="form-inline">
                 <a href="@Url.Action("Index","Home")" title="Administración"> <span><i class="fa fa-home"></i></span></a>
@@ -142,6 +143,54 @@
             </div>
         </section>
 
+      
+        <!-- Modal -->
+        <div class="modal fade" id="modalagenda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Agenda</h4>
+                    </div>
+                    <div class="modal-body">
+                        <label>Rut</label>
+                        <input type="text" id="rut" name="rut" class="form-control" placeholder="">
+                    </div>
+                    <div class="modal-body">
+                        <label>Nombre</label>
+                        <input type="text" id="nombre" name="rut" class="form-control" placeholder="">
+                    </div>
+                    <div class="modal-body">
+                        <label>Apellido</label>
+                        <input type="text" id="apellido" name="rut" class="form-control" placeholder="">
+                    </div>
+                    <div class="modal-body">
+                        <label>Fecha de Nacimiento</label>
+                        <input type="date" id="fechanac" name="rut" class="form-control" placeholder="">
+                    </div>
+                    <div class="modal-body">
+                        <label>Número teléfono</label>
+                        <input type="text" id="telefono" name="rut" class="form-control" placeholder="">
+                    </div>
+                    <div class="modal-body">
+                        <label>Email</label>
+                        <input type="email" id="email" name="rut" class="form-control" placeholder="">
+                    </div>
+                    <div class="modal-body">
+                        <label>Fecha cita</label>
+                        <input type="date" id="fechcita" name="rut" class="form-control" placeholder="">
+                    </div>
+                    <div class="modal-body">
+                        <label>Hora cita</label>
+                        <input type="text" id="hora" name="rut" class="form-control" placeholder="">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Agendar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </main>
     <footer>
