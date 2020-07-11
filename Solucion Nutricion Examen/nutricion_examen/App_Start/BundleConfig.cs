@@ -21,6 +21,7 @@ namespace nutricion_examen
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
+            //Referencias de Bootstrap en lo que son los js
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Content/plugins/bootstrap/js/bootstrap.bundle.min.js",
@@ -38,7 +39,7 @@ namespace nutricion_examen
                       "~/Content/dist/js/adminlte.js",
                       "~/Content/dist/js/pages/dashboard.js",
                       "~/Content/dist/js/demo.js"));
-
+            //referencia de Bootstrap en todo lo que es estilos css
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.min.css",
                       "~/Content/site.css",
