@@ -111,7 +111,7 @@ namespace nutricion_examen.Controllers
         [HttpGet]
         public ActionResult ListaEstadoAgenda()
         {
-            var result = DapperORM.ReturnList<Estado_Agenda>("traer_Estado");
+            var result = DapperORM.ReturnList<Estado_Agenda>("sp_traer_Estados");
             return Json(new { data = result }, JsonRequestBehavior.AllowGet);
         }
     }

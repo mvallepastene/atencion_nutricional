@@ -1,135 +1,81 @@
-﻿@model nutricion_examen.Models.Agenda
+﻿@model nutricion_examen.Models.Paciente
 
-@{ 
-    int edad = (DateTime.Now.Year - Model.Fecha_Nacimiento.Year);
-}
-   <!-- right column -->
-<div class="col-md-12 col-sm-6">
-    <!-- general form elements disabled -->
-    <div class="card card-warning">
-        <div class="card-header">
-            <h3 class="card-title">Generar Paciente</h3>
-        </div>
-        <!-- /.card-header -->
-        <div class="card-body">
-            <form role="form" id="frmPaciente">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <!-- text input -->
-                        <div class="form-group">
-                            <label>Rut</label>
-                            <input type="text" id="rut" name="rut" class="form-control" placeholder="" value="@Model.Rut ">
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label>Nombre</label>
-                            <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Enter ..." value="@Model.Nombre">
-                        </div>
-                    </div>
 
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label>Apellido</label>
-                            <input type="text" id="apellido" name="apellido" class="form-control" placeholder="Enter ..." value="@Model.Apellido">
-                        </div>
-                    </div>
+    <div class="container mt-5">
+        <div class="row">
 
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label>Edad</label>
-                            <input type="text" id="edad" name="edad" class="form-control" placeholder="Enter ..." value="@edad">
-                        </div>
-                    </div>
+            <form id="frmPaciente" class="form-normal">
 
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label>Fecha de Nacimiento:</label>
-                            <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                <input type="text" id="fechNac" name="fecha_nacimiento" class="form-control datetimepicker-input" data-target="#reservationdate" value="@Model.Fecha_Nacimiento"/>
-                                <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label>Numero de Teléfono</label>
-                            <input type="text" id="telefono" name="numero_tel" class="form-control" placeholder="Enter ..." value="@Model.Numero_Tel">
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label>Genero</label>
-                            <input type="text" id="genero" name="genero" class="form-control" placeholder="Enter ...">
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label>Dirección</label>
-                            <input type="text" id="direccion" name="direccion" class="form-control" placeholder="Enter ...">
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label>Comuna</label>
-                            <input type="text" class="form-control" id="comuna" name="comuna" placeholder="Enter ...">
-                        </div>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label>E-Mail</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="fa fa-envelope"></i>
-                                    </span>
-                                </div>
-                                <input type="email" class="form-control" id="comuna" name="comuna" placeholder="Enter ..." value="@Model.Email">
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label>Prevision</label>
-                            <input type="text" class="form-control" id="prevision" name="prevision">
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label>Ocupación</label>
-                            <input type="text" class="form-control" id="ocupacion" name="ocupacion">
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <input type="hidden" id="id_estado" value="@Model.Id_Estado" />
-                        </div>
-                    </div>
-
+                <div class="form-group">
+                    <label for="exampleInputName2">Rut</label>
+                    <input type="text" class="form-control" id="rut" name="rut">
                 </div>
+                <div class="form-group">
+                    <label for="">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInput">Apellido</label>
+                    <input type="text" class="form-control" id="apellido" name="apellido">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInput">Edad</label>
+                    <input type="text" class="form-control" id="edad" name="edad">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInput">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" id="fechNac" name="fecha_nacimiento">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInput">Numero de teléfono</label>
+                    <input type="text" class="form-control" id="telefono" name="numero_tel">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInput">Genero</label>
+                    <select class="form-control" id="genero" name="genero">
+                        <option>Femenino</option>
+                        <option>Masculino</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInput">Dirección</label>
+                    <input type="text" class="form-control" id="direccion" name="direccion">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInput">Comuna</label>
+                    <input type="text" class="form-control" id="comuna" name="comuna">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInput">E-Mail</label>
+                    <input type="email" class="form-control" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInput">Previsión</label>
+                    <input type="text" class="form-control" id="prevision" name="prevision">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInput">Ocupación</label>
+                    <input type="text" class="form-control" id="ocupacion" name="ocupacion">
+                </div>
+
+                
+                <div class="form-group">
+                    <label for="exampleInput">Estado Agenda</label>
+                    <select class="form-control" id="EstadoAgenda" name="id_estado">
+                        <option value="0">Selecciona Estado</option>
+                    </select>
+                </div>
+
                 <button type="button" id="btnGrabar" onclick="insertarPaciente()" class="btn btn-primary">Guardar...</button>
+
             </form>
-            <div>
-            @Html.ActionLink("Back to List", "Index")
+
+            <div class="mt-4">
+                @Html.ActionLink("Back to List", "Index")
+            </div>
         </div>
-        </div>
-        <!-- /.card-body -->
-        
     </div>
-
-    <!-- /.card -->
-</div>
-<!--/.col (right) -->
-
-
 
 
 
