@@ -1,4 +1,4 @@
-﻿
+﻿@model nutricion_examen.Models.Agenda
 @{
     Layout = null;
 }
@@ -19,10 +19,10 @@
     <header>
         <nav class="navbar navbar-light bg-light">
             <a class="navbar-brand">Página principal</a>
-            <a href="#"> Inicio</a>
-            <a href="#"> Nosotros</a>
-            <a href="#"> Recetas Saludables</a>
-            <a href="#"> Servicios</a>
+            <a href="#sobreNosotros"> Acerca de mi</a>
+            <a href="#recetas"> Recetas Saludables</a>
+            <a href="#servicios"> Servicios</a>
+            <a href="#footer"> Contacto</a>
             <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#modalagenda">
                 Agendar Hora
             </button>
@@ -41,174 +41,183 @@
         <path d="M-7.62,61.67 C303.89,195.88 -114.27,161.34 536.39,-14.30 L524.54,192.92 L-12.69,168.25 Z" style="stroke: none; fill: #fff;"></path></svg></div>
     </header>
     <main>
-        <section class="contenedor sobre-nosotros">
-            <h2 class="titulo">Acerca de Nosotros</h2>
+        <section class="contenedor sobre-nosotros" id="sobreNosotros">
+            <h2 class="titulo">Acerca de Mi</h2>
             <div class="contenedor-sobre-nosotros">
-                <img src="~/Content/img/img7.png" alt="" class="img-nosotros" />
+                <img src="~/Content/img/Nosotros.png" alt="" class="img-nosotros" />
                 <div class="content-text">
-                    <h3><span>1</span>Nosotros</h3>
+                    <h3><span>1</span>¿Quién Soy?</h3>
                     <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta)</p>
-                    <h3><span>2</span>Misión</h3>
-                    <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta)</p>
-                    <h3><span>3</span>Visión</h3>
-                    <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta)</p>
+                    <h3><span>2</span>¿Qué busco?</h3>
+                    <p>Mi fin es educar a las personas, darles herramientas y que el comer sano se trasforme en una experiencia grata y rica, transformándose en un estilo de vida.</p>
+
                 </div>
             </div>
         </section>
 
-        <section class="servicios">
+        <section class="servicios" id="servicios">
             <div class="contenedor">
-                <h2 class="titulo">Nuestros servicios</h2>
+                <h2 class="titulo">Servicios</h2>
                 <div class="servicio-cont">
                     <div class="servicio-ind">
-                        <img src="~/Content/img/atencion.png" alt="" />
-                        <h3>Nombre</h3>
-                        <p>Es un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño.</p>
+                        <img src="~/Content/img/atencionpresencial.jpg" alt="" />
+                        <h3>Consulta Nutricional Presencial - $20.000</h3>
+                        <p>Se realizará la anamnesis, evaluaciónantropométrica completa, encuestas de alimentación y recibirás un plan de alimentación totalmente personalizado según tus necesidades y objetivos. Se realizará en conjunto la educación alimentaria correspondiente y asesoría sobre actividad física.</p>
                     </div>
                     <div class="servicio-ind">
-                        <img src="~/Content/img/auriculo1.png" alt="" />
-                        <h3>Nombre</h3>
-                        <p>Es un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño.</p>
+                        <img src="~/Content/img/Auriculoterapia.jpg" alt="" />
+                        <h3>Auriculoterapia - $10.000</h3>
+                        <p>La auriculoterapia es una técnica terapéutica de la Medicina Tradicional China, derivada de la acupuntura, en la que se estimulan puntos específicos del pabellón auricular y la oreja para generar un efecto en el organismo que favorezca y equilibre ciertas funciones corporales. En Nutrición utilizamos esta terapia específicamente para complementar el tratamiento nutricional, ayudando a manejar la ansiedad, estrés, y otros aspectos relacionados con problemas nutricionales.</p>
                     </div>
                     <div class="servicio-ind">
-                        <img src="~/Content/img/educacion.png" alt="" />
-                        <h3>Nombre</h3>
-                        <p>Es un hecho establecido hace demasiado tiempo que un lector se distraerá con el contenido del texto de un sitio mientras que mira su diseño.</p>
+                        <img src="~/Content/img/atenciononline.jpg" alt="" />
+                        <h3>Consulta Nutricional Online - $15.000</h3>
+                        <p>Recibirás automáticamente en tu correo una ficha que deberas rellenar y enviarme, para poder desarrollar tu plan de alimentación personalizado acorde a tus necesidades y objetivos. Se realizará educación alimentaria y asesoría asesoría sobre actividad física.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="recetas">
+        <section class="recetas" id="recetas">
             <div class="contenedor">
                 <h2 class="titulo">Recetas Saludables</h2>
                 <div class="recetas-saludables">
                     <div class="img-receta">
-                        <img src="~/Content/img/img1.png" alt="" />
+                        <img src="~/Content/img/Receta1.jpg" alt="" />
                         <div class="hover-receta">
                             <img src="~/Content/img/cereza2.png" alt="" />
-                            <p>Recetas</p>
+                            <p>Galletas Avena - Plátano</p>
                         </div>
                     </div>
                     <div class="img-receta">
-                        <img src="~/Content/img/img2.png" alt="" />
+                        <img src="~/Content/img/Receta3.jpg" alt="" />
                         <div class="hover-receta">
                             <img src="~/Content/img/cereza2.png" alt="" />
-                            <p>Recetas</p>
+                            <p>Papas camote tipo fritas</p>
                         </div>
                     </div>
                     <div class="img-receta">
-                        <img src="~/Content/img/img3.png" alt="" />
+                        <img src="~/Content/img/Receta2.jpg" alt="" />
                         <div class="hover-receta">
                             <img src="~/Content/img/cereza2.png" alt="" />
-                            <p>Recetas</p>
+                            <p>Delicias saludables</p>
                         </div>
                     </div>
                     <div class="img-receta">
-                        <img src="~/Content/img/img4.png" alt="" />
+                        <img src="~/Content/img/Receta5.jpg" alt="" />
                         <div class="hover-receta">
                             <img src="~/Content/img/cereza2.png" alt="" />
-                            <p>Recetas</p>
+                            <p>Sopaipillas horneadas</p>
                         </div>
                     </div>
                     <div class="img-receta">
-                        <img src="~/Content/img/img5.png" alt="" />
+                        <img src="~/Content/img/Receta4.jpg" alt="" />
                         <div class="hover-receta">
                             <img src="~/Content/img/cereza2.png" alt="" />
-                            <p>Recetas</p>
+                            <p>Hamburguesa de lentejas rojas</p>
                         </div>
                     </div>
                     <div class="img-receta">
-                        <img src="~/Content/img/img6.png" alt="" />
+                        <img src="~/Content/img/receta6.jpg" alt="" />
                         <div class="hover-receta">
                             <img src="~/Content/img/cereza2.png" alt="" />
-                            <p>Recetas</p>
+                            <p>Porridge de avena</p>
                         </div>
                     </div>
                     <div class="img-receta">
-                        <img src="~/Content/img/img7.png" alt="" />
+                        <img src="~/Content/img/Receta7.jpg" alt="" />
                         <div class="hover-receta">
                             <img src="~/Content/img/cereza2.png" alt="" />
-                            <p>Recetas</p>
+                            <p>Pizza con masa zapallo italiano</p>
                         </div>
                     </div>
                     <div class="img-receta">
-                        <img src="~/Content/img/img8.png" alt="" />
+                        <img src="~/Content/img/Receta8.jpg" alt="" />
                         <div class="hover-receta">
                             <img src="~/Content/img/cereza2.png" alt="" />
-                            <p>Recetas</p>
+                            <p>Mugcake de chocolate</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-      
         <!-- Modal -->
-        <div class="modal fade" id="modalagenda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Agenda</h4>
-                    </div>
-                    <div class="modal-body">
-                        <label>Rut</label>
-                        <input type="text" id="rut" name="rut" class="form-control" placeholder="">
-                    </div>
-                    <div class="modal-body">
-                        <label>Nombre</label>
-                        <input type="text" id="nombre" name="rut" class="form-control" placeholder="">
-                    </div>
-                    <div class="modal-body">
-                        <label>Apellido</label>
-                        <input type="text" id="apellido" name="rut" class="form-control" placeholder="">
-                    </div>
-                    <div class="modal-body">
-                        <label>Fecha de Nacimiento</label>
-                        <input type="date" id="fechanac" name="rut" class="form-control" placeholder="">
-                    </div>
-                    <div class="modal-body">
-                        <label>Número teléfono</label>
-                        <input type="text" id="telefono" name="rut" class="form-control" placeholder="">
-                    </div>
-                    <div class="modal-body">
-                        <label>Email</label>
-                        <input type="email" id="email" name="rut" class="form-control" placeholder="">
-                    </div>
-                    <div class="modal-body">
-                        <label>Fecha cita</label>
-                        <input type="date" id="fechcita" name="rut" class="form-control" placeholder="">
-                    </div>
-                    <div class="modal-body">
-                        <label>Hora cita</label>
-                        <input type="text" id="hora" name="rut" class="form-control" placeholder="">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Agendar</button>
+        
+            <div class="modal fade" id="modalagenda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
 
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Agenda</h4>
+                            <form id="frmAgenda" class="form-normal" action="~/Agenda/Create" method="post">
+                                <div class="form-group">
+                                    <label>Rut</label>
+                                    <input type="text" id="rut" name="Rut" class="form-control" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Nombre</label>
+                                    <input type="text" id="nombre" name="Nombre" class="form-control" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Apellido</label>
+                                    <input type="text" id="apellido" name="Apellido" class="form-control" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Fecha de Nacimiento</label>
+                                    <input type="date" id="fechanac" name="Fecha_Nacimiento" class="form-control" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Número teléfono</label>
+                                    <input type="text" id="telefono" name="Numero_Tel" class="form-control" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" id="email" name="Email" class="form-control" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Fecha cita</label>
+                                    <input type="date" id="fechcita" name="Fecha_Cita" class="form-control" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Hora cita</label>
+                                    <input type="text" id="hora" name="Hora_Cita" class="form-control" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" id="id_estado" name="Id_Estado" value="1" />
+                                </div>
+                            </form>
+</div>
+                        <div class="modal-footer">
+                            <input type="submit" id="btnSave" class="btn btn-default" data-dismiss="modal" value="Agregar"/>
+
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
+        
     </main>
-    <footer>
-        <div class="contenedor-footer">
-            <div class="content-foot">
-                <h4>Teléfono</h4>
-                <p>+562 2222222</p>
-            </div>
-            <div class="content-foot">
-                <h4>E-Mail</h4>
-                <p>contacto@nutrilavida.cl</p>
-            </div>
-            <div class="content-foot">
-                <h4>Ubicación</h4>
-                <p>Santiago, Región Metropolitana</p>
-            </div>
+    <footer id="footer">
+        <div class="contenedor">
+            <h2 class="titulo">Contacto</h2>
         </div>
-        <h2 class="titulo-final"> &copy; 2020 - Todos los Derechos Reservados.</h2>
+            <div class="contenedor-footer">
+                <div class="content-foot">
+                    <h4>Teléfono</h4>
+                    <p>+562 2222222</p>
+                </div>
+                <div class="content-foot">
+                    <h4>E-Mail</h4>
+                    <p>contacto@nutrilavida.cl</p>
+                </div>
+                <div class="content-foot">
+                    <h4>Ubicación</h4>
+                    <p>Santiago, Región Metropolitana</p>
+                </div>
+            </div>
+            <h2 class="titulo-final"> &copy; 2020 - Todos los Derechos Reservados.</h2>
     </footer>
   
             
@@ -218,3 +227,38 @@
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+<script type="text/javascript">
+
+    $('#btnSave').click(function(){
+        //creamos el Objeto Agenda
+    var agenda= {
+            Rut: $('#rut').val(),
+    Nombre : $('#nombre').val(),
+    Apellido:$('#apellido').val(),
+    Fecha_Nacimiento: $('#fechanac').val(),
+    Numero_Tel: $('#telefono').val(),
+    Email:$('#email').val(),
+    Fecha_Cita : $('#fechcita').val(),
+    Hora_Cita : $('#hora').val(),
+    Id_Estado : $('#id_estado').val(1)
+    }
+    
+    //utilizamos Ajax para enviar el objeto al controlador que crea la Agenda
+    
+    $.ajax({
+    url:'@Url.Action("Create","Agenda")',
+    method:'post',
+    data:agenda,
+    cache:false,
+    success:function(r){
+     if(r.res == 1){
+      alert("Agenda Creagada")
+    }
+    }
+    });
+
+    console.log(agenda);
+    });
+
+</script>
