@@ -47,7 +47,7 @@ namespace nutricion_examen.Controllers
             // TODO: Add insert logic here
 
             DynamicParameters param = new DynamicParameters();
-            param.Add("@id_agenda", agenda.Id_Agenda);
+           // param.Add("@id_agenda", agenda.Id_Agenda);
             param.Add("@rut", agenda.Rut);
             param.Add("@nombre", agenda.Nombre);
             param.Add("@apellido", agenda.Apellido);
@@ -57,10 +57,10 @@ namespace nutricion_examen.Controllers
             param.Add("@fecha_cita", agenda.Fecha_Cita);
             param.Add("@hora_cita", agenda.Hora_Cita);
             param.Add("@id_estado", agenda.Id_Estado);
-            DapperORM.ExecuteWithoutReturn("sp_agregarOActualiza_Agenda", param);
+          int result =  DapperORM.ExecuteReturnScalar<Agenda>("sp_agregarOActualiza_Agenda", param);
 
 
-            return RedirectToAction("Index");
+            return Json( new { res = result }, JsonRequestBehavior.AllowGet);
           
         }
         [Authorize]
