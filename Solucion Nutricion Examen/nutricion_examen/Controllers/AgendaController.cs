@@ -47,7 +47,7 @@ namespace nutricion_examen.Controllers
             // TODO: Add insert logic here
 
             DynamicParameters param = new DynamicParameters();
-           // param.Add("@id_agenda", agenda.Id_Agenda);
+            param.Add("@id_agenda", agenda.Id_Agenda);
             param.Add("@rut", agenda.Rut);
             param.Add("@nombre", agenda.Nombre);
             param.Add("@apellido", agenda.Apellido);
