@@ -1,44 +1,122 @@
 ﻿@model nutricion_examen.Models.EncuestaR24H
+    <head>
 
+       
+        <script type="text/javascript">
+            //Anotando los datos//
+            function enviar() {
+                var hora = document.getElementById("hora").value;
+                var dia = document.getElementById("dia").value;
+                var minuta = document.getElementById("minuta").value;
 
-<div class="container mt-5">
-    <div class="row">
-        <form id="frmEncuestaR24H" class="form-normal">
-            <div class="form">
-                <h3>Send us a message</h3>
-                <form action="">
-                    <p>
-                        <label for="">Your name</label>
-                        <input type="text">
-                    </p>
-                    <p>
-                        <label for="">Skype</label>
-                        <input type="text">
-                    </p>
-                    <p>
-                        <label for="">Email Address</label>
-                        <input type="text">
-                    </p>
-                    <p>
-                        <label for="">Topic</label>
-                        <input type="text">
-                    </p>
-                    <p>
-                        <label for="">Write your message</label>
-                        <textarea name="" id="" cols="30" rows="7"></textarea>
-                    </p>
-                    <p>
-                        <button>Send</button>
-                    </p>
-                </form>
+                //Cuando viene mas de un dato, Por cada salto de linea se crea un arreglo (Array)//
+                var arreglo_horas = hora.split("\n");
+                var arreglo_minuta = minuta.split("\n");
+                for (var i = 0; i < arreglo_horas.length; i++) {
+                    console.log(arreglo_horas[i]);
+                }
+                for (var i = 0; i < arreglo_minuta.length; i++) {
+                    console.log(arreglo_minuta[i]);
+                }
+                console.log(arreglo_horas);
+            }
+
+        </script>
+    </head>
+
+<style>
+    .sin_estilo{
+    border: none;
+    width: 100%;
+    margin: auto;
+    display:block;
+    }
+    .break:before {
+        display: block;
+        content: " ";
+    }
+    textarea:focus, input:focus {
+        outline: 0;
+    }
+    
+    *:focus {
+        outline: 0;
+    }
+
+</style>
+
+    <div class="">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Encuesta R24H</h3>
+
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </form>
+
+            <div class="card-body table-responsive p-0">
+                <table border="1" align="center" style="width: 1050px;">
+                    <thead> 
+                        <tr class="bg-dark text-center">
+                            <th>
+                                <div class="form-group">
+                                    <label for="txtDescripcion">Día de Semana</label>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="form-group">
+                                    <label for="txtDescripcion">Hora</label>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="form-group">
+                                    <label for="txtDescripcion">Minuta</label>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="form-group">
+                                    <label for="txtDescripcion">Ingredientes</label>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="form-group">
+                                    <label for="txtDescripcion">Medidas Casera</label>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="form-group">
+                                    <label for="txtDescripcion">Cantidad GR/ML Total</label>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="form-group" >
+                                    <label for="txtDescripcion">Observaciones</label>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><textarea class="sin_estilo" rows="6" placeholder="Lunes, Martes..." id="dia"></textarea></td>
+                            <td><textarea class="sin_estilo" rows="6" placeholder="Ingrese las horas" id="hora"></textarea></td>
+                            <td><textarea class="sin_estilo" rows="6" id="minuta"></textarea></td>
+                            <td><textarea class="sin_estilo" rows="6" id="ingredientes"></textarea></td>
+                            <td><textarea class="sin_estilo" rows="6" id="casera"></textarea></td>
+                            <td><textarea class="sin_estilo" rows="6" id="gramos"></textarea></td>
+                            <td><textarea class="sin_estilo" rows="6" id="obs"></textarea></td>
+
+                        </tr>
+                    </tbody>
+                </table> 
+                <input type="button" class="btn btn-block btn-outline-dark " style="float: right; margin-right:20px; margin-bottom:15px;box-shadow: 4px ;margin-top: 20px" value="Enviar" onclick="enviar()"/>
+            </div>
+        </div>
     </div>
-</div>
 
-
-
-<div class="mt-4">
-    @Html.ActionLink("Back to List", "Index")
-</div>
-  
