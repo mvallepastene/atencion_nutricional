@@ -89,7 +89,8 @@ header .text-header{
 }
 
 .img-nosotros{
-    width: 50%;
+    width: 38%;
+    border-radius: 50px;
 }
 
 .nosotros .content-text{
@@ -102,7 +103,7 @@ header .text-header{
 }
 
 .content-text h3  span{
-    background: #808080;
+    background: #56ab2f;
     color: #fff;
     border-radius: 50%;
     display: inline-block;
@@ -111,7 +112,7 @@ header .text-header{
     height: 30px;
     padding: 2px;
     box-shadow: 0 0 6px 0 rgba(0, 0, 0, .5);
-    margin-right: 5px;
+    margin-right: 15px;
     font-size: 20px;
 }
 
