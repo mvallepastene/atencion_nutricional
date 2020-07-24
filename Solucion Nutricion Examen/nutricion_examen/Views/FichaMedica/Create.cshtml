@@ -228,7 +228,9 @@
         $('#btnSave').click(function () { //llave apertura
             //creamos el objeto que se le debe enviar al SP
 
-            var param = {
+            var id = $('#id_paciente').val();
+
+            var fmp = {
                 Ant_Familiares: $("#antecedentes").val(),
                 Alergias: $("#alergias").val(),
                 Enfermedades: $("#enfermedades").val(),
@@ -244,25 +246,23 @@
                 Amdr_Prot: $("#amdr_prot").val(),
                 Amdr_Cho: $("#amdr_carbo").val(),
                 Amdr_Lip: $("#amdr_lipi").val(),
-                Id_Paciente: $("#id_paciente").val(),
+                Id_Paciente: id,
                 Peso_Requerido: $("#peso_req").val(),
-                Id_Nutricionista: '4'
+                Id_Nutricionista: '7'
 
             }
-           
+            
             $.ajax({
                 url: '@Url.Action("Create","FichaMedica")',
-                type: 'post',
-                data: param,
+                method: 'post',
+                data: fmp,
                 success: function (r) {
-                    console.log(r);
-                    if (r.res == 1) {
+                    
+                    
                         //llamamos a la funcion que retorna los calculos
-                        let result = return_Calculos($("#id_paciente").val());
-                        console.log(result);
-                    } else {
-                        //hacemos mención a un error
-                    }
+                       return_Calculos(id);
+                        
+                    
                 }
 
 
@@ -271,28 +271,37 @@
             //Funcion que etorna los datos de la ficha medica
 
             function return_Calculos(id_paciente) {
-                let id = id_paciente;
+                var id = id_paciente;
 
                 //hacemos la peticion mediante Ajax.
-
+               
                 $.ajax({
-                    url: '@Url.Action("ReturnCalculos","FichaMedica")',
+                    url: '@Url.Action("ReturnCalculos", "FichaMedica")',
                     data: 'id=' + id,
                     type: 'post',
                     dataType: 'json',
                     success: function (data) {
-
+                       
                         var datos = data.data;
-                        consol.log(datos);
+                        
                         $(datos).each(function (i, f) {
-                            $('#antecedentes').val(f.Antecedentes);
+                            $('#antecedentes').val(f.Ant_Familiares);
                             $("#alergias").val(f.Alergias);
+                            $('#imc').val(f.Imc)
                             $("#enfermedades").val(f.Enfermedades);
+                            $('#diagnostico').val(f.Diagnostico);
+                            $('#clasificacion').val(f.Clasi_CC);
+                            $('#fech_creacion').val(f.Fecha_Creacion);
                             $("#peso").val(f.Peso);
+                            $('#peso_ideal').val(f.Peso_Ideal);
+                            $('#peso_max').val(f.Peso_Max);
+                            $('#peso_ajustado').val(f.Peso_Ajustado);
                             $("#talla").val(f.Talla);
                             $("#req_proteinas").val(f.Req_Prot);
                             $("#req_carbohidratos").val(f.Req_Cho);
                             $("#req_lipi").val(f.Req_Lip);
+                            $('#req_basal').val('No Data');
+                            $('#req_total').val(f.Req_Total);
                             $("#fech_prox_control").val(f.Prox_Control);
                             $("#cc").val(f.Circ_Cint);
                             $("#observaciones").val(f.Observaciones);
@@ -302,7 +311,7 @@
                             $("#amdr_lipi").val(f.Amdr_Lip);
                             $("#id_paciente").val(f.Id_Paciente);
                             $("#peso_req").val(f.Peso_Requerido);
-                            $("#nutricionista").val(f.Id_Nutricionista);
+                            $("#nutricionista").val(f.Nombre_Nutri);
 
                         });
                     }
