@@ -130,6 +130,7 @@
     <Compile Include="Controllers\EncuestaFrecuenciaController.cs" />
     <Compile Include="Controllers\EncuestaR24HController.cs" />
     <Compile Include="Controllers\Estado_AgendaController.cs" />
+    <Compile Include="Controllers\FichaMedicaController.cs" />
     <Compile Include="Controllers\FrontEndController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NutricionistaController.cs" />
@@ -2061,6 +2062,8 @@
     <Content Include="Views\EncuestaR24H\Index.cshtml" />
     <Content Include="Views\EncuestaR24H\Create.cshtml" />
     <Content Include="Views\EncuestaFrecuencia\Index.cshtml" />
+    <Content Include="Views\FichaMedica\Create.cshtml" />
+    <Content Include="Views\FichaMedica\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
