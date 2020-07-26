@@ -2064,6 +2064,7 @@
     <Content Include="Views\EncuestaFrecuencia\Index.cshtml" />
     <Content Include="Views\FichaMedica\Create.cshtml" />
     <Content Include="Views\FichaMedica\Index.cshtml" />
+    <Content Include="Views\Shared\_Encuesta24hPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
