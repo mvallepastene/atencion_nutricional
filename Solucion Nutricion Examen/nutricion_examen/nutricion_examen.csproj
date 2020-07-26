@@ -172,6 +172,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\Encuesta24h.css" />
     <Content Include="Content\css\estilos.css" />
     <Content Include="Content\dist\css\adminlte.css" />
     <Content Include="Content\dist\css\adminlte.min.css" />

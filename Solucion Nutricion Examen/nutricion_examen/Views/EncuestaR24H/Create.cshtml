@@ -1,122 +1,84 @@
-﻿@model nutricion_examen.Models.EncuestaR24H
-    <head>
+﻿@model IEnumerable<nutricion_examen.Models.EncuestaR24H>
 
-       
-        <script type="text/javascript">
-            //Anotando los datos//
-            function enviar() {
-                var hora = document.getElementById("hora").value;
-                var dia = document.getElementById("dia").value;
-                var minuta = document.getElementById("minuta").value;
 
-                //Cuando viene mas de un dato, Por cada salto de linea se crea un arreglo (Array)//
-                var arreglo_horas = hora.split("\n");
-                var arreglo_minuta = minuta.split("\n");
-                for (var i = 0; i < arreglo_horas.length; i++) {
-                    console.log(arreglo_horas[i]);
-                }
-                for (var i = 0; i < arreglo_minuta.length; i++) {
-                    console.log(arreglo_minuta[i]);
-                }
-                console.log(arreglo_horas);
-            }
-
-        </script>
-    </head>
-
-<style>
-    .sin_estilo{
-    border: none;
-    width: 100%;
-    margin: auto;
-    display:block;
-    }
-    .break:before {
-        display: block;
-        content: " ";
-    }
-    textarea:focus, input:focus {
-        outline: 0;
-    }
-    
-    *:focus {
-        outline: 0;
-    }
-
-</style>
-
-    <div class="">
-        <div class="card">
+<body>
+    <div class="col-md-12 col-sm-6">
+        <div class="card card-warning">
             <div class="card-header">
                 <h3 class="card-title">Encuesta R24H</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="diaSemana">Día de Semana</label>
+                            <select class="form-control" id="diaSemana" style="width: 200px;">
+                                <option>--</option>
+                                <option>Lunes</option>
+                                <option>Martes</option>
+                                <option>Miercoles</option>
+                                <option>Jueves</option>
+                                <option>Viernes</option>
+                                <option>Sabado</option>
+                                <option>Domingo</option>
+                            </select>
+                        </div>
+                    </div>
 
-                <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 150px;">
-                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <label id="observaciones">Observaciones</label>
+                            <textarea class="form-control" placeholder="Please write customer notes" rows="5" style="width: 100%; max-width: 100%;"></textarea>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card-body table-responsive p-0">
-                <table border="1" align="center" style="width: 1050px;">
-                    <thead> 
-                        <tr class="bg-dark text-center">
-                            <th>
-                                <div class="form-group">
-                                    <label for="txtDescripcion">Día de Semana</label>
-                                </div>
-                            </th>
-                            <th>
-                                <div class="form-group">
-                                    <label for="txtDescripcion">Hora</label>
-                                </div>
-                            </th>
-                            <th>
-                                <div class="form-group">
-                                    <label for="txtDescripcion">Minuta</label>
-                                </div>
-                            </th>
-                            <th>
-                                <div class="form-group">
-                                    <label for="txtDescripcion">Ingredientes</label>
-                                </div>
-                            </th>
-                            <th>
-                                <div class="form-group">
-                                    <label for="txtDescripcion">Medidas Casera</label>
-                                </div>
-                            </th>
-                            <th>
-                                <div class="form-group">
-                                    <label for="txtDescripcion">Cantidad GR/ML Total</label>
-                                </div>
-                            </th>
-                            <th>
-                                <div class="form-group" >
-                                    <label for="txtDescripcion">Observaciones</label>
-                                </div>
-                            </th>
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                    <thead>
+                        <tr align="center">
+                            <th>N°</th>
+                            <th>Hora</th>
+                            <th>Minuta</th>
+                            <th>Ingredientes</th>
+                            <th>Medidas Casera</th>
+                            <th>Cantidad GR/ML Total</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><textarea class="sin_estilo" rows="6" placeholder="Lunes, Martes..." id="dia"></textarea></td>
-                            <td><textarea class="sin_estilo" rows="6" placeholder="Ingrese las horas" id="hora"></textarea></td>
-                            <td><textarea class="sin_estilo" rows="6" id="minuta"></textarea></td>
-                            <td><textarea class="sin_estilo" rows="6" id="ingredientes"></textarea></td>
-                            <td><textarea class="sin_estilo" rows="6" id="casera"></textarea></td>
-                            <td><textarea class="sin_estilo" rows="6" id="gramos"></textarea></td>
-                            <td><textarea class="sin_estilo" rows="6" id="obs"></textarea></td>
-
-                        </tr>
+                        @*@foreach (var item in Model)
+        {
+        <tr align="center">
+            <td>@item.Id_R24h</td>
+            <td>@item.Hora</td>
+            <td>@item.Minuta</td>
+            <td>@item.Ingredientes</td>
+            <td>@item.Medidas_Caseras</td>
+            <td>@item.Cantidad_Gr_Ml_Total</td>
+        </tr>
+        }*@
                     </tbody>
-                </table> 
-                <input type="button" class="btn btn-block btn-outline-dark " style="float: right; margin-right:20px; margin-bottom:15px;box-shadow: 4px ;margin-top: 20px" value="Enviar" onclick="enviar()"/>
+                </table>
             </div>
+               
+                    <div class="card-header">
+                        <h3 class="card-title">Agregar...</h3>
+                    </div>
+                        <table class="table bg-gradient-white">
+                            <tr class="fila-fija">
+                                <td><input placeholder="Id_R24h" class="form-control" id="id_r24h" name="id_r24h" /></td>
+                                <td><input placeholder="Hora" type="text" class="form-control" id="hora" name="hora" /></td>
+                                <td><input placeholder="Minuta" type="text" class="form-control" id="minuta" name="minuta" /></td>
+                                <td><input placeholder="Ingredientes" type="text" class="form-control" id="ingredientes" name="ingredientes" /></td>
+                                <td><input placeholder="Medidas Caseras" type="text" class="form-control" id="medidas_caseras" name="medidas_caseras" /></td>
+                                <td><input placeholder="Cantidad Gr/ML Total" type="text" class="form-control" id="cantidad_gr_ml_total" name="cantidad_gr_ml_total" /></td>
+                            </tr>
+                        </table>
+                        <div>
+                            <button type="button" id="btnGrabar" onclick="insertarDatos()" class="btn btn-primary" style="float: right; margin-right:15px; margin-bottom:15px">Insertar Datos</button>
+                        </div>
         </div>
     </div>
+</body>
 
