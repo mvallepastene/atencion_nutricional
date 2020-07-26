@@ -16,6 +16,7 @@ namespace nutricion_examen.Controllers
         {
             return View(DapperORM.ReturnList<EncuestaR24H>("sp_traer_EncuestaR24h"));
         }
+        
 
         // GET: Encuesta_R24h/Details/5
         public ActionResult Details(int id)
@@ -36,6 +37,8 @@ namespace nutricion_examen.Controllers
                 param.Add("@id", id);
                 return View(DapperORM.ReturnList<EncuestaR24H>("sp_traer_EncuestaR24hById", param).FirstOrDefault<EncuestaR24H>());
             }
+
+            
         }
 
         // POST: Encuesta_R24h/Create
@@ -56,7 +59,9 @@ namespace nutricion_examen.Controllers
 
             return RedirectToAction("Index");
 
+
         }
+        
 
         // GET: Encuesta_R24h/Edit/5
         public ActionResult Edit(int id)
