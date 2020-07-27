@@ -131,5 +131,13 @@ namespace nutricion_examen.Controllers
 
             return Json(new { data = res }, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public ActionResult RetornarCantidadFichas()
+        {
+            var result = DapperORM.ReturnList<Ficha_Medica_Paciente>("sp_returnAllFichas").FirstOrDefault<Ficha_Medica_Paciente>();
+
+            return Json(new { res = result }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

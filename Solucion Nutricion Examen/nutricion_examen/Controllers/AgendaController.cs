@@ -114,5 +114,22 @@ namespace nutricion_examen.Controllers
             var result = DapperORM.ReturnList<Estado_Agenda>("sp_traer_Estados");
             return Json(new { data = result }, JsonRequestBehavior.AllowGet);
         }
+
+        
+        [HttpPost]
+        public ActionResult RetornarAgendasActivas()
+        {
+            var result = DapperORM.ReturnList<Agenda>("sp_returnAgendasActivas").FirstOrDefault<Agenda>();
+
+            return Json(new { res = result}, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult RetornarCantidadPacientes()
+        {
+            var result = DapperORM.ReturnList<Paciente>("sp_returnAllPacientes").FirstOrDefault<Paciente>();
+
+            return Json(new { res = result }, JsonRequestBehavior.AllowGet);
+        }
     }
 }
