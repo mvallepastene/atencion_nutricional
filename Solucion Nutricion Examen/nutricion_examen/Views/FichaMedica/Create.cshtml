@@ -1,222 +1,223 @@
 ﻿@model nutricion_examen.Models.Paciente
 
     
-        <div class="col-md-12 col-sm-6">
-            <div class="card card-warning">
-                <div class="card-header">
-                    <h3 class="card-title">Generar Ficha Paciente</h3>
-                </div>
-                <div class="card-body">
-                    <form>
-                        <div class="form-row">
-                            <div class="form-group col-md-3">
-                                <input type="hidden" id="id_paciente" value="@Model.Id_Paciente" />
-                                <label>Rut</label>
-                                <input type="text" class="form-control" id="rut" value="@Model.Rut" disabled>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label>Nombre</label>
-                                <input type="text" class="form-control" id="nombre" value="@Model.Nombre" disabled>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label>Apellido</label>
-                                <input type="text" class="form-control" id="apellido" value="@Model.Apellido" disabled>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label>Género</label>
-                                <input type="text" class="form-control" id="genero" value="@Model.Genero" disabled>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-md-3">
-                                <label>Antecedentes</label>
-                                <input type="text" class="form-control" id="antecedentes">
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label>Alergias</label>
-                                <input type="text" class="form-control" id="alergias">
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label>Enfermedades</label>
-                                <input type="text" class="form-control" id="enfermedades">
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label>Observaciones</label>
-                                <input type="text" class="form-control" id="observaciones">
-                            </div>
-
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-md-3">
-                                <label>Peso</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="peso" placeholder="Ingrese peso en kilos, ej: 50.5">
-                                    <span class="input-group-text" id="basic-addon2">Kg</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group col-md-3">
-                                <label>Talla</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="talla" placeholder="Ingrese talla en metros, ej: 1.60">
-                                    <span class="input-group-text" id="basic-addon2">Mts.</span>
-                                </div>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label>IMC</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="imc" placeholder="" disabled>
-                                    <span class="input-group-text" id="basic-addon2">Kg/mt2</span>
-                                </div>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label>Diagnóstico</label>
-                                <input type="text" class="form-control" id="diagnostico" placeholder="" disabled>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label>Peso Ideal</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="peso_ideal" placeholder="" disabled>
-                                    <span class="input-group-text" id="basic-addon2">Kg.</span>
-                                </div>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label>Peso Máximo Aceptable</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="peso_max" placeholder="" disabled>
-                                    <span class="input-group-text" id="basic-addon2">Kg.</span>
-                                </div>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label>Peso Ajustado</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="peso_ajustado" placeholder="" disabled>
-                                    <span class="input-group-text" id="basic-addon2">Kg.</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label>Circunferencia de Cintura</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="cc" placeholder="Ingrese medida en centímetros">
-                                    <span class="input-group-text" id="basic-addon2">cm.</span>
-                                </div>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>Clasificación</label>
-                                <input type="text" class="form-control" id="clasificacion" placeholder="" disabled>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-md-3">
-                                <label>Requerimiento Basal</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="req_basal" placeholder="" disabled>
-                                    <span class="input-group-text" id="basic-addon2">Kcal/día</span>
-                                </div>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label>Peso requerido paciente</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="peso_req" placeholder="Ingreso peso requerido paciente">
-                                    <span class="input-group-text" id="basic-addon2">kg</span>
-                                </div>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label>Factor de Actividad</label>
-                                <input type="text" class="form-control" id="fac_actividad" placeholder="Ingrese factor de actividad">
-                            </div>
-
-                            <div class="form-group col-md-3">
-                                <label>Requerimiento Total</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="req_total" placeholder="" disabled>
-                                    <span class="input-group-text" id="basic-addon2">Kcal/día</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label>Requerimiento Proteinas</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="req_proteinas" placeholder="Ingrese cantidad proteínas">
-                                    <span class="input-group-text" id="basic-addon2">grs/día</span>
-                                </div>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label>Requerimiento Carbohidratos</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="req_carbohidratos" placeholder="Ingrese cantidad carbohidratos">
-                                    <span class="input-group-text" id="basic-addon2">grs/día</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <label>Requerimiento Lípidos</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="req_lipi" placeholder="Ingrese cantidad lípidos">
-                                    <span class="input-group-text" id="basic-addon2">grs/día</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label>AMDR Proteínas</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="amdr_prot" placeholder="Ingrese adecuación">
-                                    <span class="input-group-text" id="basic-addon2">%</span>
-                                </div>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label>AMDR Carbohidratos</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="amdr_carbo" placeholder="Ingrese adecuación">
-                                    <span class="input-group-text" id="basic-addon2">%</span>
-                                </div>
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <label>AMDR Lípidos</label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="amdr_lipi" placeholder="Ingrese adecuación">
-                                    <span class="input-group-text" id="basic-addon2">%</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label>Próximo Control</label>
-                                <input type="date" class="form-control" id="fech_prox_control">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label>Fecha Creación Ficha</label>
-                                <input type="text" class="form-control" id="fech_creacion" disabled>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label>Nombre Nutricionista</label>
-                                <input type="text" class="form-control" id="nutricionista" disabled>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <span class="btn btn-primary" id="btnSave"><i class="fas fa-check"></i> Guardar</span>
-                        </div>
-                    </form>
-                </div>
-               
+    <div class="col-md-12 col-sm-6">
+        <div class="card card-warning">
+            <div class="card-header">
+                <h3 class="card-title">Generar Ficha Paciente</h3>
             </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <input type="hidden" id="id_paciente" value="@Model.Id_Paciente" />
+                            <label>Rut</label>
+                            <input type="text" class="form-control" id="rut" value="@Model.Rut" disabled>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Nombre</label>
+                            <input type="text" class="form-control" id="nombre" value="@Model.Nombre" disabled>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Apellido</label>
+                            <input type="text" class="form-control" id="apellido" value="@Model.Apellido" disabled>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Género</label>
+                            <input type="text" class="form-control" id="genero" value="@Model.Genero" disabled>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label>Antecedentes</label>
+                            <input type="text" class="form-control" id="antecedentes">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Alergias</label>
+                            <input type="text" class="form-control" id="alergias">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Enfermedades</label>
+                            <input type="text" class="form-control" id="enfermedades">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Observaciones</label>
+                            <input type="text" class="form-control" id="observaciones">
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label>Peso</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="peso" placeholder="Ingrese peso en kilos, ej: 50.5">
+                                <span class="input-group-text" id="basic-addon2">Kg</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label>Talla</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="talla" placeholder="Ingrese talla en metros, ej: 1.60">
+                                <span class="input-group-text" id="basic-addon2">Mts.</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>IMC</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="imc" placeholder="" disabled>
+                                <span class="input-group-text" id="basic-addon2">Kg/mt2</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Diagnóstico</label>
+                            <input type="text" class="form-control" id="diagnostico" placeholder="" disabled>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label>Peso Ideal</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="peso_ideal" placeholder="" disabled>
+                                <span class="input-group-text" id="basic-addon2">Kg.</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Peso Máximo Aceptable</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="peso_max" placeholder="" disabled>
+                                <span class="input-group-text" id="basic-addon2">Kg.</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Peso Ajustado</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="peso_ajustado" placeholder="" disabled>
+                                <span class="input-group-text" id="basic-addon2">Kg.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Circunferencia de Cintura</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="cc" placeholder="Ingrese medida en centímetros">
+                                <span class="input-group-text" id="basic-addon2">cm.</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Clasificación</label>
+                            <input type="text" class="form-control" id="clasificacion" placeholder="" disabled>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label>Requerimiento Basal</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="req_basal" placeholder="" disabled>
+                                <span class="input-group-text" id="basic-addon2">Kcal/día</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Peso requerido paciente</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="peso_req" placeholder="Ingreso peso requerido paciente">
+                                <span class="input-group-text" id="basic-addon2">kg</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Factor de Actividad</label>
+                            <input type="text" class="form-control" id="fac_actividad" placeholder="Ingrese factor de actividad">
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label>Requerimiento Total</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="req_total" placeholder="" disabled>
+                                <span class="input-group-text" id="basic-addon2">Kcal/día</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label>Requerimiento Proteinas</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="req_proteinas" placeholder="Ingrese cantidad proteínas">
+                                <span class="input-group-text" id="basic-addon2">grs/día</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Requerimiento Carbohidratos</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="req_carbohidratos" placeholder="Ingrese cantidad carbohidratos">
+                                <span class="input-group-text" id="basic-addon2">grs/día</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label>Requerimiento Lípidos</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="req_lipi" placeholder="Ingrese cantidad lípidos">
+                                <span class="input-group-text" id="basic-addon2">grs/día</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label>AMDR Proteínas</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="amdr_prot" placeholder="Ingrese adecuación">
+                                <span class="input-group-text" id="basic-addon2">%</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>AMDR Carbohidratos</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="amdr_carbo" placeholder="Ingrese adecuación">
+                                <span class="input-group-text" id="basic-addon2">%</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label>AMDR Lípidos</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="amdr_lipi" placeholder="Ingrese adecuación">
+                                <span class="input-group-text" id="basic-addon2">%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label>Próximo Control</label>
+                            <input type="date" class="form-control" id="fech_prox_control">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Fecha Creación Ficha</label>
+                            <input type="text" class="form-control" id="fech_creacion" disabled>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Nombre Nutricionista</label>
+                            <input type="text" class="form-control" id="nutricionista" disabled>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <span class="btn btn-primary" id="btnSave"><i class="fas fa-check"></i> Guardar</span>
+                    </div>
+                </form>
+            </div>
+
         </div>
+        @Html.Partial("_Encuesta24hPartial")
+    </div>
           
         
             
@@ -248,7 +249,7 @@
                 Amdr_Lip: $("#amdr_lipi").val(),
                 Id_Paciente: id,
                 Peso_Requerido: $("#peso_req").val(),
-                Id_Nutricionista: '7'
+                Id_Nutricionista: '4'
 
             }
             
@@ -300,7 +301,7 @@
                             $("#req_proteinas").val(f.Req_Prot);
                             $("#req_carbohidratos").val(f.Req_Cho);
                             $("#req_lipi").val(f.Req_Lip);
-                            $('#req_basal').val('No Data');
+                            $('#req_basal').val(f.Req_Formula);
                             $('#req_total').val(f.Req_Total);
                             $("#fech_prox_control").val(f.Prox_Control);
                             $("#cc").val(f.Circ_Cint);

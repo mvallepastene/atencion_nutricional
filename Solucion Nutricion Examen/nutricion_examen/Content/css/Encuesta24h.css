@@ -1,0 +1,22 @@
+﻿
+    .sin_estilo
+
+{
+    border: none;
+    width: 100%;
+    margin: auto;
+    display: block;
+}
+
+.break:before {
+    display: block;
+    content: " ";
+}
+
+textarea:focus, input:focus {
+    outline: 0;
+}
+
+*:focus {
+    outline: 0;
+}
