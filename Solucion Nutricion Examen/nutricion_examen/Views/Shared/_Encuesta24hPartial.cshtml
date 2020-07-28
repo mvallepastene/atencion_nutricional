@@ -1,0 +1,82 @@
+﻿
+
+    <body>
+        <div class="col-md-12 col-sm-6">
+            <div class="card card-warning">
+                <div class="card-header">
+                    <h3 class="card-title">Encuesta R24H</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="diaSemana">Día de Semana</label>
+                                <select class="form-control" id="diaSemana" style="width: 200px;">
+                                    <option>--</option>
+                                    <option>Lunes</option>
+                                    <option>Martes</option>
+                                    <option>Miercoles</option>
+                                    <option>Jueves</option>
+                                    <option>Viernes</option>
+                                    <option>Sabado</option>
+                                    <option>Domingo</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <label id="observaciones">Observaciones</label>
+                                <textarea class="form-control" placeholder="Please write customer notes" rows="5" style="width: 100%; max-width: 100%;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body table-responsive p-0" style="height: 300px;">
+                    <table class="table table-head-fixed text-nowrap">
+                        <thead>
+                            <tr align="center">
+                                <th>N°</th>
+                                <th>Hora</th>
+                                <th>Minuta</th>
+                                <th>Ingredientes</th>
+                                <th>Medidas Casera</th>
+                                <th>Cantidad GR/ML Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @*@foreach (var item in Model)
+                            {
+                            <tr align="center">
+                                <td>@item.Id_R24h</td>
+                                <td>@item.Hora</td>
+                                <td>@item.Minuta</td>
+                                <td>@item.Ingredientes</td>
+                                <td>@item.Medidas_Caseras</td>
+                                <td>@item.Cantidad_Gr_Ml_Total</td>
+                            </tr>
+                            }*@
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card-header">
+                    <h3 class="card-title">Agregar...</h3>
+                </div>
+                <table class="table bg-gradient-white">
+                    <tr class="fila-fija">
+                        <td><input placeholder="Id_R24h" class="form-control" id="id_r24h" name="id_r24h" /></td>
+                        <td><input placeholder="Hora" type="text" class="form-control" id="hora" name="hora" /></td>
+                        <td><input placeholder="Minuta" type="text" class="form-control" id="minuta" name="minuta" /></td>
+                        <td><input placeholder="Ingredientes" type="text" class="form-control" id="ingredientes" name="ingredientes" /></td>
+                        <td><input placeholder="Medidas Caseras" type="text" class="form-control" id="medidas_caseras" name="medidas_caseras" /></td>
+                        <td><input placeholder="Cantidad Gr/ML Total" type="text" class="form-control" id="cantidad_gr_ml_total" name="cantidad_gr_ml_total" /></td>
+                    </tr>
+                </table>
+                <div>
+                    <button type="button" id="btnGrabar" onclick="insertarDatos()" class="btn btn-primary" style="float: right; margin-right:15px; margin-bottom:15px">Insertar Datos</button>
+                </div>
+            </div>
+        </div>
+    </body>
