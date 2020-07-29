@@ -233,6 +233,7 @@
     <Content Include="Content\img\atencionpresencial.jpg" />
     <Content Include="Content\img\auriculo1.png" />
     <Content Include="Content\img\Auriculoterapia.jpg" />
+    <Content Include="Content\img\bienvenida2.png" />
     <Content Include="Content\img\broccoli.png" />
     <Content Include="Content\img\broccoli2.png" />
     <Content Include="Content\img\cereza2.png" />
@@ -2064,7 +2065,7 @@
     <Content Include="Views\EncuestaFrecuencia\Index.cshtml" />
     <Content Include="Views\FichaMedica\Create.cshtml" />
     <Content Include="Views\FichaMedica\Index.cshtml" />
-    <Content Include="Views\Shared\_Encuesta24hPartial.cshtml" />
+    <Content Include="Views\Shared\_EncuestaR24H.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

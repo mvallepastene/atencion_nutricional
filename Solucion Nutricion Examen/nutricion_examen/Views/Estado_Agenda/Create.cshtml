@@ -1,60 +1,84 @@
 ﻿@model nutricion_examen.Models.Estado_Agenda
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="card">
+    <div class="col-md-12 col-sm-6">
+        <!-- general form elements disabled -->
+        <div class="card card-warning">
             <div class="card-header">
-                <h4 class="card-title">Estado Agenda</h4>
+                <h3 class="card-title">Generar Estado Agenda</h3>
             </div>
+            <!-- /.card-header -->
             <div class="card-body">
-                @using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal mt-5">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-         
-        <!--enviamos el id mediante un textbox razor escondido-->
-        @Html.HiddenFor(model => model.Id_Estado)
+                <form role="form" id="frmEstado">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <!-- text input -->
+                            <div class="form-group">
+                                <label>Estado Agenda</label>
+                                <input type="text" id="estado" name="nombre_estado" class="form-control" placeholder=""/>
+                            </div>
+                        </div>
+                        
 
-        <div class="form-group">
-            <h5>Nombre Estado</h5>
-
-            @Html.EditorFor(model => model.Nombre_Estado, new { htmlAttributes = new { @class = "form-control" }})
-                @Html.ValidationMessageFor(model => model.Nombre_Estado, "", new { @class = "text-danger" })
-            
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Grabar" id="btnGrabar" class="btn btn-primary" />
-            </div>
-        </div>
-    </div>
-                }
-
-
-            </div>
-            <div class="card-footer">
-                <div class="text-center">
+                    </div>
+                    <button type="button" id="btnGrabar" onclick="insertarEstado()" class="btn btn-primary">Guardar...</button>
+                </form>
+                <div>
                     @Html.ActionLink("Back to List", "Index")
                 </div>
             </div>
+            <!-- /.card-body -->
+
         </div>
 
+        <!-- /.card -->
     </div>
-</div>
 
 
 @section scripts{
     <script type="text/javascript">
-        $('#btnGrabar').click(function (e) {
+        $('#btnGrabar').click(function () {
 
             if ($('#nombre').val() == "") {
                 alert("Este Campo no puede estar Vacio")
             }
 
         });
-        
+
+
+         function insertarEstado() {
+            //quita la petición al servidor
+            $('#btnGrabar').click(function (e) {
+                e.preventDefault();
+            });
+
+            //juntar datos que contiene el formulario en una nueva variable
+            var formData = new FormData(document.getElementById("frmEstado"));
+
+
+            //ejecutamos jQuery para enviar la informacion mediante Ajax
+            $.ajax({
+                url: '@Url.Action("Create","Estado_Agenda")',
+                type: 'post',
+                data: formData,
+                contentType: false,
+                processData: false,
+                cache: false,
+                success: function (r) {
+                    var res = r.res;
+                    if (res == 1) {
+                        alertify.success("Estado Creado");
+                        $('#estado').val('');
+                    } else {
+                        alertify.error("Error al Crear el Estado");
+                    }
+                    
+                }
+
+
+            });
+
+
+        }
+
     </script>
 }

@@ -1,0 +1,144 @@
+﻿@*@model nutricion_examen.Models.EncuestaR24H*@
+
+<div class="col-md-12 col-sm-6">
+    <div class="card card-warning">
+        <div class="card-header">
+            <h3 class="card-title">Generar Encuesta 24 Horas</h3>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <input type="hidden" id="id_r24h" value="" />
+                        <label>Hora</label>
+                        <input type="text" class="form-control" id="" value="" placeholder="Ej: 10:00">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Minuta</label>
+                        <input type="text" class="form-control" id="" value="" placeholder="Ej: Pollo con arroz">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Ingredientes</label>
+                        <input type="text" class="form-control" id="" value="" placeholder="">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Medidas Caseras</label>
+                        <input type="text" class="form-control" id="" value="" placeholder="Ej: 1 taza">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Cantidad</label>
+                        <input type="text" class="form-control" id="" value="" placeholder="gr/ml">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Observaciones</label>
+                        <textarea>Ingrese texto... </textarea>
+                    </div>
+                    <div class="form-group col-md-2">                        
+                        <input hidden type="text" class="form-control" id="" value="" placeholder="">
+                    </div>
+                </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label>Día de Semana</label>
+                            <select class="form-control" id="Dia_de_semana" name="dia_de_semna">
+                                <option value="">Selecciona un Día</option>
+                                <option value="">Lunes</option>
+                                <option value="">Martes</option>
+                                <option value="">Miercoles</option>
+                                <option value="">Jueves</option>
+                                <option value="">Viernes</option>
+                                <option value="">Sabado</option>
+                                <option value="">Domingo</option>
+                            </select>
+                        </div>
+                        <table class=" table">
+                            <tr>
+                                <th hidden>Id_R24H</th>
+                                <th>Hora</th>
+                                <th>Minuta</th>
+                                <th>Ingredientes</th>
+                                <th>Medidas Caseras</th>
+                                <th>Cantidad</th>
+                                <th>Observaciones</th>
+                                <th hidden>Id_Ficha</th>
+                            </tr>
+                        </table>
+
+                        <div class="form-group">
+                            <span class="btn btn-primary" id="btnAgregar"><i class="fas fa-plus"></i>Agregar</span>
+                        </div>
+                    </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+@section scripts{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            cargarSelect();
+
+        });
+        function cargarSelect() {
+            $.ajax({
+                url: '@Url.Action("ListaDiaSemana", "EncuestaR24H")',
+                type: 'get',
+                dataType: 'json',
+                success: function (data) {
+                    var selecage = $('#dia_de_semana');
+                    var datos = data.data;
+                    $(datos).each(function (i, a) {
+                        selecage.append('<option value="' + a.Id_R24H + '">' + a.Dia_De_Semana + '  </opcion>')
+                    })
+                }
+
+            });
+
+        }
+
+       $('#btnGrabar').click(function () { //llave apertura
+            //creamos el objeto que se le debe enviar al SP
+
+           var id = $('#dia_de_semana').val();
+           var obs = $('#observaciones').val();
+
+            var encuesta = {
+                Dia_semana: $("#dia_de_semana").val(),
+                Hora: $("#hora").val(),
+                Minuta: $("#minuta").val(),
+                Ingredientes: $("#ingredientes").val(),
+                Medidas_Caseras: $("#medidas_caseras").val(),
+                Cantidad_Gr_Ml_Total: $("#cantidad_gr_ml_total").val(),
+                Id_Ficha: $("#id_ficha").val()
+
+            }
+
+            $.ajax({
+                url: '@Url.Action("_EncuestaR24H","EncuestaR24H")',
+                method: 'post',
+                data: encuesta,
+                success: function (r) {
+                    if (r != null) {
+                        alertify.success("Encuesta creada");
+                    } else {
+                        alertify.error("Ha Ocurrido un Error")
+                    }
+
+                }
+
+
+            });
+        });
+
+    </script>
+}

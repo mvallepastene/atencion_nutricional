@@ -11,5 +11,6 @@ namespace nutricion_examen.Models
         public string Usuario { get; set; }
         public string Pass { get; set; }
         public char Tipo_Usuario { get; set; }
+        public int Id_Nutricionista { get; set; }
     }
 }

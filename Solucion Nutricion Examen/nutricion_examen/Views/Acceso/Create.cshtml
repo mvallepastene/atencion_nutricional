@@ -1,0 +1,136 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+    <div class="col col-md-12">
+        <div class="card card-default">
+            <div class="card-header">
+                <h3 class="card-title">Crea un Acceso al Sistema</h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Usuario</label>
+                            <input type="text" id="usr" name="usuario" class="form-control" placeholder="Ingrese Usuario" />
+                        </div>
+                        <!-- /.form-group -->
+                    </div>
+                    <!-- /.col --><div class="col-md-6">
+                        <div class="form-group">
+                            <label>Contraseña</label>
+                            <input type="password" id="psw" name="pass" class="form-control" style="width: 100%;" />
+
+                        </div>
+                        <!-- /.form-group -->
+                    </div>
+                    <!-- /.col -->
+                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Tipo de Acceso</label>
+                            <select class="form-control select2" id="tUsr" style="width: 100%;">
+                                <option>Seleccione Tipo De Acceso</option>
+                                <option value="1">Administrador</option>
+                                <option value="2">Nutricionista</option>
+                            </select>
+                        </div>
+                        <!-- /.form-group -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Nutricionista</label>
+                            <select class="form-control select2" id="idNutri" style="width: 100%;">
+                                <option selected="selected">Seleccione al Nutricionista</option>
+
+                            </select>
+                        </div>
+                        <!-- /.form-group -->
+
+                    </div>
+                    <!-- /.col -->
+
+                    
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <button type="button" id="btnSave" class="btn btn-default"><i class="fas fa-key"></i> Crear Acceso</button>
+                            </div>
+                        </div>
+                    
+
+                </div>
+                <!-- /.row -->
+
+                
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <p>Asocie un nutricionista al Acceso</p>
+            </div>
+        </div>
+        <!-- /.card -->
+    </div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            traeNutricionista();
+        });
+
+        //Funciones
+
+        //Returna Lista de Nutricionistas
+        function traeNutricionista() {
+            var nutri = $('#idNutri');
+
+            $.ajax({
+                url: '@Url.Action("GetNutri","Acceso")',
+                type: 'get',
+                dataType: 'json',
+                success: function (r) {
+                   //console.log(r);
+
+                    var datos = r.res;
+
+                    $(datos).each(function (i, n) {
+                        nutri.append('<option value="' + n.Id_Nutricionista + '">'+n.Nombre+'</option>')
+                    })
+                }
+            });
+        }
+
+        //Inserta el acceso Creado
+        $('#btnSave').click(function () {
+
+            var access = {
+                Usuario: $('#usr').val(),
+                Pass: $('#psw').val(),
+                Tipo_Usuario: $('#tUsr').val(),
+                Id_Nutricionista: $('#idNutri').val()
+            }
+
+            $.ajax({
+                url: '@Url.Action("Create","Acceso")',
+                type: 'post',
+                data: access,
+                success: function (r) {
+                    if (r.res == 1) {
+                        alertify.success("Acceso Creado Correctamente");
+                    } else {
+                        alertify.error("Error al Crear el Acceso: " + r.res);
+                    }
+                }
+            });
+        });
+
+    </script>
+    
+    }

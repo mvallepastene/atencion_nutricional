@@ -20,7 +20,33 @@ namespace nutricion_examen.Controllers
         // GET: Acceso/Details/5
         public ActionResult Details(int id)
         {
-             return View();
+            return View();
+        }
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Acceso access)
+        {
+            try
+            {
+                DynamicParameters param = new DynamicParameters();
+                param.Add("@usr", access.Usuario);
+                param.Add("@psw", access.Pass);
+                param.Add("@tUsr", access.Tipo_Usuario);
+                param.Add("@idNutri", access.Id_Nutricionista);
+
+                int result = DapperORM.ExecuteReturnScalar<Acceso>("sp_insertAcceso", param);
+                return Json(new { res = result }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                return Json(new { res = error }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         [HttpPost]
@@ -29,6 +55,15 @@ namespace nutricion_examen.Controllers
             DynamicParameters param = new DynamicParameters();
             param.Add("@id", id);
             int result = DapperORM.ExecuteReturnScalar<Acceso>("sp_deleteUser", param);
+
+            return Json(new { res = result }, JsonRequestBehavior.AllowGet);
+        }
+
+        //metodo que retorna los nutricionistas para asociarlos al acceso.
+        [HttpGet]
+        public ActionResult GetNutri()
+        {
+            var result = DapperORM.ReturnList<Nutricionista>("sp_traer_nutri").ToList();
 
             return Json(new { res = result }, JsonRequestBehavior.AllowGet);
         }
