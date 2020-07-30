@@ -43,21 +43,29 @@ namespace nutricion_examen.Controllers
 
         // POST: Encuesta_R24h/Create
         [HttpPost]
-        public ActionResult Create(EncuestaR24H encuestaR24H)
+        public ActionResult Create(EncuestaR24H encuesta)
         {
-            DynamicParameters param = new DynamicParameters();
-            param.Add("@id_r24h", encuestaR24H.Id_R24h);
-            param.Add("@dia_de_semana", encuestaR24H.Dia_Semana);
-            param.Add("@hora", encuestaR24H.Hora);
-            param.Add("@minuta", encuestaR24H.Minuta);
-            param.Add("@ingredientes", encuestaR24H.Ingredientes);
-            param.Add("@medidas_caseras", encuestaR24H.Medidas_Caseras);
-            param.Add("@cantidad_gr_ml_total", encuestaR24H.Cantidad_Gr_Ml_Total);
-            param.Add("@observaciones", encuestaR24H.Observaciones);
-            param.Add("@id_ficha", encuestaR24H.Id_Ficha);
+            try
+            {
+                DynamicParameters param = new DynamicParameters();
+                param.Add("@id_r24h", encuesta.Id_R24h);
+                param.Add("@dia_de_semana", encuesta.Dia_Semana);
+                param.Add("@hora", encuesta.Hora);
+                param.Add("@minuta", encuesta.Minuta);
+                param.Add("@ingredientes", encuesta.Ingredientes);
+                param.Add("@medidas_caseras", encuesta.Medidas_Caseras);
+                param.Add("@cantidad_gr_ml_total", encuesta.Cantidad_Gr_Ml_Total);
+                param.Add("@observaciones", encuesta.Observaciones);
+                param.Add("@id_ficha", encuesta.Id_Ficha);
 
-            var result = DapperORM.ExecuteReturnScalar<EncuestaR24H>("sp_agregar_actualizar_Paciente", param);
-            return Json(new { res = result }, JsonRequestBehavior.AllowGet);
+                var result = DapperORM.ExecuteReturnScalar<EncuestaR24H>("sp_agregar_actualizar_Paciente", param);
+                return Json(new { res = result }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                return Json(new { res = error }, JsonRequestBehavior.AllowGet);
+            }
             //return RedirectToAction("Index");
 
 

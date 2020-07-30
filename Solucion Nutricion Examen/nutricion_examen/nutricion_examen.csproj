@@ -2061,7 +2061,6 @@
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Acceso\Index.cshtml" />
     <Content Include="Views\EncuestaR24H\Index.cshtml" />
-    <Content Include="Views\EncuestaR24H\Create.cshtml" />
     <Content Include="Views\EncuestaFrecuencia\Index.cshtml" />
     <Content Include="Views\FichaMedica\Create.cshtml" />
     <Content Include="Views\FichaMedica\Index.cshtml" />

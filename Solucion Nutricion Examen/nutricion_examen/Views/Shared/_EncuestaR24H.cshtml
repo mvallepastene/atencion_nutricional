@@ -11,66 +11,73 @@
                     <div class="form-group col-md-2">
                         <input type="hidden" id="id_r24h" value="" />
                         <label>Hora</label>
-                        <input type="text" class="form-control" id="" value="" placeholder="Ej: 10:00">
+                        <input type="text" class="form-control" name="hora" id="hora" value="" placeholder="Ej: 10:00">
                     </div>
                     <div class="form-group col-md-2">
                         <label>Minuta</label>
-                        <input type="text" class="form-control" id="" value="" placeholder="Ej: Pollo con arroz">
+                        <input type="text" class="form-control" name="minuta" id="minuta" value="" placeholder="Ej: Cena-Pollo con arroz">
                     </div>
                     <div class="form-group col-md-2">
                         <label>Ingredientes</label>
-                        <input type="text" class="form-control" id="" value="" placeholder="">
+                        <input type="text" class="form-control" name="ingredientes" id="ingredientes" value="" placeholder="">
                     </div>
                     <div class="form-group col-md-2">
                         <label>Medidas Caseras</label>
-                        <input type="text" class="form-control" id="" value="" placeholder="Ej: 1 taza">
+                        <input type="text" class="form-control" name="medidas_caseras" id="medidas_caseras" value="" placeholder="Ej: 1 taza">
                     </div>
                     <div class="form-group col-md-2">
                         <label>Cantidad</label>
-                        <input type="text" class="form-control" id="" value="" placeholder="gr/ml">
+                        <input type="text" class="form-control" name="cantidad" id="cantidad" value="" placeholder="gr/ml">
                     </div>
                     <div class="form-group col-md-2">
                         <label>Observaciones</label>
-                        <textarea>Ingrese texto... </textarea>
+                        <textarea class="form-control" name="observacion" id="observacion"></textarea>
                     </div>
                     <div class="form-group col-md-2">                        
-                        <input hidden type="text" class="form-control" id="" value="" placeholder="">
+                        <input type="hidden"  name="id_ficha" id="id_ficha" value="" >
                     </div>
                 </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-3">
                             <label>Día de Semana</label>
-                            <select class="form-control" id="Dia_de_semana" name="dia_de_semna">
+                            <select class="form-control" id="dia_semana" name="dia_de_semna">
                                 <option value="">Selecciona un Día</option>
-                                <option value="">Lunes</option>
-                                <option value="">Martes</option>
-                                <option value="">Miercoles</option>
-                                <option value="">Jueves</option>
-                                <option value="">Viernes</option>
-                                <option value="">Sabado</option>
-                                <option value="">Domingo</option>
+                                <option value="Lunes">Lunes</option>
+                                <option value="Martes">Martes</option>
+                                <option value="Miercoles">Miercoles</option>
+                                <option value="Jueves">Jueves</option>
+                                <option value="Viernes">Viernes</option>
+                                <option value="Sabado">Sabado</option>
+                                <option value="Domingo">Domingo</option>
                             </select>
                         </div>
-                        <table class=" table">
-                            <tr>
-                                <th hidden>Id_R24H</th>
-                                <th>Hora</th>
-                                <th>Minuta</th>
-                                <th>Ingredientes</th>
-                                <th>Medidas Caseras</th>
-                                <th>Cantidad</th>
-                                <th>Observaciones</th>
-                                <th hidden>Id_Ficha</th>
-                            </tr>
-                        </table>
+                        
 
-                        <div class="form-group">
-                            <span class="btn btn-primary" id="btnAgregar"><i class="fas fa-plus"></i>Agregar</span>
+                        <div class="form-group mt-4">
+                            <!--<span class="btn btn-primary" id="btnAgregar"><i class="fas fa-plus"></i>Agregar Fila</span>-->
+                            <span class="btn btn-primary" id="btnGuardar" title="Agregar"><i class="fas fa-plus"></i></span>
+
+                            <input type="button" id="send" value="Add" class="btn btn-default"/>
                         </div>
                     </div>
 
             </form>
+
+            <div>
+                <table class=" table">
+                    <tr>
+                        <th hidden>Id_R24H</th>
+                        <th>Hora</th>
+                        <th>Minuta</th>
+                        <th>Ingredientes</th>
+                        <th>Medidas Caseras</th>
+                        <th>Cantidad</th>
+                        <th>Observaciones</th>
+                        <th hidden>Id_Ficha</th>
+                    </tr>
+                </table>
+            </div>
         </div>
 
     </div>
@@ -85,60 +92,73 @@
 @section scripts{
     <script type="text/javascript">
 
-        $(document).ready(function () {
-            cargarSelect();
-
+        $('#send').click(function (e) {
+            e.preventDefault();
         });
-        function cargarSelect() {
-            $.ajax({
-                url: '@Url.Action("ListaDiaSemana", "EncuestaR24H")',
-                type: 'get',
-                dataType: 'json',
-                success: function (data) {
-                    var selecage = $('#dia_de_semana');
-                    var datos = data.data;
-                    $(datos).each(function (i, a) {
-                        selecage.append('<option value="' + a.Id_R24H + '">' + a.Dia_De_Semana + '  </opcion>')
-                    })
-                }
 
-            });
-
-        }
-
-       $('#btnGrabar').click(function () { //llave apertura
-            //creamos el objeto que se le debe enviar al SP
-
-           var id = $('#dia_de_semana').val();
-           var obs = $('#observaciones').val();
-
-            var encuesta = {
-                Dia_semana: $("#dia_de_semana").val(),
+         $('#send').click(function () { //llave apertura
+           //creamos el objeto que se le debe enviar al SP
+           alert('hizo Click');
+                var encuesta = {
+                    Dia_semana: $("#dia_semana").val(),
                 Hora: $("#hora").val(),
                 Minuta: $("#minuta").val(),
                 Ingredientes: $("#ingredientes").val(),
                 Medidas_Caseras: $("#medidas_caseras").val(),
                 Cantidad_Gr_Ml_Total: $("#cantidad_gr_ml_total").val(),
+                Observaciones: $('#observacion').val(),
                 Id_Ficha: $("#id_ficha").val()
 
-            }
+           }
+           console.log(encuesta);
 
             $.ajax({
-                url: '@Url.Action("_EncuestaR24H","EncuestaR24H")',
-                method: 'post',
+                url: '@Url.Action("Create","EncuestaR24H")',
+                type: 'post',
                 data: encuesta,
                 success: function (r) {
-                    if (r != null) {
+                    if (r.res == 1) {
                         alertify.success("Encuesta creada");
                     } else {
-                        alertify.error("Ha Ocurrido un Error")
+                        alertify.error("Ha Ocurrido un Error: " + r.res);
                     }
 
                 }
 
 
             });
-        });
+       });
+
+
+        function return_encuesta(id_ficha) {
+                var id = id_ficha;
+
+                //hacemos la peticion mediante Ajax.
+
+                $.ajax({
+                    url: '@Url.Action("ReturnEncuesta", "EncuestaR24H")',
+                    data: 'id=' + id,
+                    type: 'post',
+                    dataType: 'json',
+                    success: function (data) {
+
+                        var datos = data.data;
+
+                        $(datos).each(function (i, f) {
+                            $('#dia_semana').val(f.Dia_semana);
+                            $("#hora").val(f.Hora);
+                            $('#minuta').val(f.Minuta)
+                            $("#ingredientes").val(f.Ingredientes);
+                            $('#medidas_caseras').val(f.Medidas_Caseras);
+                            $('#cantidad_gr_ml_total').val(f.Cantidad_Gr_Ml_Total);
+                            $('#observaciones').val(f.Observaciones);
+                            $("#id_ficha").val(f.Id_Ficha);
+
+                        });
+                    }
+                });
+
+            }
 
     </script>
 }
