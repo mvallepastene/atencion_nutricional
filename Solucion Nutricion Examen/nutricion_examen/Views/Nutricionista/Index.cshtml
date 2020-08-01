@@ -47,7 +47,7 @@
                             <td>@item.Especialidad</td>
 
                             <td>
-                                <span class="btn btn-danger" title="Edit"><i class="fas fa-pen"></i></span> |
+                                <span class="btn btn-warning" id="btnEdit" title="Edit" data-toggle="modal" data-target="#modal-default" onclick="traerNutricionista(@item.Id_Nutricionista)"><i class="fas fa-pen"></i></span> |
                                 <span class="btn btn-danger" title="Delete"><i class="fas fa-trash-alt"></i></span>
                             </td>
                         </tr>
@@ -60,3 +60,168 @@
     </div>
     <!-- /.card -->
 </div>
+
+<!--Section Modal Edit Data-->
+<div class="modal fade bd-example-modal-lg" id="modal-default">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Actualiza Nutricionista</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                
+                <div class="row">
+                    <div class="col-sm-4">
+                        <!-- text input -->
+                        <div class="form-group mb-3">
+                            <input type="hidden" id="idNutriU"/>
+                            <label>Rut</label>
+                            <input type="text" id="rutU" name="rut" class="form-control" placeholder="">
+                        </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group mb-3">
+                                <label>Nombre</label>
+                                <input type="text" id="nombreU" name="nombre" class="form-control" placeholder="">
+                            </div>
+                        </div>
+
+                    </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Apellido</label>
+                            <input type="text" id="apellidoU" name="apellido" class="form-control" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Edad</label>
+                            <input type="text" id="edadU" name="edad" class="form-control" placeholder="Enter ...">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Fecha de Nacimiento:</label>
+                            <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                <input type="date" id="fechNacU" name="fecha_nacimiento" class="form-control datetimepicker-input" data-target="#reservationdate" />
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Numero de Teléfono</label>
+                            <input type="text" id="telefonoU" name="numero_tel" class="form-control" placeholder="" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>E-Mail</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                                </div>
+                                <input type="email" class="form-control" id="emailU" name="email" placeholder="" />
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Especialidad</label>
+                            <input type="text" class="form-control" id="especialidadU" name="especialidad">
+                        </div>
+                    </div>
+                </div>
+
+
+                </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" id="btnSave" class="btn btn-primary" onclick="updateNutricionista()" data-dismiss="modal">Grabar Cambios</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+
+@section scripts{
+    <script type="text/javascript">
+        //traemos al nutricionista seleccionado
+        function traerNutricionista(id) {
+            //console.log(id);
+
+            $.ajax({
+                url: '@Url.Action("Details","Nutricionista")',
+                type: 'get',
+                data: 'id=' + id,
+                success: function (r) {
+                    datos = r.res;
+                    $(datos).each(function (i, n) {
+                        $('#idNutriU').val(n.Id_Nutricionista);
+                        $('#rutU').val(n.Rut);
+                        $('#nombreU').val(n.Nombre);
+                        $('#apellidoU').val(n.Apellido);
+                        $('#edadU').val(n.Edad);
+                        $('#fechNacU').val(n.Fecha_Nacimiento);
+                        $('#telefonoU').val(n.Numero_Tel);
+                        $('#emailU').val(n.Email);
+                        $('#especialidadU').val(n.Especialidad);
+                    });
+                }
+            });
+        }
+
+
+        //enviamos los datos para su actualizacion
+        $('#btnSave').click(function (e) {
+            e.preventDefault();
+        });
+       
+        //funcion ejecutada desde el evento onclick del boton btnSave
+        function updateNutricionista() {
+
+            var nutricionista = {
+                Id_Nutricionista: $('#idNutriU').val(),
+                Rut: $('#rutU').val(),
+                Nombre: $('#nombreU').val(),
+                Apellido: $('#apellidoU').val(),
+                Edad: $('#edadU').val(),
+                Fecha_Nacimiento: $('#fechNacU').val(),
+                Numero_Tel: $('#telefonoU').val(),
+                Email: $('#emailU').val(),
+                Especialidad: $('#especialidadU').val()
+            }
+
+            $.ajax({
+                url: '@Url.Action("Create","Nutricionista")',
+                type: 'post',
+                data: nutricionista,
+                success: function (r) {
+                    if (r.res == 1) {
+                        alertify.success("Nutricionista Actualizado Corréctamente!");
+                    } else {
+                        alertify.error("No se pudo Actualizar... Error: " + r.res);
+                    }
+                }
+            });
+        }
+    </script>
+}

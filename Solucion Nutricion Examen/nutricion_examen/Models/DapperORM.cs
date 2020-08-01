@@ -33,8 +33,8 @@ namespace nutricion_examen.Models
         }
 
         /// <summary>
-        /// Metodo que utilizamos para el Update 
-        /// </summary>
+        /// Metodo que utilizamos para el Update Insert and Delete retornando un estado (1 o 0)
+        /// /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="procedureName"></param>
         /// <param name="param"></param>

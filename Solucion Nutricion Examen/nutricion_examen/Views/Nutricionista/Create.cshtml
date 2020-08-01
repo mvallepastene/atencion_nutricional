@@ -1,88 +1,126 @@
 ﻿@model nutricion_examen.Models.Nutricionista
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>Nutricionista</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-        @Html.HiddenFor(model => model.Id_Nutricionista)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Rut, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Rut, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Rut, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Apellido, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Apellido, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Apellido, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Edad, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Edad, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Edad, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Fecha_Nacimiento, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Fecha_Nacimiento, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Fecha_Nacimiento, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Numero_Tel, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Numero_Tel, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Numero_Tel, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Especialidad, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Especialidad, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Especialidad, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
+@{ 
+    ViewBag.Title = "Crear Nutricionista";
 }
+<!-- right column -->
+<div class="col-md-12 col-sm-6">
+    <!-- general form elements disabled -->
+    <div class="card card-warning">
+        <div class="card-header">
+            <h3 class="card-title">Agregar Nutricionista</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <form role="form" id="frmNutricionista">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <!-- text input -->
+                        <div class="form-group">
+                            <label>Rut</label>
+                            <input type="text" id="rut" name="rut" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input type="text" id="nombre" name="nombre" class="form-control" placeholder="">
+                        </div>
+                    </div>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Apellido</label>
+                            <input type="text" id="apellido" name="apellido" class="form-control" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Edad</label>
+                            <input type="text" id="edad" name="edad" class="form-control" placeholder="Enter ...">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Fecha de Nacimiento:</label>
+                            <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                <input type="date" id="fechNac" name="fecha_nacimiento" class="form-control datetimepicker-input" data-target="#reservationdate"  />
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Numero de Teléfono</label>
+                            <input type="text" id="telefono" name="numero_tel" class="form-control" placeholder="" />
+                        </div>
+                    </div>
+
+                    
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>E-Mail</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                                </div>
+                                <input type="email" class="form-control" id="email" name="email" placeholder=""/>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Especialidad</label>
+                            <input type="text" class="form-control" id="especialidad" name="especialidad">
+                        </div>
+                    </div>
+                    
+                </div>
+                <button type="button" id="btnGrabar" class="btn btn-primary"><i class="fas fa-save"></i> Guardar...</button>
+            </form>
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        </div>
+        <!-- /.card-body -->
+
+    </div>
+
+    <!-- /.card -->
 </div>
+<!--/.col (right) -->
+
+@section scripts{
+    <script type="text/javascript">
+        $('#btnGrabar').click(function (e) {
+            e.preventDefault();
+        });
+        $('#btnGrabar').click(function () {
+
+            var formData = new FormData(document.getElementById("frmNutricionista"));
+
+            $.ajax({
+                url: '@Url.Action("Create","Nutricionista")',
+                type: 'post',
+                data: formData,
+                contentType: false,
+                processData: false,
+                cache: false,
+                success: function (r) {
+                    console.log(r);
+                    if (r.res == 1) {
+                        alertify.success("Nutricionista Creado Correctamente");
+                    } else {
+                        alertify.error("Error Al Crear Paciente: "+r.res);
+                    }
+                }
+            });
+        });
+    </script>
+    }
