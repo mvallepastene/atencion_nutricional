@@ -43,21 +43,30 @@ namespace nutricion_examen.Controllers
 
         // POST: Encuesta_R24h/Create
         [HttpPost]
-        public ActionResult Create(EncuestaR24H encuestaR24H)
+        public ActionResult Create(EncuestaR24H encuesta)
         {
-            DynamicParameters param = new DynamicParameters();
-            param.Add("@id_r24h", encuestaR24H.Id_R24h);
-            param.Add("@dia_de_semana", encuestaR24H.Dia_Semana);
-            param.Add("@hora", encuestaR24H.Hora);
-            param.Add("@minuta", encuestaR24H.Minuta);
-            param.Add("@ingredientes", encuestaR24H.Ingredientes);
-            param.Add("@medidas_caseras", encuestaR24H.Medidas_Caseras);
-            param.Add("@cantidad_gr_ml_total", encuestaR24H.Cantidad_Gr_Ml_Total);
-            param.Add("@observaciones", encuestaR24H.Observaciones);
-            param.Add("@id_ficha", encuestaR24H.Id_Ficha);
-            DapperORM.ExecuteWithoutReturn("sp_Agre_Actua_EncuestaR24H", param);
+            try
+            {
+                DynamicParameters param = new DynamicParameters();
+                param.Add("@id_r24h", encuesta.Id_R24h);
+                param.Add("@dia_de_semana", encuesta.Dia_Semana);
+                param.Add("@hora", encuesta.Hora);
+                param.Add("@minuta", encuesta.Minuta);
+                param.Add("@ingredientes", encuesta.Ingredientes);
+                param.Add("@medidas_caseras", encuesta.Medidas_Caseras);
+                param.Add("@cantidad_gr_ml_total", encuesta.Cantidad_Gr_Ml_Total);
+                param.Add("@observaciones", encuesta.Observaciones);
+                param.Add("@id_ficha", encuesta.Id_Ficha);
 
-            return RedirectToAction("Index");
+                var result = DapperORM.ExecuteReturnScalar<EncuestaR24H>("sp_agregar_actualizar_Paciente", param);
+                return Json(new { res = result }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                return Json(new { res = error }, JsonRequestBehavior.AllowGet);
+            }
+            //return RedirectToAction("Index");
 
 
         }
@@ -107,10 +116,10 @@ namespace nutricion_examen.Controllers
             }
         }
 
-        [HttpGet]
-        public ActionResult ListaFicha()
-        {
-            var result = DapperORM.ReturnList<Ficha_Medica_Paciente>("FALTA ADD"); //**FALTA AGREGAR EL NOMBRE CORRECTO DEL PROCEDIMIENTO DE TRAER FICHA PACIENTE**//
+       [HttpGet]
+       public ActionResult ListaFicha()
+       {
+            var result = DapperORM.ReturnList<Ficha_Medica_Paciente>("sp_traerInfoFichaByIdPaciente"); //**FALTA AGREGAR EL NOMBRE CORRECTO DEL PROCEDIMIENTO DE TRAER FICHA PACIENTE**/
             return Json(new { data = result }, JsonRequestBehavior.AllowGet);
         }
     }

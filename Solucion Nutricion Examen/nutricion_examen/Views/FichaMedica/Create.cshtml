@@ -1,6 +1,7 @@
-﻿@model nutricion_examen.Models.Paciente
+﻿
+@model nutricion_examen.Models.Paciente
 
-    
+
     <div class="col-md-12 col-sm-6">
         <div class="card card-warning">
             <div class="card-header">
@@ -52,7 +53,7 @@
                         <div class="form-group col-md-3">
                             <label>Peso</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="peso" placeholder="Ingrese peso en kilos, ej: 50.5">
+                                <input type="text" class="form-control" id="peso" placeholder="Ej: 50,5">
                                 <span class="input-group-text" id="basic-addon2">Kg</span>
                             </div>
                         </div>
@@ -60,7 +61,7 @@
                         <div class="form-group col-md-3">
                             <label>Talla</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="talla" placeholder="Ingrese talla en metros, ej: 1.60">
+                                <input type="text" class="form-control" id="talla" placeholder="Ej: 1,60">
                                 <span class="input-group-text" id="basic-addon2">Mts.</span>
                             </div>
                         </div>
@@ -215,12 +216,16 @@
                 </form>
             </div>
 
+
+
+
         </div>
-        @Html.Partial("_Encuesta24hPartial")
+        @Html.Partial("_EncuestaR24H");
+
     </div>
-          
-        
-            
+
+
+
 @section scripts{
     <script type="text/javascript">
         //$("#btnSave").click(function (e) {
@@ -252,18 +257,18 @@
                 Id_Nutricionista: '4'
 
             }
-            
+
             $.ajax({
                 url: '@Url.Action("Create","FichaMedica")',
                 method: 'post',
                 data: fmp,
                 success: function (r) {
-                    
-                    
+
+
                         //llamamos a la funcion que retorna los calculos
                        return_Calculos(id);
-                        
-                    
+
+
                 }
 
 
@@ -275,16 +280,16 @@
                 var id = id_paciente;
 
                 //hacemos la peticion mediante Ajax.
-               
+
                 $.ajax({
                     url: '@Url.Action("ReturnCalculos", "FichaMedica")',
                     data: 'id=' + id,
                     type: 'post',
                     dataType: 'json',
                     success: function (data) {
-                       
+
                         var datos = data.data;
-                        
+
                         $(datos).each(function (i, f) {
                             $('#antecedentes').val(f.Ant_Familiares);
                             $("#alergias").val(f.Alergias);
@@ -313,7 +318,7 @@
                             $("#id_paciente").val(f.Id_Paciente);
                             $("#peso_req").val(f.Peso_Requerido);
                             $("#nutricionista").val(f.Nombre_Nutri);
-
+                            $("#id_ficha").val(f.Id_Ficha);
                         });
                     }
                 });
@@ -326,5 +331,5 @@
 
 
     </script>
-    }
+}
 

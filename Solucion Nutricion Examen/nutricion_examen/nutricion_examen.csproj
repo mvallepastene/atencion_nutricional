@@ -173,6 +173,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\Encuesta24h.css" />
     <Content Include="Content\css\estilos.css" />
     <Content Include="Content\dist\css\adminlte.css" />
     <Content Include="Content\dist\css\adminlte.min.css" />
@@ -232,6 +233,7 @@
     <Content Include="Content\img\atencionpresencial.jpg" />
     <Content Include="Content\img\auriculo1.png" />
     <Content Include="Content\img\Auriculoterapia.jpg" />
+    <Content Include="Content\img\bienvenida2.png" />
     <Content Include="Content\img\broccoli.png" />
     <Content Include="Content\img\broccoli2.png" />
     <Content Include="Content\img\cereza2.png" />
@@ -2059,11 +2061,10 @@
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Acceso\Index.cshtml" />
     <Content Include="Views\EncuestaR24H\Index.cshtml" />
-    <Content Include="Views\EncuestaR24H\Create.cshtml" />
     <Content Include="Views\EncuestaFrecuencia\Index.cshtml" />
     <Content Include="Views\FichaMedica\Create.cshtml" />
     <Content Include="Views\FichaMedica\Index.cshtml" />
-    <Content Include="Views\Acceso\Create.cshtml" />
+    <Content Include="Views\Shared\_EncuestaR24H.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

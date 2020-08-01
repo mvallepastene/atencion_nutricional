@@ -4,80 +4,82 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3 id="agendas"></h3>
+        <div class="container-fluid">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3 id="agendas"></h3>
 
-                <p>Agendas Activas</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-calendar"></i>
-              </div>
-              <a href="@Url.Action("Index","Agenda")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <p>Agendas Activas</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-calendar"></i>
+                        </div>
+                        <a href="@Url.Action("Index","Agenda")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3 id="fichas"></h3>
+
+                            <p>Fichas Creadas</p>
+                        </div>
+                        <div class="icon">
+                            <i class="icon fas fa-book-medical"></i>
+                        </div>
+                        <a href="@Url.Action("Index","FichaMedica")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3 id="pacientes">44</h3>
+
+                            <p>Pacientes Registrados</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-add"></i>
+                        </div>
+                        <a href="@Url.Action("Index","Paciente")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>65</h3>
+
+                            <p>Unique Visitors</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
             </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3 id="fichas"></h3>
+            <!-- /.row -->
+           
+                <div class="row">
+                    <div class="text-center">
+                        <h3>Bienvenido Nutricionista @User.Identity.Name</h3>
 
-                <p>Fichas Creadas</p>
-              </div>
-              <div class="icon">
-                <i class="icon fas fa-book-medical"></i>
-              </div>
-              <a href="@Url.Action("Index","FichaMedica")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3 id="pacientes">44</h3>
-
-                <p>Pacientes Registrados</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="@Url.Action("Index","Paciente")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>65</h3>
-
-                <p>Unique Visitors</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-pie-graph"></i>
-              </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-        </div>
-        <!-- /.row -->
-       <div class="row">
-           <div class="text-center">
-               <h3>Bienvenido. Doctor/ra @User.Identity.Name</h3>
-
-               <h4>[PERSONALIZAR CON IMAGEN O LO QUE LES PARECE QUE DEBE IR AQUI]</h4>
-           </div>
-       </div>
-      </div><!-- /.container-fluid -->
-    </section>
+                        <img src="~/Content/img/bienvenida2.png" alt="" class="img-welcome" style="max-width: 100%; width: 100%"; />
+                    </div>
+                </div>
+                
+            </div><!-- /.container-fluid -->
+</section>
     <!-- /.content -->
 
 @section scripts{
