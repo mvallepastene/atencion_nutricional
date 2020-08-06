@@ -8,7 +8,7 @@ namespace nutricion_examen.Models
     public class EncuestaR24H
     {
         public int Id_R24h { get; set; }
-        public string Dia_Semana { get; set; }
+        public string Dia_De_Semana { get; set; }
         public string Hora { get; set; }
         public string Minuta { get; set; }
         public string Ingredientes { get; set; }
