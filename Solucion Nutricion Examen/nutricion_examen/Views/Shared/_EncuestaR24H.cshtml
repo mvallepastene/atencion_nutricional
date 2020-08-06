@@ -56,9 +56,8 @@
 
                         <div class="form-group mt-4">
                             <!--<span class="btn btn-primary" id="btnAgregar"><i class="fas fa-plus"></i>Agregar Fila</span>-->
-                            <span class="btn btn-primary" id="btnGuardar" title="Agregar"><i class="fas fa-plus"></i></span>
+                            <button type="button" onclick="insertEncuesta()" class="btn btn-primary" id="btnGuardar" title="Agregar"><i class="fas fa-plus"></i></button>
 
-                            <input type="button" id="send" value="Add" class="btn btn-default"/>
                         </div>
                     </div>
 
@@ -66,16 +65,21 @@
 
             <div>
                 <table class=" table">
-                    <tr>
-                        <th hidden>Id_R24H</th>
-                        <th>Hora</th>
-                        <th>Minuta</th>
-                        <th>Ingredientes</th>
-                        <th>Medidas Caseras</th>
-                        <th>Cantidad</th>
-                        <th>Observaciones</th>
-                        <th hidden>Id_Ficha</th>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Día</th>
+                            <th>Hora</th>
+                            <th>Minuta</th>
+                            <th>Ingredientes</th>
+                            <th>Medidas Caseras</th>
+                            <th>Cantidad</th>
+                            <th>Observaciones</th>
+                            <th>Editar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultEncuesta">
+
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -92,73 +96,7 @@
 @section scripts{
     <script type="text/javascript">
 
-        $('#send').click(function (e) {
-            e.preventDefault();
-        });
 
-         $('#send').click(function () { //llave apertura
-           //creamos el objeto que se le debe enviar al SP
-           alert('hizo Click');
-                var encuesta = {
-                    Dia_semana: $("#dia_semana").val(),
-                Hora: $("#hora").val(),
-                Minuta: $("#minuta").val(),
-                Ingredientes: $("#ingredientes").val(),
-                Medidas_Caseras: $("#medidas_caseras").val(),
-                Cantidad_Gr_Ml_Total: $("#cantidad_gr_ml_total").val(),
-                Observaciones: $('#observacion').val(),
-                Id_Ficha: $("#id_ficha").val()
-
-           }
-           console.log(encuesta);
-
-            $.ajax({
-                url: '@Url.Action("Create","EncuestaR24H")',
-                type: 'post',
-                data: encuesta,
-                success: function (r) {
-                    if (r.res == 1) {
-                        alertify.success("Encuesta creada");
-                    } else {
-                        alertify.error("Ha Ocurrido un Error: " + r.res);
-                    }
-
-                }
-
-
-            });
-       });
-
-
-        function return_encuesta(id_ficha) {
-                var id = id_ficha;
-
-                //hacemos la peticion mediante Ajax.
-
-                $.ajax({
-                    url: '@Url.Action("ReturnEncuesta", "EncuestaR24H")',
-                    data: 'id=' + id,
-                    type: 'post',
-                    dataType: 'json',
-                    success: function (data) {
-
-                        var datos = data.data;
-
-                        $(datos).each(function (i, f) {
-                            $('#dia_semana').val(f.Dia_semana);
-                            $("#hora").val(f.Hora);
-                            $('#minuta').val(f.Minuta)
-                            $("#ingredientes").val(f.Ingredientes);
-                            $('#medidas_caseras').val(f.Medidas_Caseras);
-                            $('#cantidad_gr_ml_total').val(f.Cantidad_Gr_Ml_Total);
-                            $('#observaciones').val(f.Observaciones);
-                            $("#id_ficha").val(f.Id_Ficha);
-
-                        });
-                    }
-                });
-
-            }
 
     </script>
 }
