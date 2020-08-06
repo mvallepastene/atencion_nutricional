@@ -1,6 +1,8 @@
 ﻿
 @model nutricion_examen.Models.Paciente
-
+@{ 
+    ViewBag.Title = "Ficha del Paciente";
+}
 
     <div class="col-md-12 col-sm-6">
         <div class="card card-warning">
@@ -327,7 +329,118 @@
 
             //datos para el retorno de los calculos
 
+        //datos que controla formulario de partial View
 
+
+        function insertEncuesta() {
+            $('#btnGuardar').click(function (e) { //llave apertura
+                e.preventDefault();
+            });
+            //creamos el objeto que se le debe enviar al SP
+           
+                var encuesta = {
+                Dia_semana: $("#dia_semana").val(),
+                Hora: $("#hora").val(),
+                Minuta: $("#minuta").val(),
+                Ingredientes: $("#ingredientes").val(),
+                Medidas_Caseras: $("#medidas_caseras").val(),
+                Cantidad_Gr_Ml_Total: $("#cantidad").val(),
+                Observaciones: $('#observacion').val(),
+                Id_Ficha:77  // $("#id_ficha").val()
+
+           }
+           console.log(encuesta);
+
+            $.ajax({
+                url: '@Url.Action("Create","EncuestaR24H")',
+                type: 'post',
+                data: encuesta,
+                success: function (r) {
+                    if (r.res == 1) {
+                        alertify.success("Encuesta creada");
+                        cargarItems(77);
+                    } else {
+                        alertify.error("Ha ocurrido un Error: " + r.res);
+                    }
+
+                }
+
+
+            });
+        }
+
+
+        function return_encuesta(id_ficha) {
+                var id = id_ficha;
+
+                //hacemos la peticion mediante Ajax.
+
+                $.ajax({
+                    url: '@Url.Action("ReturnEncuestaPorFicha", "EncuestaR24H")',
+                    data: 'id=' + id,
+                    type: 'post',
+                    dataType: 'json',
+                    success: function (data) {
+
+                        var datos = data.data;
+
+                        $(datos).each(function (i, f) {
+                            $('#dia_semana').val(f.Dia_De_Semana);
+                            $("#hora").val(f.Hora);
+                            $('#minuta').val(f.Minuta)
+                            $("#ingredientes").val(f.Ingredientes);
+                            $('#medidas_caseras').val(f.Medidas_Caseras);
+                            $('#cantidad').val(f.Cantidad_Gr_Ml_Total);
+                            $('#observacion').val(f.Observaciones);
+                            $("#id_ficha").val(f.Id_Ficha);
+
+                        });
+                    }
+                });
+
+        }
+
+
+        function cargarItems(id) {
+            //armamos la plantilla del body
+            var incluye_plantilla = '<tr>'
+                + '<td>#DIA#</td>'
+                + '<td>#HORA#</td>'
+                + '<td>#MINUTA#</td>'
+                + '<td>#INGREDIENTES#</td>'
+                + '<td>#MEDIDASCA#</td>'
+                + '<td>#CANTIDAD#</td>'
+                + '<td>#OBSERVACIONES#</td>'
+                + '<td style="text-align: center;"><span class="btn btn-warning btn-xs" onclick="editarObservacion(#ID#)"><span class="fas fa-pencil"></span></span></td>'
+                + '</tr>';
+
+            $.ajax({
+                url: '@Url.Action("ReturnEncuestaPorFicha", "EncuestaR24H")',
+                type: 'get',
+                data: 'id='+id,
+                success: function (r) {
+                    console.log(r);
+                    var dato = r.res;
+                    if (dato != null) {
+                        var row = "";
+                        $(dato).each(function (i, e) {
+                            if (e != null) {
+                                var x = incluye_plantilla;
+                                x = x.replace("#DIA#", e.Dia_De_Semana);
+                                x = x.replace("#HORA#", e.Hora);
+                                x = x.replace("#MINUTA#", e.Minuta);
+                                x = x.replace("INGREDIENTES", e.Ingredientes);
+                                x = x.replace("#MEDIDASCA#", e.Medidas_Caseras);
+                                x = x.replace("#CANTIDAD#", e.Cantidad_Gr_Ml_Total);
+                                x = x.replace("#OBSERVACIONES#", E.Observaciones);
+                                x = x.replace("#ID#", e.Id_R24h);
+                                row = x;
+                            }
+                        });
+                    }
+                }
+            });
+        }
 
 
     </script>

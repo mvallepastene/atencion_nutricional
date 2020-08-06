@@ -54,11 +54,11 @@ namespace nutricion_examen.Controllers
                 param.Add("@minuta", encuesta.Minuta);
                 param.Add("@ingredientes", encuesta.Ingredientes);
                 param.Add("@medidas_caseras", encuesta.Medidas_Caseras);
-                param.Add("@cantidad_gr_ml_total", encuesta.Cantidad_Gr_Ml_Total);
+                param.Add("@cantidad", encuesta.Cantidad_Gr_Ml_Total);
                 param.Add("@observaciones", encuesta.Observaciones);
                 param.Add("@id_ficha", encuesta.Id_Ficha);
 
-                var result = DapperORM.ExecuteReturnScalar<EncuestaR24H>("sp_agregar_actualizar_Paciente", param);
+                var result = DapperORM.ExecuteReturnScalar<EncuestaR24H>("sp_Agre_Actua_EncuestaR24H", param);
                 return Json(new { res = result }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
@@ -121,6 +121,16 @@ namespace nutricion_examen.Controllers
        {
             var result = DapperORM.ReturnList<Ficha_Medica_Paciente>("sp_traerInfoFichaByIdPaciente"); //**FALTA AGREGAR EL NOMBRE CORRECTO DEL PROCEDIMIENTO DE TRAER FICHA PACIENTE**/
             return Json(new { data = result }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult ReturnEncuestaPorFicha(int id)
+        {
+            DynamicParameters param = new DynamicParameters();
+                param.Add("@id", id);
+            var result = DapperORM.ReturnList<EncuestaR24H>("sp_traer_EncuestaR24hByIdFicha", param).ToList();
+
+            return Json(new {res = result }, JsonRequestBehavior.AllowGet);
         }
     }
 }
