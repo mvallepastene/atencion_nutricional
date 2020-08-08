@@ -49,7 +49,7 @@ namespace nutricion_examen.Controllers
             {
                 DynamicParameters param = new DynamicParameters();
                 param.Add("@id_r24h", encuesta.Id_R24h);
-                param.Add("@dia_de_semana", encuesta.Dia_Semana);
+                param.Add("@dia_de_semana", encuesta.Dia_De_Semana);
                 param.Add("@hora", encuesta.Hora);
                 param.Add("@minuta", encuesta.Minuta);
                 param.Add("@ingredientes", encuesta.Ingredientes);
