@@ -46,21 +46,29 @@ namespace nutricion_examen.Controllers
 
             // TODO: Add insert logic here
 
-            DynamicParameters param = new DynamicParameters();
-            param.Add("@id_agenda", agenda.Id_Agenda);
-            param.Add("@rut", agenda.Rut);
-            param.Add("@nombre", agenda.Nombre);
-            param.Add("@apellido", agenda.Apellido);
-            param.Add("@fecha_nacimiento", agenda.Fecha_Nacimiento);
-            param.Add("@numero_tel", agenda.Numero_Tel);
-            param.Add("@email", agenda.Email);
-            param.Add("@fecha_cita", agenda.Fecha_Cita);
-            param.Add("@hora_cita", agenda.Hora_Cita);
-            param.Add("@id_estado", agenda.Id_Estado);
-          int result =  DapperORM.ExecuteReturnScalar<Agenda>("sp_agregarOActualiza_Agenda", param);
+            try
+            {
+                DynamicParameters param = new DynamicParameters();
+                param.Add("@id_agenda", agenda.Id_Agenda);
+                param.Add("@rut", agenda.Rut);
+                param.Add("@nombre", agenda.Nombre);
+                param.Add("@apellido", agenda.Apellido);
+                param.Add("@fecha_nacimiento", agenda.Fecha_Nacimiento);
+                param.Add("@numero_tel", agenda.Numero_Tel);
+                param.Add("@email", agenda.Email);
+                param.Add("@fecha_cita", agenda.Fecha_Cita);
+                param.Add("@hora_cita", agenda.Hora_Cita);
+                param.Add("@id_estado", agenda.Id_Estado);
+                int result = DapperORM.ExecuteReturnScalar<Agenda>("sp_agregarOActualiza_Agenda", param);
 
 
-            return Json( new { res = result }, JsonRequestBehavior.AllowGet);
+                return Json(new { res = result }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                return Json(new { res = error }, JsonRequestBehavior.AllowGet);
+            }
           
         }
         [Authorize]
