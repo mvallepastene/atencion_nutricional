@@ -339,14 +339,14 @@
             //creamos el objeto que se le debe enviar al SP
            
                 var encuesta = {
-                Dia_semana: $("#dia_semana").val(),
+                Dia_De_Semana: $("#dia_semana").val(),
                 Hora: $("#hora").val(),
                 Minuta: $("#minuta").val(),
                 Ingredientes: $("#ingredientes").val(),
                 Medidas_Caseras: $("#medidas_caseras").val(),
                 Cantidad_Gr_Ml_Total: $("#cantidad").val(),
                 Observaciones: $('#observacion').val(),
-                Id_Ficha:77  // $("#id_ficha").val()
+                Id_Ficha:34// $("#id_ficha").val()
 
            }
            console.log(encuesta);
@@ -355,11 +355,14 @@
                 url: '@Url.Action("Create","EncuestaR24H")',
                 type: 'post',
                 data: encuesta,
+                dataType:'json',
                 success: function (r) {
                     if (r.res == 1) {
                         alertify.success("Encuesta creada");
-                        cargarItems(77);
+                        cargarItems(34);//$('#id_ficha').val()
+                        return_encuesta(34);//$('#id_ficha').val()
                     } else {
+                        console.log(r.res);
                         alertify.error("Ha ocurrido un Error: " + r.res);
                     }
 
