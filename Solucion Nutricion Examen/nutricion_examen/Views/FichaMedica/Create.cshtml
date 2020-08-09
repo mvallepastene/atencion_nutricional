@@ -233,9 +233,6 @@
         //$("#btnSave").click(function (e) {
         //    e.preventDefault();
         //});
-        $(document).ready(function () {
-            //cargarItems(77);
-        });
         $('#btnSave').click(function () { //llave apertura
             //creamos el objeto que se le debe enviar al SP
 
@@ -268,14 +265,12 @@
                 method: 'post',
                 data: fmp,
                 success: function (r) {
-                    if (r.res == 1) {
+
+
                         //llamamos a la funcion que retorna los calculos
-                        return_Calculos(id);
-                    } else {
-                        alertify.error("Ha ocurrido un Error: " + r.res);
-                        //mostramos el mensaje de error por consola
-                        console.log(r.res);
-                    }
+                       return_Calculos(id);
+
+
                 }
 
 
@@ -351,20 +346,23 @@
                 Medidas_Caseras: $("#medidas_caseras").val(),
                 Cantidad_Gr_Ml_Total: $("#cantidad").val(),
                 Observaciones: $('#observacion').val(),
-                Id_Ficha: $("#id_ficha").val()
+                Id_Ficha:34// $("#id_ficha").val()
 
            }
-           //console.log(encuesta);
+           console.log(encuesta);
 
             $.ajax({
                 url: '@Url.Action("Create","EncuestaR24H")',
                 type: 'post',
                 data: encuesta,
+                dataType:'json',
                 success: function (r) {
                     if (r.res == 1) {
                         alertify.success("Encuesta creada");
-                        cargarItems($("#id_ficha").val());
+                        cargarItems(34);//$('#id_ficha').val()
+                        return_encuesta(34);//$('#id_ficha').val()
                     } else {
+                        console.log(r.res);
                         alertify.error("Ha ocurrido un Error: " + r.res);
                     }
 
@@ -376,17 +374,18 @@
 
 
         function return_encuesta(id_ficha) {
-                
+                var id = id_ficha;
+
                 //hacemos la peticion mediante Ajax.
 
                 $.ajax({
                     url: '@Url.Action("ReturnEncuestaPorFicha", "EncuestaR24H")',
-                    data: 'id=' + id_ficha,
+                    data: 'id=' + id,
                     type: 'post',
                     dataType: 'json',
-                    success: function (r) {
-                       // console.log(r.res);
-                        var datos = r.res;
+                    success: function (data) {
+
+                        var datos = data.data;
 
                         $(datos).each(function (i, f) {
                             $('#dia_semana').val(f.Dia_De_Semana);
@@ -415,7 +414,7 @@
                 + '<td>#MEDIDASCA#</td>'
                 + '<td>#CANTIDAD#</td>'
                 + '<td>#OBSERVACIONES#</td>'
-                + '<td style="text-align: center;"><span class="btn btn-warning btn-xs" onclick="editarItem(#ID#)"><span class="fas fa-pen"></span></span></td>'
+                + '<td style="text-align: center;"><span class="btn btn-warning btn-xs" onclick="editarObservacion(#ID#)"><span class="fas fa-pencil"></span></span></td>'
                 + '</tr>';
 
             $.ajax({
@@ -423,50 +422,27 @@
                 type: 'get',
                 data: 'id='+id,
                 success: function (r) {
-                    dato = r.res;
-                   // console.log(dato);
-                    
+                    console.log(r);
+                    var dato = r.res;
                     if (dato != null) {
                         var row = "";
-                        dato.forEach(function (item, index) {
-                            if (item != null) {
+                        $(dato).each(function (i, e) {
+                            if (e != null) {
                                 var x = incluye_plantilla;
-                                //if (item['Dia_De_Semana'] == 'Martes') {
-                                //    x = x.replace("#DIA#", 'Martes');
-                                //} else {
-                                //    x = x.replace("#DIA#", item['Dia_De_Semana']);
-                                //}
-                                x = x.replace("#DIA#", item['Dia_De_Semana']);
-                                x = x.replace("#HORA#", item['Hora']);
-                                x = x.replace("#MINUTA#", item['Minuta']);
-                                x = x.replace("#INGREDIENTES#", item['Ingredientes']);
-                                x = x.replace("#MEDIDASCA#", item['Medidas_Caseras']);
-                                x = x.replace("#CANTIDAD#", item['Cantidad_Gr_Ml_Total']);
-                                x = x.replace("#OBSERVACIONES#", item['Observaciones']);
-                                x = x.replace("#ID#", item['Id_R24h']);
-                                row += x;
-
-                                
+                                x = x.replace("#DIA#", e.Dia_De_Semana);
+                                x = x.replace("#HORA#", e.Hora);
+                                x = x.replace("#MINUTA#", e.Minuta);
+                                x = x.replace("INGREDIENTES", e.Ingredientes);
+                                x = x.replace("#MEDIDASCA#", e.Medidas_Caseras);
+                                x = x.replace("#CANTIDAD#", e.Cantidad_Gr_Ml_Total);
+                                x = x.replace("#OBSERVACIONES#", E.Observaciones);
+                                x = x.replace("#ID#", e.Id_R24h);
+                                row = x;
                             }
                         });
-
-                        $('#resultEncuesta').html('<thead><tr><th> Día</th>'
-                                                            +'<th>Hora</th>'
-                                                            +'<th>Minuta</th>'
-                                                            +'<th>Ingredientes</th>'
-                                                            +'<th>Medidas Caseras</th>'
-                                                            +'<th>Cantidad</th>'
-                                                            +'<th>Observaciones</th>'
-                                                            +'<th>Editar</th>'
-                                                            +'</tr ></thead>'+'<tbody>' + row + "</tbody></table>");
                     }
                 }
             });
-        }
-
-        //funcion que obtiene el id del dato que se quiera editar
-        function editarItem(id) {
-            console.log(id);
         }
 
 
