@@ -71,9 +71,10 @@ namespace nutricion_examen.Controllers
                 return Json(new { res = result }, JsonRequestBehavior.AllowGet);
 
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                string error = ex.Message;
+                return Json(new { res = error }, JsonRequestBehavior.AllowGet);
             }
         }
 
