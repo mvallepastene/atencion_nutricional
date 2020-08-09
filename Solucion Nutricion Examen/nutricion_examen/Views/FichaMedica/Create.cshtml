@@ -233,6 +233,9 @@
         //$("#btnSave").click(function (e) {
         //    e.preventDefault();
         //});
+        $(document).ready(function () {
+            cargarItems(77);
+        });
         $('#btnSave').click(function () { //llave apertura
             //creamos el objeto que se le debe enviar al SP
 
@@ -359,8 +362,8 @@
                 success: function (r) {
                     if (r.res == 1) {
                         alertify.success("Encuesta creada");
-                        cargarItems(34);//$('#id_ficha').val()
-                        return_encuesta(34);//$('#id_ficha').val()
+                        cargarItems(77);//$('#id_ficha').val()
+                        return_encuesta(77);//$('#id_ficha').val()
                     } else {
                         console.log(r.res);
                         alertify.error("Ha ocurrido un Error: " + r.res);
@@ -414,7 +417,7 @@
                 + '<td>#MEDIDASCA#</td>'
                 + '<td>#CANTIDAD#</td>'
                 + '<td>#OBSERVACIONES#</td>'
-                + '<td style="text-align: center;"><span class="btn btn-warning btn-xs" onclick="editarObservacion(#ID#)"><span class="fas fa-pencil"></span></span></td>'
+                + '<td style="text-align: center;"><span class="btn btn-warning btn-xs" onclick="editarItem(#ID#)"><span class="fas fa-pen"></span></span></td>'
                 + '</tr>';
 
             $.ajax({
@@ -426,23 +429,40 @@
                     var dato = r.res;
                     if (dato != null) {
                         var row = "";
-                        $(dato).each(function (i, e) {
-                            if (e != null) {
+                        dato.forEach(function (i, index) {
+                            if (i != null) {
                                 var x = incluye_plantilla;
-                                x = x.replace("#DIA#", e.Dia_De_Semana);
-                                x = x.replace("#HORA#", e.Hora);
-                                x = x.replace("#MINUTA#", e.Minuta);
-                                x = x.replace("INGREDIENTES", e.Ingredientes);
-                                x = x.replace("#MEDIDASCA#", e.Medidas_Caseras);
-                                x = x.replace("#CANTIDAD#", e.Cantidad_Gr_Ml_Total);
-                                x = x.replace("#OBSERVACIONES#", E.Observaciones);
-                                x = x.replace("#ID#", e.Id_R24h);
-                                row = x;
+                                x = x.replace("#DIA#", i['Dia_De_Semana']);
+                                x = x.replace("#HORA#", i['Hora']);
+                                x = x.replace("#MINUTA#", i['Minuta']);
+                                x = x.replace("#INGREDIENTES#", i['Ingredientes']);
+                                x = x.replace("#MEDIDASCA#", i['Medidas_Caseras']);
+                                x = x.replace("#CANTIDAD#", i['Cantidad_Gr_Ml_Total']);
+                                x = x.replace("#OBSERVACIONES#", i['Observaciones']);
+                                x = x.replace("#ID#", i['Id_R24h']);
+                                row += x;
                             }
                         });
+
+                        $('#resultEncuesta').html(' <thead>'
+                            +'< tr >'
+                            +'<th>Día</th>'
+                            +'<th>Hora</th>'
+                            +'<th>Minuta</th>'
+                            +'<th>Ingredientes</th>'
+                            +'<th>Medidas Caseras</th>'
+                            +'<th>Cantidad</th>'
+                            +'<th>Observaciones</th>'
+                            +'<th>Editar</th>'
+                        +'</tr >'
+                                        +'</thead ><tbody>'+row+'</tbody>');
                     }
                 }
             });
+        }
+
+        function editarItem(id) {
+            console.log(id);
         }
 
 

@@ -54,7 +54,7 @@ namespace nutricion_examen.Controllers
                 param.Add("@minuta", encuesta.Minuta);
                 param.Add("@ingredientes", encuesta.Ingredientes);
                 param.Add("@medidas_caseras", encuesta.Medidas_Caseras);
-                param.Add("@cantidad_gr_ml_total", encuesta.Cantidad_Gr_Ml_Total);
+                param.Add("@cantidad", encuesta.Cantidad_Gr_Ml_Total);
                 param.Add("@observaciones", encuesta.Observaciones);
                 param.Add("@id_ficha", encuesta.Id_Ficha);
 
