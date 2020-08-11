@@ -174,7 +174,7 @@
                 e.preventDefault();
             });
 
-            //juntar datos que contiene el formulario en una nueva variable
+            //Reunir datos que contiene el formulario en una nueva variable
             var formData = new FormData(document.getElementById("frmPaciente"));
 
 
@@ -186,8 +186,14 @@
                 contentType: false,
                 processData: false,
                 cache: false,
-                success: function () {
-                    alertify.success("Paciente Creado");
+                success: function (r) {
+                    if (r.res == 1) {
+                        alertify.success("Paciente Creado Exitosamente!");
+                    } else {
+                        alertify.error("Ha Ocurrido un Error: " + r.res);
+                        //mostrar mensaje de error por consola.
+                        console.log(r.res);
+                    }
                 }
 
 
@@ -195,6 +201,8 @@
 
 
         }
+
+
 
     </script>
 

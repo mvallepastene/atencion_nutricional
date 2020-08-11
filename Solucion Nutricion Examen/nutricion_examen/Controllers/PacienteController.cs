@@ -45,24 +45,33 @@ namespace nutricion_examen.Controllers
         public ActionResult Create(Paciente paciente)
         {
             // TODO: Add insert logic here
-            DynamicParameters param = new DynamicParameters();
-            param.Add("@id_paciente", paciente.Id_Paciente);
-            param.Add("@rut", paciente.Rut);
-            param.Add("@nombre", paciente.Nombre);
-            param.Add("@apellido", paciente.Apellido);
-            param.Add("@edad", paciente.Edad);
-            param.Add("@fecha_nacimiento", paciente.Fecha_Nacimiento);
-            param.Add("@numero_Tel", paciente.Numero_Tel);
-            param.Add("@genero", paciente.Genero);
-            param.Add("@direccion", paciente.Direccion);
-            param.Add("@comuna", paciente.Comuna);
-            param.Add("@email", paciente.Email);
-            param.Add("@prevision", paciente.Prevision);
-            param.Add("@ocupacion", paciente.Ocupacion);
-            param.Add("@id_agenda", paciente.Id_Agenda);
-            DapperORM.ExecuteWithoutReturn("sp_agregar_actualizar_Paciente", param);
+            try
+            {
+                DynamicParameters param = new DynamicParameters();
+                param.Add("@id_paciente", paciente.Id_Paciente);
+                param.Add("@rut", paciente.Rut);
+                param.Add("@nombre", paciente.Nombre);
+                param.Add("@apellido", paciente.Apellido);
+                param.Add("@edad", paciente.Edad);
+                param.Add("@fecha_nacimiento", paciente.Fecha_Nacimiento);
+                param.Add("@numero_Tel", paciente.Numero_Tel);
+                param.Add("@genero", paciente.Genero);
+                param.Add("@direccion", paciente.Direccion);
+                param.Add("@comuna", paciente.Comuna);
+                param.Add("@email", paciente.Email);
+                param.Add("@prevision", paciente.Prevision);
+                param.Add("@ocupacion", paciente.Ocupacion);
+                param.Add("@id_agenda", paciente.Id_Agenda);
+                int result = DapperORM.ExecuteReturnScalar<Paciente>("sp_agregar_actualizar_Paciente", param);
 
-            return RedirectToAction("Index");
+                return Json(new { res = result }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+
+                string error = ex.Message;
+                return Json(new { res = error }, JsonRequestBehavior.AllowGet);
+            }
             
         }
 

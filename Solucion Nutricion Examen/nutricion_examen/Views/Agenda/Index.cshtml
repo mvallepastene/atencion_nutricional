@@ -42,8 +42,8 @@
                         <tr>
                             <td>@item.Id_Agenda</td>
                             <td>@item.Nombre @item.Apellido</td>
-                            <td>@item.Fecha_Nacimiento</td>
-                            <td>@item.Fecha_Cita</td>
+                            <td>@item.Fecha_Nacimiento.ToString("dd-MM-yyyy")</td>
+                            <td>@item.Fecha_Cita.ToString("dd/MM/yyyy")</td>
                             <td>@item.Hora_Cita</td>
                             @if (@item.Id_Estado == 1)
                             {

@@ -127,7 +127,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccesoController.cs" />
     <Compile Include="Controllers\AgendaController.cs" />
-    <Compile Include="Controllers\EncuestaFrecuenciaController.cs" />
     <Compile Include="Controllers\EncuestaR24HController.cs" />
     <Compile Include="Controllers\Estado_AgendaController.cs" />
     <Compile Include="Controllers\FichaMedicaController.cs" />
@@ -143,7 +142,6 @@
     <Compile Include="Models\Aporte_Porciones.cs" />
     <Compile Include="Models\DapperORM.cs" />
     <Compile Include="Models\EncuestaR24H.cs" />
-    <Compile Include="Models\Encuesta_Frecuencia.cs" />
     <Compile Include="Models\Estado_Agenda.cs" />
     <Compile Include="Models\Ficha_Medica_Paciente.cs" />
     <Compile Include="Models\Nutricionista.cs" />
@@ -2079,8 +2077,6 @@
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Acceso\Index.cshtml" />
     <Content Include="Views\EncuestaR24H\Index.cshtml" />
-    <Content Include="Views\EncuestaR24H\Create.cshtml" />
-    <Content Include="Views\EncuestaFrecuencia\Index.cshtml" />
     <Content Include="Views\FichaMedica\Create.cshtml" />
     <Content Include="Views\FichaMedica\Index.cshtml" />
     <Content Include="Views\Shared\_EncuestaR24H.cshtml" />
