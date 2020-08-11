@@ -1,85 +1,152 @@
-﻿@model IEnumerable<nutricion_examen.Models.EncuestaR24H>
+﻿@model List<nutricion_examen.Models.EncuestaR24H>
 
 
-<body>
-    <div class="col-md-12 col-sm-6">
-        <div class="card card-warning">
-            <div class="card-header">
-                <h3 class="card-title">Encuesta R24H</h3>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="diaSemana">Día de Semana</label>
-                            <select class="form-control" id="diaSemana" style="width: 200px;">
-                                <option>--</option>
-                                <option>Lunes</option>
-                                <option>Martes</option>
-                                <option>Miercoles</option>
-                                <option>Jueves</option>
-                                <option>Viernes</option>
-                                <option>Sabado</option>
-                                <option>Domingo</option>
-                            </select>
-                        </div>
+<div class="col-md-12 col-sm-6">
+    <div class="card card-warning">
+        <div class="card-header">
+            <h3 class="card-title">Generar Encuesta 24 Horas</h3>
+        </div>
+        <div class="card-body">
+            <form class="form-normal" id="frmEncuestaR24h">
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <input type="hidden" id="id_r24h" value="id_r24h" />
+                        <label>Hora</label>
+                        <input type="text" class="form-control" id="hora" name="Hora" placeholder="Ej: 10:00">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Minuta</label>
+                        <input type="text" class="form-control" id="minuta" name="Minuta" placeholder="Ej: Pollo con arroz">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Ingredientes</label>
+                        <input type="text" class="form-control" id="ingredientes" name="Ingredientes" placeholder="">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Medidas Caseras</label>
+                        <input type="text" class="form-control" id="medidas_caseras" name="Medidas_Caseras" placeholder="Ej: 1 taza">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Cantidad</label>
+                        <input type="text" class="form-control" id="cantidad_gr_ml_total" name="Cantidad_Gr_Ml_Total" placeholder="gr/ml">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>Observaciones</label>
+                        <textarea>Ingrese texto... </textarea>
                     </div>
 
-                    <div class="col-sm-8">
-                        <div class="form-group">
-                            <label id="observaciones">Observaciones</label>
-                            <textarea class="form-control" placeholder="Escriba informacion adicional..." rows="5" style="width: 100%; max-width: 100%;"></textarea>
-                        </div>
+                    <div class="form-group col-md-2">
+                        <input hidden type="text" class="form-control" id="" value="" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" id="id_ficha" name="Id_Ficha" value="" />
                     </div>
                 </div>
-            </div>
 
-            <div class="card-body table-responsive p-0" style="height: 300px;">
-                <table class="table table-head-fixed text-nowrap">
-                    <thead>
-                        <tr align="center">
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label>Día de Semana</label>
+                        <select class="form-control" id="Dia_de_semana" name="Dia_Semana">
+                            <option value="">Selecciona un Día</option>
+                            <option value="">Lunes</option>
+                            <option value="">Martes</option>
+                            <option value="">Miercoles</option>
+                            <option value="">Jueves</option>
+                            <option value="">Viernes</option>
+                            <option value="">Sabado</option>
+                            <option value="">Domingo</option>
+                        </select>
+                    </div>
+                    <table class=" table">
+                        <tr>
+                            <th hidden>Id_R24H</th>
                             <th>Hora</th>
                             <th>Minuta</th>
                             <th>Ingredientes</th>
                             <th>Medidas Caseras</th>
-                            <th>Cantidad GR/ML Total</th>
+                            <th>Cantidad</th>
+                            <th>Observaciones</th>
+                            <th hidden>Id_Ficha</th>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @*@foreach (var item in Model)
-                            {
-                            <tr align="center">
-                                <td>@item.Id_R24h</td>
-                                <td>@item.Hora</td>
-                                <td>@item.Minuta</td>
-                                <td>@item.Ingredientes</td>
-                                <td>@item.Medidas_Caseras</td>
-                                <td>@item.Cantidad_Gr_Ml_Total</td>
-                            </tr>
-                            }*@
-                    </tbody>
-                </table>
-            </div>
+                    </table>
 
-            <div class="card-header">
-                <h3 class="card-title">Agregar...</h3>
-            </div>
-            <table class="table bg-gradient-white">
-                <tr class="fila-fija">
-                    <td><input type="hidden" placeholder="Id_R24h" class="form-control" id="id_r24h" name="id_r24h" /></td>
-                    <td><input placeholder="Hora" type="text" class="form-control" id="hora" name="hora" /></td>
-                    <td><input placeholder="Minuta" type="text" class="form-control" id="minuta" name="minuta" /></td>
-                    <td><input placeholder="Ingredientes" type="text" class="form-control" id="ingredientes" name="ingredientes" /></td>
-                    <td><input placeholder="Medidas Caseras" type="text" class="form-control" id="medidas_caseras" name="medidas_caseras" /></td>
-                    <td><input placeholder="Cantidad Gr/ML Total" type="text" class="form-control" id="cantidad_gr_ml_total" name="cantidad_gr_ml_total" /></td>
-                </tr>
-            </table>
+                    <div class="form-group">
+                        <span type="button" class="btn btn-primary" id="btnAgregar"><i class="fas fa-plus"></i>Agregar</span>
+                    </div>
+                </div>
 
-            
-            <div>
-                <button type="button" id="btnGrabar" onclick="insertarDatos()" class="btn btn-primary" style="float: right; margin-right:15px; margin-bottom:15px">Insertar Datos</button>
-            </div>
+            </form>
         </div>
-    </div>
-</body>
 
+    </div>
+</div>
+
+
+
+@section scripts{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            cargarSelect();
+
+        });
+        function cargarSelect() {
+            $.ajax({
+                url: '@Url.Action("ListaFicha", "EncuestaR24H")',
+                type: 'get',
+                dataType: 'json',
+                success: function (data) {
+                    var selecage = $('#dia_de_semana');
+                    var datos = data.data;
+                    $(datos).each(function (i, a) {
+                        selecage.append('<option value="' + a.Id_R24H + '">' + a.Dia_De_Semana + '  </opcion>')
+                    })
+                }
+
+            });
+
+        }
+
+        /*
+        evento click del boton guardar
+        */
+        $('#btnGrabar').click(function () {
+            //creamos el objeto que se le debe enviar al SP
+
+            //  var id = $('#dia_de_semana').val();
+            // var obs = $('#observaciones').val();
+
+            var encuesta = {
+                Id_R24h: 0,
+                Dia_semana: $("#dia_de_semana").val(),
+                Hora: $("#hora").val(),
+                Minuta: $("#minuta").val(),
+                Ingredientes: $("#ingredientes").val(),
+                Medidas_Caseras: $("#medidas_caseras").val(),
+                Cantidad_Gr_Ml_Total: $("#cantidad_gr_ml_total").val(),
+                Observaciones: $("#observaciones").val(),
+                Id_Ficha: $("#id_ficha").val()
+
+            }
+            console.log(encuesta);
+
+          //juntar datos que contiene el formulario (Trabaja con los name de los controles)
+           var formData = new FormData(document.getElementById("frmEncuestaR24h"));
+
+            $.ajax({
+                url: '@Url.Action("Create","EncuestaR24H")',
+                type: 'post',
+                data: encuesta,
+                contentType: false,
+                processData: false,
+                cache: false,
+                success: function () {
+                    alertify.success("Encuesta Creagada");
+
+                }
+
+            });
+        });
+
+    </script>
+}

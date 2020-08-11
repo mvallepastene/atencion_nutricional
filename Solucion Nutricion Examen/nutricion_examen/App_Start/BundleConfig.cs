@@ -52,7 +52,7 @@ namespace nutricion_examen
                       "~/Content/plugins/daterangepicker/daterangepicker.css",
                       "~/Content/plugins/summernote/summernote-bs4.css",
                       "~/Content/alertifyjs/css/alertify.css",
-                      "~/Content/css/Encuesta24h.css"));
+                      "~/Content/css/Estilos2.css"));
         }
     }
 }

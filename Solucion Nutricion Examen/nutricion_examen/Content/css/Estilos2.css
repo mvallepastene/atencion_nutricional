@@ -9,18 +9,20 @@ body {
 }
 
 .contenedor {
-    padding: 60px 0;
+    padding: 80px 0;
     width: 90%;
     max-width: 1000px;
     margin: auto;
     overflow: hidden;
+    border-bottom-style: solid;
+    border-bottom-color: #a19c9c;
+    border-bottom-width: 5px;
 }
 
 .titulo {
     color: #000000;
     font-size: 50px;
     text-align: center;
-    margin-bottom: 60px;
 }
 
 
@@ -54,17 +56,29 @@ nav {
     font-weight: 300;
 }
 
+.btn-a {
+    color: #000000;
+    font-weight: 300;
+    background-color: #dee2e6;
+    border: 1px solid #dee2e6;
+    text-align: center;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+
 /*header*/
 
 header {
     width: 100%;
-    height: 600px;
+    height: 500px;
     background-color: #bc4e9c;
     background: #56ab2f;
     /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, hsla(97, 62%, 47%, 0.3), hsla(93, 59%, 53%, 0.5)), url(../img/Portada5.jpg);
+    background: url(../img/Banner1.png);
     /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, hsla(97, 62%, 47%, 0.3), hsla(93, 59%, 53%, 0.5)), url('../img/Portada5.jpg');
+    background: url('../img/Banner1.png');
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background-size: cover;
     background-attachment: fixed;
@@ -72,25 +86,28 @@ header {
 }
 
 
-    header .text-header {
-        display: flex;
-        height: 430px;
-        width: 100%;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        text-align: center;
-    }
+header .text-header {
+    display: flex;
+    height: 430px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
 
 .text-header h1 {
     font-size: 70px;
-    color: #fff;
+}
+
+.azul-blanco {
+    color: #FFFFFF;
+    background-color: #12809285;
 }
 
 .text-header h2 {
     font-size: 30px;
     font-weight: 300;
-    color: #fff;
 }
 
 .wave {
@@ -107,7 +124,7 @@ header {
 .img-nosotros {
     width: 38%;
     border-radius: 50px;
-    margin-right: 25px;
+    margin-right:25px;
 }
 
 .nosotros .content-text {
@@ -138,37 +155,108 @@ header {
     text-align: justify;
 }
 
+
 /*Nuestros servicios*/
 
-.servicios {
-    background: #fff;
-    padding-bottom: 60px;
-}
-
-.servicio-cont {
+.post-list {
     display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 15px;
 }
 
-.servicio-ind {
-    width: 28%;
+.content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 60px;
+}
+
+.post-img-1 {
+    background: url('../img/atencionpresencial.jpg');
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    transition: .2s;
+}
+
+.post-img-2 {
+    background: url('../img/Auriculoterapia.jpg');
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    transition: .2s;
+}
+
+.post-img-3 {
+    background: url('../img/atenciononline.jpg');
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    transition: .2s;
+}
+
+.post {
+    box-shadow: 0 1px 6px 1px rgba(0, 0, 0, .1);
+    overflow: hidden;
+    transition: .2s;
+}
+
+    .post:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 1px 14px 2px rgba(0, 0, 0, .15);
+    }
+
+.post-header {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.post:hover .post-img-1,
+.post:hover .post-img-2,
+.post:hover .post-img-3{
+    transform: scale(1.1);
+}
+
+.post-body {
+    padding: 15px;
     text-align: center;
 }
 
-    .servicio-ind img {
-        width: 90%;
+    .post-body span {
+        display: inline-block;
+        color: #999;
+        margin-bottom: 10px;
     }
 
-    .servicio-ind h3 {
-        margin: 10px 0;
+    .post-body h2 {
+        margin-bottom: 15px;
     }
 
-    .servicio-ind p {
-        font-weight: 500;
-        text-align: justify;
+    .post-body p {
+        line-height: 1.5;
+        margin-bottom: 20px;
     }
 
+@media (max-width: 840px) {
+    .content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .content {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
 
 /*Recetas*/
 .recetas {
@@ -226,6 +314,13 @@ header {
 
 /*Footer*/
 
+.contenedor-c {
+    padding: 10px 0;
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+}
 .footer {
     background: #414141;
     padding: 60px 0 30px 0;
@@ -311,30 +406,32 @@ header {
 
 /*Fondo Quien Soy*/
 .fondo {
-    background-color: #e6eee3;
+    background-color: #78d7e617;
     background-position: center;
     background-size: cover;
 }
 
-/*Recetas*/
-.fondo_recetas {
-    background: url('../img/Banner.jpg');
-    height: 40vh;
-    background-position: center;
-    background-size: auto;
-}
 
+/*Bienvenido*/
 .bienvenido {
     position: relative;
-    max-width: 1264px;
+    max-width: 1100px;
     margin-right: auto;
     margin-left: auto;
-    padding-top: 48px;
-    padding-bottom: 48px;
-    background-color: blue;
+    padding-top: 3px;
+    padding-bottom: 80px;
 }
 
-.content-area {
+.content-area{
     padding-left: 32px;
     padding-right: 32px;
 }
+.entry-content {
+    max-width: 1000%;
+    margin: auto;
+    padding: 20px 0;
+    border-bottom-style: solid;
+    border-bottom-color: #a19c9c;
+    border-bottom-width: 5px;
+}
+

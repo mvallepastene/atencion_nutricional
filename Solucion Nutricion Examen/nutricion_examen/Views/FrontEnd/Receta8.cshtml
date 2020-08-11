@@ -1,0 +1,218 @@
+﻿
+@{
+    ViewBag.Title = "Receta8";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Nutri la Vida</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/Recetas.css" />
+    <link rel="shortcut icon" href="~/Content/img/broccoli2.png" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <!--Navbar-->
+        <div>
+            <nav class="navbar container-fluid navbar-inverse fixed-top" style="background-color: #26ae11;">
+                <a class="navbar-brand" href="@Url.Action("Index","FrontEnd")">Página principal</a>
+                <a href="#sobreNosotros">Acerca de mi</a>
+                <a href="#receta">Recetas Saludables</a>
+                <a href="#servicios">Servicios</a>
+                <a href="@Url.Action("Blog","FrontEnd")">Blog</a>
+                <a href="#footer">Contacto</a>
+                <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#modalagenda">
+                    Agendar Hora
+                </button>
+
+                <form class="form-inline">
+                    <a href="@Url.Action("Index","Home")" title="Administración"> <span><i class="fa fa-home"></i></span></a>
+                </form>
+            </nav>
+        </div>
+        <section class="text-header">
+            <h1 id='text-header'><span class="azul-blanco">Recetas</span></h1>
+        </section>
+    </header>
+    <main>
+        <div class="card card-1">
+            <div class="row no-gutters">
+                <div class="img-receta">
+                    <img src="~/Content/img/Receta8.jpg" class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h2 class="card-title">Mugcake de Chocolate</h2>
+                        <h4>Ingredientes</h4>
+                        <ul>
+                            <li>4 onzas de Chocolate negro</li>
+                            <li>16 cs de Harina</li>
+                            <li>20 cs de Azúcar blanco</li>
+                            <li>12 cs de Cacao en polvo</li>
+                            <li>4 ud de Huevos</li>
+                            <li>12 cs de Mantequilla</li>
+                            <li>1 pizca de Sal</li>
+                        </ul>
+                        <h4>Instrucciones</h4>
+                        <p class="card-text">
+                            - Para hacer este mug cake de chocolate, comenzaremos por derretir el chocolate troceado en un bowl
+                            junto con la mantequilla en el microondas. Lo hacemos poco a poco, calentando a intervalos de 30 segundos,
+                            y así, hasta que esté completamente derretido.
+                        </p>
+                        <p class="card-text">
+                            - Incorpora el azúcar al chocolate y una pizquita de sal y mueve bien con la ayuda de una cuchara o una
+                            espátula hasta que se haya disuelto completamente.
+                        </p>
+                        <p class="card-text">
+                            - Añade el huevo y mezcla de nuevo, removiendo bien hasta que esté todo integrado.
+                        </p>
+                        <p class="card-text">
+                            - Incorpora, por último, la harina y el cacao en polvo tamizados y remueve hasta integrar completamente.
+                        </p>
+                        <p class="card-text">
+                            - Reparte la mezcla en las tazas llenándolas hasta tres cuartos de su capacidad.
+                        </p>
+                        <p class="card-text">
+                            - Ve haciendo los mug cake de chocolate de uno en uno en el microondas
+                            (colocándolos en el exterior del plato giratorio, no en el centro), a máxima potencia, durante un minuto.
+                        </p>
+                        <p class="card-text">
+                            - Saca con cuidado de no quemarte y dejar enfriar unos minutos antes de comer.
+                            ¡A disfrutar de estos mug cake de chocolate!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="barra"></div>
+
+        <!-- Modal Agenda -->
+
+        <div class="modal fade" id="modalagenda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Agenda</h4>
+                        <form id="frmAgenda" class="form-normal" action="~/Agenda/Create" method="post">
+                            <div class="form-group">
+                                <label>Rut</label>
+                                <input type="text" id="rut" name="rut" class="form-control" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input type="text" id="nombre" name="nombre" class="form-control" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Apellido</label>
+                                <input type="text" id="apellido" name="apellido" class="form-control" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Fecha de Nacimiento</label>
+                                <input type="date" id="fechanac" name="fecha_nacimiento" class="form-control" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Número teléfono</label>
+                                <input type="text" id="telefono" name="numero_tel" class="form-control" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Fecha cita</label>
+                                <input type="date" id="fechcita" name="fecha_cita" class="form-control" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Hora cita</label>
+                                <input type="text" id="horacita" name="hora_cita" class="form-control" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" id="id_estado" name="id_estado" value="1" />
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <input type="submit" id="btnSave" class="btn-a btn-default" data-dismiss="modal" value="Agregar" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="footer">
+        <div class="contenedor-c">
+            <h2 class="titulo">Contacto</h2>
+        </div>
+        <div class="contenedor-footer">
+            <div class="content-foot">
+                <h4>Teléfono</h4>
+                <p>+562 2222222</p>
+            </div>
+            <div class="content-foot">
+                <h4>E-Mail</h4>
+                <p>contacto@nutrilavida.cl</p>
+            </div>
+            <div class="content-foot">
+                <h4>Ubicación</h4>
+                <p>Santiago, Región Metropolitana</p>
+            </div>
+        </div>
+        <h2 class="titulo-final"> &copy; 2020 - Todos los Derechos Reservados.</h2>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    @*<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>*@
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+<script type="text/javascript">
+
+    $('#btnSave').click(function(){
+        //creamos el Objeto Agenda
+        var agenda = {
+        Id_Agenda : 0,
+            Rut: $('#rut').val(),
+            Nombre : $('#nombre').val(),
+            Apellido:$('#apellido').val(),
+            Fecha_Nacimiento: $('#fechanac').val(),
+            Numero_Tel: $('#telefono').val(),
+            Email:$('#email').val(),
+            Fecha_Cita : $('#fechcita').val(),
+            Hora_Cita : $('#hora').val(),
+            Id_Estado : 1
+        }
+        console.log(agenda);
+    //utilizamos Ajax para enviar el objeto al controlador que crea la Agenda
+
+        $.ajax({
+        url:'@Url.Action("Create","Agenda")',
+        method:'post',
+        data:agenda,
+
+            success: function (r) {
+                console.log(r.res);
+         if(r.res == 1){
+          alert("Agenda Creagada")
+        }
+        }
+        });
+
+
+    });
+
+</script>
+

@@ -1,0 +1,185 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand';
+}
+.contenedor {
+    padding: 50px 0;
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+    border-bottom-style: solid;
+    border-bottom-color: #a19c9c;
+    border-bottom-width: 5px;
+}
+
+/*navbar*/
+.navbar {
+    border-bottom-style: solid;
+    border-bottom-color: #a19c9c;
+    border-bottom-width: 5px;
+}
+
+nav {
+    text-align: right;
+    padding: 30px 50px 0 0;
+    color: #fff;
+}
+
+    nav > a {
+        color: #fff;
+        font-weight: 300;
+        text-decoration: none;
+        margin-right: 10px;
+    }
+
+        nav > a:hover {
+            text-decoration: underline;
+        }
+
+/*AGENDA */
+.btn {
+    color: #fff;
+    font-weight: 300;
+}
+
+/*header*/
+header {
+    width: 100%;
+    height: 350px;
+    /* fallback for old browsers */
+    background: url('../img/Banner1.png');
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: url('../img/Banner1.png');
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: inherit;
+}
+
+.card-1 {
+    position: relative;
+    max-width: 1200px;
+    margin-right: 35px;
+    margin-left: 35px;
+    margin-top: 40px;
+    margin-bottom:100px;
+    display: flex;
+    border-color:#fff;
+}
+
+.img-receta {
+    width: 30%;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+   
+}
+
+.card-img {
+    width: 100%;
+    height: 300px;
+    margin-top:125px;
+    margin-left: 5px;
+}
+
+
+.card-title {
+    text-align: center;
+    margin-bottom: 50px;
+    border-bottom: 3px solid #26ae11;
+}
+  
+li {
+    display: list-item;
+    margin-left: 15px;
+}
+
+
+header .text-header {
+    display: flex;
+    height: 230px;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+    text-align: center;
+}
+
+.text-header h1 {
+    font-size: 60px;
+    font-family: 'avenirNextrRegular',Helvetica,Arial,Lucida,sans-serif;
+    padding-bottom: 25px;
+    line-height: 1em;
+    font-weight: 500;
+}
+
+.azul-blanco {
+    color: #FFFFFF;
+    background-color: #12809285;
+}
+
+
+/*Footer*/
+.contenedor-c {
+    padding: 10px 0;
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+    margin-top: 5px;
+}
+.titulo {
+    color: #000000;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.footer {
+    background: #414141;
+    padding: 60px 0 30px 0;
+    margin: auto;
+    overflow: hidden;
+}
+.contenedor-footer {
+    display: flex;
+    width: 90%;
+    justify-content: space-evenly;
+    margin: auto;
+    padding-bottom: 50px;
+    border-bottom: 1px solid #ccc;
+}
+.content-foot {
+    text-align: center;
+}
+
+    .content-foot h4 {
+        color: black;
+        border-bottom: 3px solid #26ae11;
+        padding-bottom: 10px;
+    }
+
+    .content-foot p {
+        color: black;
+    }
+.titulo-final {
+    text-align: center;
+    font-size: 24px;
+    margin: 20px 20px 0 0;
+    color: black;
+}
+
+.barra {
+    border-bottom-style: solid;
+    border-bottom-color: #a19c9c;
+    border-bottom-width: 5px;
+    max-width: 1200px;
+    padding: 30px 0;
+    margin: auto;
+}

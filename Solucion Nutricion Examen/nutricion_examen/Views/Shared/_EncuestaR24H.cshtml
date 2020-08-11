@@ -1,4 +1,4 @@
-﻿@*@model nutricion_examen.Models.EncuestaR24H*@
+﻿
 
 <div class="col-md-12 col-sm-6">
     <div class="card card-warning">
@@ -6,78 +6,79 @@
             <h3 class="card-title">Generar Encuesta 24 Horas</h3>
         </div>
         <div class="card-body">
-            <form>
+            <form class="form-normal" id="frmEncuestaR24h" action="~/EncuestaR24H/Create" method="post">
                 <div class="form-row">
                     <div class="form-group col-md-2">
-                        <input type="hidden" id="id_r24h" value="" />
+                        <input type="hidden" id="id_r24h" value="id_r24h" />
                         <label>Hora</label>
-                        <input type="text" class="form-control" id="" value="" placeholder="Ej: 10:00">
+                        <input type="text" class="form-control" id="hora" name="Hora" placeholder="Ej: 10:00">
                     </div>
                     <div class="form-group col-md-2">
                         <label>Minuta</label>
-                        <input type="text" class="form-control" id="" value="" placeholder="Ej: Pollo con arroz">
+                        <input type="text" class="form-control" id="minuta" name="Minuta" placeholder="Ej: Pollo con arroz">
                     </div>
                     <div class="form-group col-md-2">
                         <label>Ingredientes</label>
-                        <input type="text" class="form-control" id="" value="" placeholder="">
+                        <input type="text" class="form-control" id="ingredientes" name="Ingredientes" placeholder="">
                     </div>
                     <div class="form-group col-md-2">
                         <label>Medidas Caseras</label>
-                        <input type="text" class="form-control" id="" value="" placeholder="Ej: 1 taza">
+                        <input type="text" class="form-control" id="medidas_caseras" name="Medidas_Caseras" placeholder="Ej: 1 taza">
                     </div>
                     <div class="form-group col-md-2">
                         <label>Cantidad</label>
-                        <input type="text" class="form-control" id="" value="" placeholder="gr/ml">
+                        <input type="text" class="form-control" id="cantidad_gr_ml_total" name="Cantidad_Gr_Ml_Total" placeholder="gr/ml">
                     </div>
                     <div class="form-group col-md-2">
                         <label>Observaciones</label>
                         <textarea>Ingrese texto... </textarea>
                     </div>
-                    <div class="form-group col-md-2">                        
+
+                    <div class="form-group col-md-2">
                         <input hidden type="text" class="form-control" id="" value="" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" id="id_ficha" name="Id_Ficha" value="1" />
                     </div>
                 </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label>Día de Semana</label>
-                            <select class="form-control" id="Dia_de_semana" name="dia_de_semna">
-                                <option value="">Selecciona un Día</option>
-                                <option value="">Lunes</option>
-                                <option value="">Martes</option>
-                                <option value="">Miercoles</option>
-                                <option value="">Jueves</option>
-                                <option value="">Viernes</option>
-                                <option value="">Sabado</option>
-                                <option value="">Domingo</option>
-                            </select>
-                        </div>
-                        <table class=" table">
-                            <tr>
-                                <th hidden>Id_R24H</th>
-                                <th>Hora</th>
-                                <th>Minuta</th>
-                                <th>Ingredientes</th>
-                                <th>Medidas Caseras</th>
-                                <th>Cantidad</th>
-                                <th>Observaciones</th>
-                                <th hidden>Id_Ficha</th>
-                            </tr>
-                        </table>
-
-                        <div class="form-group">
-                            <span class="btn btn-primary" id="btnAgregar"><i class="fas fa-plus"></i>Agregar</span>
-                        </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label>Día de Semana</label>
+                        <select class="form-control" id="Dia_de_semana" name="Dia_Semana">
+                            <option value="">Selecciona un Día</option>
+                            <option value="">Lunes</option>
+                            <option value="">Martes</option>
+                            <option value="">Miercoles</option>
+                            <option value="">Jueves</option>
+                            <option value="">Viernes</option>
+                            <option value="">Sabado</option>
+                            <option value="">Domingo</option>
+                        </select>
                     </div>
+                    <table class=" table">
+                        <tr>
+                            <th hidden>Id_R24H</th>
+                            <th>Hora</th>
+                            <th>Minuta</th>
+                            <th>Ingredientes</th>
+                            <th>Medidas Caseras</th>
+                            <th>Cantidad</th>
+                            <th>Observaciones</th>
+                            <th hidden>Id_Ficha</th>
+                        </tr>
+                    </table>
+
+                    <div class="form-group">
+                        <span type="button" class="btn btn-primary" id="btnAgregar"><i class="fas fa-plus"></i>Agregar</span>
+                    </div>
+                </div>
 
             </form>
         </div>
 
     </div>
 </div>
-
-
-
 
 
 
@@ -91,7 +92,7 @@
         });
         function cargarSelect() {
             $.ajax({
-                url: '@Url.Action("ListaDiaSemana", "EncuestaR24H")',
+                url: '@Url.Action("ListaFicha", "EncuestaR24H")',
                 type: 'get',
                 dataType: 'json',
                 success: function (data) {
@@ -106,36 +107,40 @@
 
         }
 
-       $('#btnGrabar').click(function () { //llave apertura
+        /*
+        evento click del boton guardar
+        */
+        $('#btnGrabar').click(function () {
             //creamos el objeto que se le debe enviar al SP
 
-           var id = $('#dia_de_semana').val();
-           var obs = $('#observaciones').val();
+         //  var id = $('#dia_de_semana').val();
+          // var obs = $('#observaciones').val();
 
             var encuesta = {
+                Id_R24h: 0,
                 Dia_semana: $("#dia_de_semana").val(),
                 Hora: $("#hora").val(),
                 Minuta: $("#minuta").val(),
                 Ingredientes: $("#ingredientes").val(),
                 Medidas_Caseras: $("#medidas_caseras").val(),
                 Cantidad_Gr_Ml_Total: $("#cantidad_gr_ml_total").val(),
+                Observaciones: $("#observaciones").val(),
                 Id_Ficha: $("#id_ficha").val()
 
             }
-
+            console.log(encuesta);
+           
+             //utilizamos Ajax para enviar el objeto al controlador que crea la Agenda
             $.ajax({
                 url: '@Url.Action("_EncuestaR24H","EncuestaR24H")',
-                method: 'post',
+                type: 'post',
                 data: encuesta,
                 success: function (r) {
-                    if (r != null) {
-                        alertify.success("Encuesta creada");
-                    } else {
-                        alertify.error("Ha Ocurrido un Error")
-                    }
+                    console.log(r.res);
+                    if (r.res == 1) {
+                        alert("Encuesta Creagada")
 
                 }
-
 
             });
         });

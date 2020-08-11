@@ -1,0 +1,212 @@
+﻿
+@{
+    ViewBag.Title = "Posts4";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Nutri la Vida</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/Posts.css" />
+    <link rel="shortcut icon" href="~/Content/img/broccoli2.png" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <!--Navbar-->
+    <header>
+        <div>
+            <nav class="navbar container-fluid navbar-inverse fixed-top" style="background-color: #26ae11;">
+                <a class="navbar-brand" href="@Url.Action("Index","FrontEnd")">Página principal</a>
+                <a href="@Url.Action("Quien_soy","FrontEnd")">Acerca de mi</a>
+                <a href="#">Recetas Saludables</a>
+                <a href="#servicios">Servicios</a>
+                <a href="@Url.Action("Blog","FrontEnd")">Blog</a>
+                <a href="#footer">Contacto</a>
+                <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#modalagenda">
+                    Agendar Hora
+                </button>
+
+                <form class="form-inline">
+                    <a href="@Url.Action("Index","Home")" title="Administración"> <span><i class="fa fa-home"></i></span></a>
+                </form>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="titulo-post">
+            <h1>Vamos a retomar el estilo de vida saludable</h1>
+        </div>
+        <section class="post-content" id="post-content">
+            <div class="content">
+                <article class="post">
+                    <div class="post-header">
+                        <div class="post-img-4"></div>
+                    </div>
+                    <div class="post-body">
+                        <span>by Verónica Cardozo | 15 Junio, 2020 | Tips</span>
+                        <p>
+                            Hacer una resolución de tener un año nuevo fit es un gran primer paso en la dirección correcta. No es difícil organizar y tomar la decisión de regresar
+                            a la vida fit. Si sigues leyendo esto es porque verdaderamente te interesa, así que aquí tienes algunos consejos.
+                        </p>
+                        <p>
+                            Enfócate: si sabes lo que quieres, harás lo necesario para cumplir tu propósito. Lo ideal es que te pongas metas a corto plazo. A veces el fracaso viene 
+                            por tratar de abarcar mucho en poco tiempo. El progreso es paulatino, esto quiere decir que un día puedes empezar a modificar tus comidas para ir acostumbrándote
+                            a la dieta que estableciste para tu meta; otro día puedes empezar a ejercitarte, bien sea en un gimnasio o trotando por tu urbanización o hasta en casa con videos
+                            de rutinas en YouTube. Lo importante es que sepas que en el primer día no puedes abarcar alimentación y entrenamiento, al principio cuesta un poco.
+                        </p>
+                        <p>
+                            Organiza tus comidas: toma el tiempo para realizar tus comidas del día sin olvidar nada, planifícate con un menú, asegúrate de que estás cumpliendo con todos los
+                            requerimientos nutricionales en cada comida. Puedes empezar por comprar envases prácticos para guardar cada comida y así solo debes calentar al momento de comer. 
+                            También esto te sirve para llevar todo lo necesario contigo, tus meriendas y comidas a la oficina, escuela, universidad, etc.
+                        </p>
+                        <p>
+                            Prioriza las tareas del día y distribúyelas para cumplir con todas: a mí me funciona muy bien que apenas abro los ojos por la mañana me enfoco en hacer ejercicio,
+                            así empiezo el día con energía y prácticamente “me olvido” de entrenar durante el resto de la jornada. Párate una media hora antes cada día para que te puedas 
+                            organizar, parece poco, pero la diferencia es enorme.
+                        </p>
+                        <p>
+                            Anímate, este estilo de vida es muy beneficioso para tu salud y tu estado emocional en general.
+                        </p>
+                        <p>
+                            Notarás como tu vida empezará a cambiar!
+                        </p>
+                    </div>
+                    <div class="button-combeback-posts">
+                        <a href="@Url.Action("Blog", "FrontEnd")" class="btn-single-page">VOLVER AL BLOG</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Modal Agenda -->
+
+        <div class="modal fade" id="modalagenda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Agenda</h4>
+                        <form id="frmAgenda" class="form-normal" action="~/Agenda/Create" method="post">
+                            <div class="form-group">
+                                <label>Rut</label>
+                                <input type="text" id="rut" name="rut" class="form-control" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input type="text" id="nombre" name="nombre" class="form-control" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Apellido</label>
+                                <input type="text" id="apellido" name="apellido" class="form-control" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Fecha de Nacimiento</label>
+                                <input type="date" id="fechanac" name="fecha_nacimiento" class="form-control" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Número teléfono</label>
+                                <input type="text" id="telefono" name="numero_tel" class="form-control" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Fecha cita</label>
+                                <input type="date" id="fechcita" name="fecha_cita" class="form-control" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Hora cita</label>
+                                <input type="text" id="horacita" name="hora_cita" class="form-control" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" id="id_estado" name="id_estado" value="1" />
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <input type="submit" id="btnSave" class="btn-a btn-default" data-dismiss="modal" value="Agregar" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="footer">
+        <div class="contenedor-c">
+            <h2 class="titulo">Contacto</h2>
+        </div>
+        <div class="contenedor-footer">
+            <div class="content-foot">
+                <h4>Teléfono</h4>
+                <p>+562 2222222</p>
+            </div>
+            <div class="content-foot">
+                <h4>E-Mail</h4>
+                <p>contacto@nutrilavida.cl</p>
+            </div>
+            <div class="content-foot">
+                <h4>Ubicación</h4>
+                <p>Santiago, Región Metropolitana</p>
+            </div>
+        </div>
+        <h2 class="titulo-final"> &copy; 2020 - Todos los Derechos Reservados.</h2>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    @*<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>*@
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+<script type="text/javascript">
+
+    $('#btnSave').click(function(){
+        //creamos el Objeto Agenda
+        var agenda = {
+        Id_Agenda : 0,
+            Rut: $('#rut').val(),
+            Nombre : $('#nombre').val(),
+            Apellido:$('#apellido').val(),
+            Fecha_Nacimiento: $('#fechanac').val(),
+            Numero_Tel: $('#telefono').val(),
+            Email:$('#email').val(),
+            Fecha_Cita : $('#fechcita').val(),
+            Hora_Cita : $('#hora').val(),
+            Id_Estado : 1
+        }
+        console.log(agenda);
+    //utilizamos Ajax para enviar el objeto al controlador que crea la Agenda
+
+        $.ajax({
+        url:'@Url.Action("Create","Agenda")',
+        method:'post',
+        data:agenda,
+
+            success: function (r) {
+                console.log(r.res);
+         if(r.res == 1){
+          alert("Agenda Creagada")
+        }
+        }
+        });
+
+
+    });
+
+</script>
+
+
