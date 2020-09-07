@@ -25,11 +25,10 @@
             <table class="table table-hover text-nowrap">
                 <thead>
                     <tr>
+                        
                         <th>Rut</th>
                         <th>Nombre</th>
-
                         <th>Fecha de Nacimiento</th>
-
                         <th>Fecha Cita</th>
                         <th>Hora Cita</th>
                         <th>Estado</th>
@@ -40,10 +39,11 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.Id_Agenda</td>
+                            
+                            <td>@item.Rut</td>
                             <td>@item.Nombre @item.Apellido</td>
-                            <td>@item.Fecha_Nacimiento.ToString("dd-MM-yyyy")</td>
-                            <td>@item.Fecha_Cita.ToString("dd/MM/yyyy")</td>
+                            <td>@item.Fecha_Nacimiento.ToString("dd-mm-yyyy")</td>
+                            <td>@item.Fecha_Cita.ToString("dd/mm/yyyy")</td>
                             <td>@item.Hora_Cita</td>
                             @if (@item.Id_Estado == 1)
                             {

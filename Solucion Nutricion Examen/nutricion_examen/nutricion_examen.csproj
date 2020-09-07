@@ -172,6 +172,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\Blog.css" />
+    <Content Include="Content\css\bootstrap-datepicker.css" />
+    <Content Include="Content\css\bootstrap-datepicker.min.css" />
     <Content Include="Content\css\Estilos.css" />
     <Content Include="Content\css\Estilos2.css" />
     <Content Include="Content\css\Posts.css" />
@@ -270,6 +272,9 @@
     <Content Include="Content\img\Receta7.jpg" />
     <Content Include="Content\img\Receta8.jpg" />
     <Content Include="Content\img\vector-apple-icon.jpg" />
+    <Content Include="Content\js\bootstrap-datepicker.es.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker.js" />
+    <Content Include="Content\js\bootstrap-datepicker.min.js" />
     <Content Include="Content\pages\calendar.html" />
     <Content Include="Content\pages\charts\chartjs.html" />
     <Content Include="Content\pages\charts\flot.html" />
@@ -1165,6 +1170,8 @@
     <Content Include="Content\plugins\jquery-mapael\maps\world_countries_miller.min.js" />
     <Content Include="Content\plugins\jquery-mousewheel\jquery.mousewheel.js" />
     <Content Include="Content\plugins\jquery-mousewheel\LICENSE.txt" />
+    <Content Include="Content\plugins\jquery-timepicker\jquery.timepicker.min.css" />
+    <Content Include="Content\plugins\jquery-timepicker\jquery.timepicker.min.js" />
     <Content Include="Content\plugins\jquery-ui\AUTHORS.txt" />
     <Content Include="Content\plugins\jquery-ui\external\jquery\jquery.js" />
     <Content Include="Content\plugins\jquery-ui\images\ui-icons_444444_256x240.png" />
@@ -2036,6 +2043,7 @@
     <Content Include="Content\plugins\summernote\summernote.min.js.map" />
     <Content Include="Content\plugins\sweetalert2-theme-bootstrap-4\bootstrap-4.scss" />
     <Content Include="Content\plugins\toastr\toastr.js.map" />
+    <Content Include="Content\css\bootstrap-datepicker.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
