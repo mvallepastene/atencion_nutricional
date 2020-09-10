@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Profile;
@@ -8,7 +9,7 @@ namespace nutricion_examen.Models
 {
     public class Nutricionista
     {
-        public int Id_Nutricionista { get; set; }
+        public int Id_Nutricionista { get; set; }       
         public string Rut { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }

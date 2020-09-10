@@ -45,7 +45,7 @@
                             <td>@item.Fecha_Nacimiento.ToString("dd-MM-yyyy")</td>
                             <td>@item.Fecha_Cita.ToString("dd/MM/yyyy")</td>
                             <td>@item.Hora_Cita</td>
-                            @if (@item.Id_Estado == 1)
+                            @if (@item.Id_Estado == 4)
                             {
                                 <td>Activo</td>
                             }
@@ -176,16 +176,21 @@
                         $("#fec_nac").val(a.Fecha_Nacimiento);
                         $("#num_tel").val(a.Numero_Tel);
                         $("#email").val(a.Email);
-                        $("#fec_cita").val(a.Fecha_Cita);
+                        $("#fec_cita").val(a.Fecha_Cita);                        
                         $("#hora_cita").val(a.Hora_Cita);
-                        if (a.Id_Estado == 1) 
+                        if (a.Id_Estado == 4) 
                             $("#estado").val("Activo");
                         else
                             $("#estado").val("Sin Estado");
-                        $('#id').val(a.Id_Agenda);
+                        $('#id').val(a.Id_Agenda); 
+                        
                     });
-                }
+
+                    
+                }                 
+
             });
+
         }
 
     </script>

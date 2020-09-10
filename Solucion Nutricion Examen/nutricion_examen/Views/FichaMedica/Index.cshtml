@@ -1,7 +1,59 @@
-﻿
+﻿@model IEnumerable<nutricion_examen.Models.Ficha_Medica_Paciente>
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Lista de Fichas</h3>
+
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                    <thead>
+                        <tr align="center">
+                            <th>Id Ficha</th>
+                            <th>Diagnostico</th>
+                            <th>Fecha de Creación</th>
+                            <th>Próximo Control</th>
+                            <th>Nutricionista</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr align="center">
+                            <td>@item.Id_Ficha</td>
+                            <td>@item.Diagnostico</td>
+                            <td><span class="tag tag-success">@item.Fecha_Creacion.ToString("dd-MM-yyyy")</span></td>
+                            <td><span class="tag tag-success">@item.Prox_Control.ToString("dd-MM-yyyy")</span></td>
+                            <td>@item.Nombre_Nutri</td>
+                            <td>
+
+                                <form action="@Url.Action("Create","FichaMedica")" method="get">
+                                    <input type="hidden" id="id" name="id" value="@item.Id_Ficha" />
+                                    
+                                </form>
+                            </td>
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
 

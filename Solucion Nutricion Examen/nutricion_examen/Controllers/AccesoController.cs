@@ -49,6 +49,7 @@ namespace nutricion_examen.Controllers
             }
         }
 
+        //metodo que elimina los nutricionistas para asociarlos al acceso.
         [HttpPost]
         public ActionResult Delete(int id)
         {
@@ -66,6 +67,24 @@ namespace nutricion_examen.Controllers
             var result = DapperORM.ReturnList<Nutricionista>("sp_traer_nutri").ToList();
 
             return Json(new { res = result }, JsonRequestBehavior.AllowGet);
+        }
+
+        //action que retorna el Id del usuario logueado
+        [HttpPost]
+        public ActionResult ReturnIdUsuario(string nombreUsr)
+        {
+            try
+            {
+                DynamicParameters param = new DynamicParameters();
+                param.Add("@nomUsr", nombreUsr);
+                var id = DapperORM.ReturnList<int>("returnIdUser",param).ToList();
+                return Json(new { res = id }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                return Json(new { res = error }, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }

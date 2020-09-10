@@ -102,26 +102,27 @@ namespace nutricion_examen.Controllers
             }
         }
 
-        // GET: Nutricionista/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+
+        //metodo que elimina nutricionista
 
         // POST: Nutricionista/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id)
         {
             try
             {
-                // TODO: Add delete logic here
+                DynamicParameters param = new DynamicParameters();
+                param.Add("@id", id);
+                int result = DapperORM.ExecuteReturnScalar<Nutricionista>("sp_deleteNutri", param);
 
-                return RedirectToAction("Index");
+                return Json(new { res = result }, JsonRequestBehavior.AllowGet);
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                string error = ex.Message;
+                return Json(new { res = error }, JsonRequestBehavior.AllowGet);
             }
+           
         }
     }
       

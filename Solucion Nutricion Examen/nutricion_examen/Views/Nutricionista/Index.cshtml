@@ -3,7 +3,7 @@
 
 <div class="col-12">
     <div>
-        <a href="@Url.Action("Create","Nutricionista")" class="btn btn-default"><i></i>Nuevo Nutricionista</a>
+        <a href="@Url.Action("Create","Nutricionista")" class="btn btn-default"><i></i>Crear Nutricionista</a>
     </div>
     <div class="card">
         <div class="card-header">
@@ -47,8 +47,8 @@
                             <td>@item.Especialidad</td>
 
                             <td>
-                                <span class="btn btn-warning" id="btnEdit" title="Edit" data-toggle="modal" data-target="#modal-default" onclick="traerNutricionista(@item.Id_Nutricionista)"><i class="fas fa-pen"></i></span> |
-                                <span class="btn btn-danger" title="Delete"><i class="fas fa-trash-alt"></i></span>
+                                <span class="btn btn-warning" id="btnEdit" title="Edit" data-toggle="modal" data-target="#modal-default" onclick="traerNutricionista(@item.Id_Nutricionista)"><i class="fas fa-pen"></i></span> 
+                                <span class="btn btn-danger" id="btnDelete" title="Delete" onclick="deleteNutri(@item.Id_Nutricionista)"><i class="fas fa-trash"></i></span>
                             </td>
                         </tr>
                     }
@@ -79,7 +79,7 @@
                         <div class="form-group mb-3">
                             <input type="hidden" id="idNutriU"/>
                             <label>Rut</label>
-                            <input type="text" id="rutU" name="rut" class="form-control" placeholder="">
+                            <input type="text" id="rutU" name="rut" class="form-control" placeholder="Ej: 123456789">
                         </div>
                         </div>
                         <div class="col-sm-4">
@@ -102,14 +102,14 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label>Edad</label>
-                            <input type="text" id="edadU" name="edad" class="form-control" placeholder="Enter ...">
+                            <input type="text" id="edadU" name="edad" class="form-control" placeholder="Ej: 30">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label>Fecha de Nacimiento:</label>
+                            <label>Fecha de Nacimiento</label>
                             <div class="input-group date" id="reservationdate" data-target-input="nearest">
                                 <input type="date" id="fechNacU" name="fecha_nacimiento" class="form-control datetimepicker-input" data-target="#reservationdate" />
 
@@ -120,7 +120,7 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label>Numero de Teléfono</label>
-                            <input type="text" id="telefonoU" name="numero_tel" class="form-control" placeholder="" />
+                            <input type="text" id="telefonoU" name="numero_tel" class="form-control" placeholder="ej:56912345678" />
                         </div>
                     </div>
                 </div>
@@ -135,7 +135,7 @@
                                         <i class="fa fa-envelope"></i>
                                     </span>
                                 </div>
-                                <input type="email" class="form-control" id="emailU" name="email" placeholder="" />
+                                <input type="email" class="form-control" id="emailU" name="email" placeholder="Ej:ej@ej.cl" />
                             </div>
 
                         </div>
@@ -194,7 +194,7 @@
         $('#btnSave').click(function (e) {
             e.preventDefault();
         });
-       
+
         //funcion ejecutada desde el evento onclick del boton btnSave
         function updateNutricionista() {
 
@@ -222,6 +222,31 @@
                     }
                 }
             });
+
+
         }
+
+        //funcion que elimina nutricionista
+
+            function deleteNutri(id) {
+                //console.log(id);
+            $.ajax({
+                url: '@Url.Action("Delete", "Nutricionista")',
+                type: 'post',
+                data: 'id=' + id,
+                success: function (r) {
+                    if (r.res == 1) {
+                        location.reload();
+                        alert("Nutricionista Eliminado");
+                        
+                    } else {
+                        console.log(r.res)
+                    }
+                }
+
+            });
+
+            }
+
     </script>
 }

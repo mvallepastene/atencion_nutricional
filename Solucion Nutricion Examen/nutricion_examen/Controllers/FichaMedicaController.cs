@@ -13,7 +13,7 @@ namespace nutricion_examen.Controllers
         // GET: FichaMedica
         public ActionResult Index()
         {
-            return View();
+            return View(DapperORM.ReturnList<Ficha_Medica_Paciente>("sp_returnAllFichas").ToList());
         }
 
         // GET: FichaMedica/Details/5
@@ -139,6 +139,13 @@ namespace nutricion_examen.Controllers
             var result = DapperORM.ReturnList<Ficha_Medica_Paciente>("sp_returnAllFichas").FirstOrDefault<Ficha_Medica_Paciente>();
 
             return Json(new { res = result }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult ListaFicha()
+        {
+            var result = DapperORM.ReturnList<Ficha_Medica_Paciente>("sp_returnAllFichas");
+            return Json(new { data = result }, JsonRequestBehavior.AllowGet);
         }
     }
 }

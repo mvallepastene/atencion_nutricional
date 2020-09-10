@@ -207,6 +207,8 @@
                             <input type="text" class="form-control" id="fech_creacion" disabled>
                         </div>
                         <div class="form-group col-md-4">
+                            <input type="hidden" id="usuario" value="@User.Identity.Name" />
+                            <input type="hidden" id="idUser" />
                             <label>Nombre Nutricionista</label>
                             <input type="text" class="form-control" id="nutricionista" disabled>
                         </div>
@@ -236,10 +238,14 @@
     <script type="text/javascript">
         //$("#btnSave").click(function (e) {
         $('#panelEncuesta').hide();
+        recuperaIdUsuario($('#usuario').val());
+
+            console.log($('#usuario').val());
         //    e.preventDefault();
         //});
         $(document).ready(function () {
             //cargarItems(34);
+
         });
         $('#btnSave').click(function () { //llave apertura
             //creamos el objeto que se le debe enviar al SP
@@ -264,7 +270,7 @@
                 Amdr_Lip: $("#amdr_lipi").val(),
                 Id_Paciente: id,
                 Peso_Requerido: $("#peso_req").val(),
-                Id_Nutricionista: '4'
+                Id_Nutricionista: $('#idUser').val()
 
             }
 
@@ -282,7 +288,7 @@
                         alertify.error("Ha Ocurrido un Error: " + r.res);
                         console.log(r.res);
                     }
-                       
+
 
                 }
 
@@ -350,7 +356,7 @@
                 e.preventDefault();
             });
             //creamos el objeto que se le debe enviar al SP
-           
+
                 var encuesta = {
                 Dia_De_Semana: $("#dia_semana").val(),
                 Hora: $("#hora").val(),
@@ -473,6 +479,26 @@
 
         function editarItem(id) {
             console.log(id);
+        }
+
+        //funcion que recupera el id del usuario
+        function recuperaIdUsuario(nombreUsr) {
+
+            $.ajax({
+                url: '@Url.Action("ReturnIdUsuario", "Acceso")',
+                data: 'nombreUsr=' + nombreUsr,
+                method: 'post',
+                success: function (r) {
+                    var aux = jQuery.parseJSON(r.res);
+                    //console.log(aux);
+                    if (aux != 0) {
+                        $('#idUser').val(aux);
+                    } else {
+                        alertify.error('Ha Ocurrido un error: ' + r.res);
+                        console.log(r.res);
+                    }
+                }
+            });
         }
 
 

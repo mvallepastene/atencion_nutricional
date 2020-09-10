@@ -24,30 +24,29 @@
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="~/Home/Index" class="nav-link">Home</a>
                 </li>
-                
+
             </ul>
 
-            <!-- SEARCH FORM -->
-            <form class="form-inline ml-3">
-                <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                    <div class="input-group-append">
-                        <button class="btn btn-navbar" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-
+            <!-- SEARCH FORM
+    <form class="form-inline ml-3">
+        <div class="input-group input-group-sm">
+            <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+            <div class="input-group-append">
+                <button class="btn btn-navbar" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </form>-->
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- Messages Dropdown Menu -->
                 @if (User.Identity.IsAuthenticated)
-                    {
-                        <li><a href="~/Home/LogOut" title="Cerrar Sesión" class="nav-link"><i class="fas fa-power-off mr-auto" style="font-size:2rem;"></i></a></li>
-                    }
-                
-                
+                {
+                    <li><a href="~/Home/LogOut" title="Cerrar Sesión" class="nav-link"><i class="fas fa-power-off mr-auto" style="font-size:2rem;"></i></a></li>
+                }
+
+
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -91,29 +90,7 @@
                             </a>
 
                         </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>
-                                    Pacientes
-                                    <i class="fas fa-angle-left right"></i>
-                                    <!--<span class="badge badge-info right">6</span>-->
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="@Url.Action("Index","Paciente")" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Lista de Pacientes</p>
-                                    </a>
-                                    @*<a href="@Url.Action("create","Paciente")" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Crear Pacientes</p>
-                                    </a>*@
-                                </li>
 
-                            </ul>
-                        </li>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-copy"></i>
@@ -131,6 +108,30 @@
                                     </a>
                                 </li>
 
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Pacientes
+                                    <i class="fas fa-angle-left right"></i>
+                                    <!--<span class="badge badge-info right">6</span>-->
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="@Url.Action("Index","Paciente")" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Lista de Pacientes</p>
+                                    </a>
+                                    @*<a href="@Url.Action("create","Paciente")" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Crear Pacientes</p>
+                    </a>*@
+                                </li>
 
                             </ul>
                         </li>
@@ -201,6 +202,7 @@
 
                             </ul>
                         </li>
+                    </ul>
 
 </nav>
                 <!-- /.sidebar-menu -->
