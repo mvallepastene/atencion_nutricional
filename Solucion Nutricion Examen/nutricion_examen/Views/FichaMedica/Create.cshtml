@@ -465,6 +465,15 @@
             console.log(id);
         }
 
+        //Calculos automaticos
+
+        //IMC
+        $('#talla').blur(function () {
+            
+            //console.log(($('#peso').val() / ($('#talla').val() * $('#talla').val())));
+            $('#imc').val(($('#peso').val()/($('#talla').val() * $('#talla').val())));
+        });
+
 
     </script>
 }
