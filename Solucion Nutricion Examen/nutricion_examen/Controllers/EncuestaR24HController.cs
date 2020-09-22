@@ -119,7 +119,7 @@ namespace nutricion_examen.Controllers
        [HttpGet]
        public ActionResult ListaFicha()
        {
-            var result = DapperORM.ReturnList<Ficha_Medica_Paciente>("sp_traerInfoFichaByIdPaciente"); //**FALTA AGREGAR EL NOMBRE CORRECTO DEL PROCEDIMIENTO DE TRAER FICHA PACIENTE**/
+            var result = DapperORM.ReturnList<Ficha_Medica_Paciente>("sp_traerInfoFichaByIdPaciente");
             return Json(new { data = result }, JsonRequestBehavior.AllowGet);
         }
 

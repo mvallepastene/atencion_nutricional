@@ -222,8 +222,12 @@
 
 
         </div>
-        @Html.Partial("_EncuestaR24H");
-
+        
+        <div class="panel panel-default">
+            <div class="panel-body" id="panelEncuesta">
+                @Html.Partial("_EncuestaR24H");
+            </div>
+        </div>
     </div>
 
 
@@ -231,10 +235,11 @@
 @section scripts{
     <script type="text/javascript">
         //$("#btnSave").click(function (e) {
+        $('#panelEncuesta').hide();
         //    e.preventDefault();
         //});
         $(document).ready(function () {
-            cargarItems(77);
+            //cargarItems(34);
         });
         $('#btnSave').click(function () { //llave apertura
             //creamos el objeto que se le debe enviar al SP
@@ -269,10 +274,15 @@
                 data: fmp,
                 success: function (r) {
 
-
+                    if (r.res == 1) {
                         //llamamos a la funcion que retorna los calculos
-                       return_Calculos(id);
-
+                        return_Calculos(id);
+                        $('#panelEncuesta').show();
+                    } else {
+                        alertify.error("Ha Ocurrido un Error: " + r.res);
+                        console.log(r.res);
+                    }
+                       
 
                 }
 
@@ -349,7 +359,7 @@
                 Medidas_Caseras: $("#medidas_caseras").val(),
                 Cantidad_Gr_Ml_Total: $("#cantidad").val(),
                 Observaciones: $('#observacion').val(),
-                Id_Ficha:34// $("#id_ficha").val()
+                Id_Ficha:$("#id_ficha").val()
 
            }
            console.log(encuesta);
@@ -362,8 +372,8 @@
                 success: function (r) {
                     if (r.res == 1) {
                         alertify.success("Encuesta creada");
-                        cargarItems(77);//$('#id_ficha').val()
-                        return_encuesta(77);//$('#id_ficha').val()
+                        cargarItems($('#id_ficha').val());//$('#id_ficha').val()
+                       // return_encuesta($('#id_ficha').val());//$('#id_ficha').val()
                     } else {
                         console.log(r.res);
                         alertify.error("Ha ocurrido un Error: " + r.res);
@@ -444,18 +454,18 @@
                             }
                         });
 
-                        $('#resultEncuesta').html(' <thead>'
-                            +'< tr >'
-                            +'<th>Día</th>'
-                            +'<th>Hora</th>'
-                            +'<th>Minuta</th>'
-                            +'<th>Ingredientes</th>'
-                            +'<th>Medidas Caseras</th>'
-                            +'<th>Cantidad</th>'
-                            +'<th>Observaciones</th>'
-                            +'<th>Editar</th>'
-                        +'</tr >'
-                                        +'</thead ><tbody>'+row+'</tbody>');
+                          $('#resultEncuesta').html(' <thead>'
+                                                          +'< tr >'
+                                                          +'<th>Día</th>'
+                                                          +'<th>Hora</th>'
+                                                          +'<th>Minuta</th>'
+                                                          +'<th>Ingredientes</th>'
+                                                          +'<th>Medidas Caseras</th>'
+                                                          +'<th>Cantidad</th>'
+                                                          +'<th>Observaciones</th>'
+                                                          +'<th>Editar</th>'
+                                                          +'</tr >'
+                                                    +'</thead ><tbody>'+row+'</tbody>');
                     }
                 }
             });

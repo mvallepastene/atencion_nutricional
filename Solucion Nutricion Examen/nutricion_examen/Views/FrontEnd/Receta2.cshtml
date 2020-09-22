@@ -1,0 +1,260 @@
+﻿@model nutricion_examen.Models.Agenda
+@{
+    ViewBag.Title = "Receta2";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Nutri la Vida</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/Recetas.css" />
+    <link rel="shortcut icon" href="~/Content/img/broccoli2.png" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="~/Content/plugins/jquery-ui/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/plugins/jquery-timepicker/jquery.timepicker.min.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <!--Navbar-->
+        <div>
+            <nav class="navbar container-fluid navbar-inverse fixed-top" style="background-color: #26ae11;">
+                <a class="navbar-brand" href="@Url.Action("Index","FrontEnd")">Página principal</a>
+                <a href="@Url.Action("Quien_soy","FrontEnd")">Acerca de mi</a>
+                <a href="@Url.Action("Index","FrontEnd")#recetas">Recetas Saludables</a>
+                <a href="@Url.Action("Index","FrontEnd")#servicios">Servicios</a>
+                <a href="@Url.Action("Blog","FrontEnd")">Blog</a>
+                <a href="#footer">Contacto</a>
+                <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#modalagenda">
+                    Agendar Hora
+                </button>
+
+                <form class="form-inline">
+                    <a href="@Url.Action("Index","Home")" title="Administración"> <span><i class="fa fa-home"></i></span></a>
+                </form>
+            </nav>
+        </div>
+        <section class="text-header">
+            <h1 id='text-header'><span class="azul-blanco">Recetas</span></h1>
+        </section>
+    </header>
+    <main>
+        <div class="card card-1">
+            <div class="row no-gutters">
+                <div class="img-receta">
+                    <img src="~/Content/img/Receta3.jpg" class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h1 class="card-title">Papas Camote Tipo Fritas</h1>
+                        <h4>Ingredientes</h4>
+                        <ul>
+                            <li>500 gramos de camote, pelados y cortados en rebanadas o trozos</li>
+                            <li>1 cucharada de aceite</li>
+                            <li>1 cucharadita de comino</li>
+                            <li>2 cucharadas de cilantro fresco, picado</li>
+                        </ul>
+                        <h4>Instrucciones</h4>
+                        <p class="card-text">- Pele los camotes y córtelos en rebanadas de 12 mm de grosor. Posteriormente, corte las rebanadas en palitos de 12mm de grosor (deben de quedar como tiras de papas a la francesa ).</p>
+                        <p class="card-text">- Precaliente el horno a 200 grados (400 F), introduzca una charola para hornear dentro del horno por 5 minutos.</p>
+                        <p class="card-text">- Coloca el camote en un recipiente grande y cubra con aceite y comino. Revuelva bien.</p>
+                        <p class="card-text">- Introduzca el camote en la charola precalentada y meta al horno por 30-35 minutos. Cada 10 minutos, saque del horno la charola y revuelva bien.</p>
+                        <p class="card-text">- Una vez que las papas de camote estén doraditas y suaves, retírelas del horno.</p>
+                        <p class="card-text">- Espolvoreé el camote con 1/2 cucharadita de sal, un poco de pimienta y el cilantro picado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="barra"></div>
+
+        <!-- Modal Agenda -->
+
+        <div class="modal fade" id="modalagenda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Agenda</h4>
+                        <form id="frmAgenda" class="form-normal" action="~/Agenda/Create" method="post">
+                            <div class="form-group">
+                                <label>Rut (sin guión)</label>
+                                <input type="text" id="rut" name="rut" class="form-control" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input type="text" id="nombre" name="nombre" class="form-control" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Apellido</label>
+                                <input type="text" id="apellido" name="apellido" class="form-control" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Fecha de Nacimiento</label>
+                                <input type="date" id="fechanac" name="fecha_nacimiento" class="form-control" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Número teléfono</label>
+                                <input type="text" id="telefono" name="numero_tel" class="form-control" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label>Fecha cita</label>
+                                <input type="text" id="fechcita" name="fecha_cita" class="form-control" placeholder="dd-mm-aaaa">
+                            </div>
+                            <div class="form-group">
+                                <label>Hora cita</label>
+                                <input type="text" class="form-control" id="horacita" name="hora_cita" placeholder="Seleccione la hora" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" id="id_estado" name="id_estado" value="1" />
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <input type="submit" id="btnSave" class="btn-a btn-default" data-dismiss="modal" value="Agregar" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="footer">
+        <div class="contenedor-c">
+            <h2 class="titulo">Contacto</h2>
+        </div>
+        <div class="contenedor-footer">
+            <div class="content-foot">
+                <h4>Teléfono</h4>
+                <p>+562 2222222</p>
+            </div>
+            <div class="content-foot">
+                <h4>E-Mail</h4>
+                <p>contacto@nutrilavida.cl</p>
+            </div>
+            <div class="content-foot">
+                <h4>Ubicación</h4>
+                <p>Santiago, Región Metropolitana</p>
+            </div>
+        </div>
+        <h2 class="titulo-final"> &copy; 2020 - Todos los Derechos Reservados.</h2>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    @*<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>*@
+    <script src="~/Content/plugins/jquery/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src=" disableSpecificDays.js "></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="~/Content/plugins/jquery-timepicker/jquery.timepicker.min.js"></script>
+</body>
+</html>
+
+<script type="text/javascript">
+
+    $('#btnSave').click(function(){
+        //creamos el Objeto Agenda
+        var agenda = {
+        Id_Agenda : 0,
+            Rut: $('#rut').val(),
+            Nombre : $('#nombre').val(),
+            Apellido:$('#apellido').val(),
+            Fecha_Nacimiento: $('#fechanac').val(),
+            Numero_Tel: $('#telefono').val(),
+            Email:$('#email').val(),
+            Fecha_Cita : $('#fechcita').val(),
+            Hora_Cita : $('#hora').val(),
+            Id_Estado : 1
+        }
+        console.log(agenda);
+    //utilizamos Ajax para enviar el objeto al controlador que crea la Agenda
+
+        $.ajax({
+        url:'@Url.Action("Create","Agenda")',
+        method:'post',
+        data:agenda,
+
+            success: function (r) {
+                console.log(r.res);
+         if(r.res == 1){
+          alert("Agenda Creagada")
+        }
+        }
+        });
+
+
+    });
+
+    $('#fechanac').blur(function () {
+        var FechaNacimiento = $('#fechanac').val();
+        var fechaNace = new Date(FechaNacimiento);
+        var fechaActual = new Date()
+
+        var mes = fechaActual.getMonth();
+        var dia = fechaActual.getDate();
+        var año = fechaActual.getFullYear();
+
+        fechaActual.setDate(dia);
+        fechaActual.setMonth(mes);
+        fechaActual.setFullYear(año);
+
+        edad = Math.floor(((fechaActual - fechaNace) / (1000 * 60 * 60 * 24) / 365));
+
+        if (edad < 18) {
+            alert("Usten no puede registrar una hora, ya que es menor de edad");
+
+            $('#btnSave').prop("disabled", true);
+        } else {
+            $('#btnSave').prop("disabled", false);
+        }
+        return edad;
+    });
+
+</script>
+
+<script type="text/javascript">
+    $('#fechcita').datepicker({
+        dateFormat: "dd-mm-yy",
+        daysOfWeekDisabled: '0,6',
+        lang: "es",
+        todayHighlight: true,
+        showAnim: "slide",
+        minDate: 0,
+        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        dayNamesMin: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do'],
+        beforeShowDay: function (date) {
+            var dayOfWeek = date.getDay();
+            // 0 : Lunes, 6 : Domingo, ...
+            if (dayOfWeek == 0 || dayOfWeek == 6) return [false];
+            else return [true];
+        },
+    });
+
+    //TimePicker...
+    $(document).ready(function () {
+        $('#horacita').timepicker({
+            timeFormat: 'H:i',
+            step: 60,
+            minTime: '9:00',
+            maxTime: '18:00',
+            disableTimeRanges: [
+                ['13:00 pm', '14:00 pm'], ['14:00 pm', '15:00 pm']
+            ]
+
+        });
+    });
+
+</script>
