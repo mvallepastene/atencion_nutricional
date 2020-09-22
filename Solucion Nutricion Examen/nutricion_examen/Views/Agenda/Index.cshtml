@@ -170,13 +170,15 @@
                 success: function (data) {
                        var datos = data.data;
                     $(datos).each(function (i, a) {
+                        fnac = new Date(parseInt(a.Fecha_Nacimiento.replace("/Date(", "").replace(")/", ""), 10));
+                        fcita = new Date(parseInt(a.Fecha_Cita.replace("/Date(", "").replace(")/", ""), 10));
                         $('#rut').val(a.Rut);
                         $("#nombre").val(a.Nombre);
                         $("#apellido").val(a.Apellido);
-                        $("#fec_nac").val(a.Fecha_Nacimiento);
+                        $("#fec_nac").val(fnac);
                         $("#num_tel").val(a.Numero_Tel);
                         $("#email").val(a.Email);
-                        $("#fec_cita").val(a.Fecha_Cita);
+                        $("#fec_cita").val(fcita);
                         $("#hora_cita").val(a.Hora_Cita);
                         if (a.Id_Estado == 1) 
                             $("#estado").val("Activo");
