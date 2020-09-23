@@ -13,7 +13,7 @@ namespace nutricion_examen.Controllers
         // GET: FichaMedica
         public ActionResult Index()
         {
-            return View(DapperORM.ReturnList<Ficha_Medica_Paciente>("sp_returnAllFichas").ToList());
+            return View(DapperORM.ReturnList<Ficha_Medica_Paciente>("sp_returnAllFicha").ToList());
         }
 
         // GET: FichaMedica/Details/5

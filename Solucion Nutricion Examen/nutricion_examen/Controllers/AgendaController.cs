@@ -30,7 +30,7 @@ namespace nutricion_examen.Controllers
             List<Agenda> ag = new List<Agenda>();
 
             ag = DapperORM.ReturnList<Agenda>("sp_getAgendaById", param).ToList();
-            return Json(new { data = ag },JsonRequestBehavior.AllowGet);
+            return Json(new { res = ag },JsonRequestBehavior.AllowGet);
         }
 
         // GET: Agenda/Create

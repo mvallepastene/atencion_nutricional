@@ -49,7 +49,7 @@
                             {
                                 <td>Activo</td>
                             }
-                            <td><span class="btn btn-info" title="ver detalle" data-toggle="modal" data-target="#modal-default" onclick="cargarDetalle(@item.Id_Agenda)"><i class="fas fa-eye"></i></span></td>
+                            <td><span class="btn btn-info" title="ver detalle" data-toggle="modal" data-target="#modal-default" onclick="cargarDetalle(@item.Id_Agenda)"><i class="fas fa-meh-rolling-eyes"></i></span></td>
                         </tr>
                     }
 
@@ -162,18 +162,22 @@
         //Funciones
 
         function cargarDetalle(id) {
-          
+            console.log(id);
             $.ajax({
                 url: '@Url.Action("Details","Agenda")',
                 data: 'id=' + id,
                 type: 'get',
-                success: function (data) {
-                       var datos = data.data;
+                success: function (r) {
+                    var datos = JSON.stringify(r.res);
+                    console.log(datos);
                     $(datos).each(function (i, a) {
+
+                        var _fec = Date.parse(a.Fecha_Nacimiento);
+                        console.log(_fec);
                         $('#rut').val(a.Rut);
                         $("#nombre").val(a.Nombre);
                         $("#apellido").val(a.Apellido);
-                        $("#fec_nac").val(a.Fecha_Nacimiento);
+                        $("#fec_nac").val(_fec);
                         $("#num_tel").val(a.Numero_Tel);
                         $("#email").val(a.Email);
                         $("#fec_cita").val(a.Fecha_Cita);                        
@@ -191,6 +195,20 @@
 
             });
 
+        }
+
+        //formato fecha
+        function fixFecha(fecha) {
+            if (fecha == null) {
+                return '';
+            }
+            else {
+                var codigo_fecha = parseInt(fecha.replace("/Date(", "").replace(")/", ""));
+                var fecha1 = new Date(codigo_fecha).toLocaleDateString("es-CL");
+                var fecha_formato = $.format.d(fecha1, "dd-MM-yyyy");
+
+                return fecha_formato;
+            }
         }
 
     </script>
