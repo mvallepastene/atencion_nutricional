@@ -27,10 +27,19 @@ namespace nutricion_examen.Controllers
             DynamicParameters param = new DynamicParameters();
             param.Add("@id", id);
 
-            List<Agenda> ag = new List<Agenda>();
 
-            ag = DapperORM.ReturnList<Agenda>("sp_getAgendaById", param).ToList();
-            return Json(new { res = ag },JsonRequestBehavior.AllowGet);
+
+            try
+            {
+                var result = DapperORM.ReturnList<Agenda>("sp_getAgendaById", param).FirstOrDefault<Agenda>();
+                return Json(new { res = result }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+
+                string error = ex.Message;
+                return Json(new { res = error }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         // GET: Agenda/Create
