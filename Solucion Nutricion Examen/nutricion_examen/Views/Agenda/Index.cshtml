@@ -162,39 +162,32 @@
         //Funciones
 
         function cargarDetalle(id) {
-            console.log(id);
+
             $.ajax({
                 url: '@Url.Action("Details","Agenda")',
                 data: 'id=' + id,
                 type: 'get',
                 success: function (r) {
-                    var datos = JSON.stringify(r.res);
-                    console.log(datos);
+                       var datos = r.res;
                     $(datos).each(function (i, a) {
-
-                        var _fec = Date.parse(a.Fecha_Nacimiento);
-                        console.log(_fec);
+                        fnac = new Date(parseInt(a.Fecha_Nacimiento.replace("/Date(", "").replace(")/", ""), 10));
+                        fcita = new Date(parseInt(a.Fecha_Cita.replace("/Date(", "").replace(")/", ""), 10));
                         $('#rut').val(a.Rut);
                         $("#nombre").val(a.Nombre);
                         $("#apellido").val(a.Apellido);
-                        $("#fec_nac").val(_fec);
+                        $("#fec_nac").val(fnac);
                         $("#num_tel").val(a.Numero_Tel);
                         $("#email").val(a.Email);
-                        $("#fec_cita").val(a.Fecha_Cita);                        
+                        $("#fec_cita").val(fcita);
                         $("#hora_cita").val(a.Hora_Cita);
-                        if (a.Id_Estado == 4) 
+                        if (a.Id_Estado == 1)
                             $("#estado").val("Activo");
                         else
                             $("#estado").val("Sin Estado");
-                        $('#id').val(a.Id_Agenda); 
-                        
+                        $('#id').val(a.Id_Agenda);
                     });
-
-                    
-                }                 
-
+                }
             });
-
         }
 
         //formato fecha

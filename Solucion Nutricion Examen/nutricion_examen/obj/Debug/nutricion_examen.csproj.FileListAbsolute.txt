@@ -526,3 +526,4 @@ C:\Users\Mariana\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutric
 C:\Users\Mariana\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutricion Examen\nutricion_examen\obj\Debug\nutricion_examen.dll
 C:\Users\Mariana\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutricion Examen\nutricion_examen\obj\Debug\nutricion_examen.pdb
 C:\Users\Mariana\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutricion Examen\nutricion_examen\obj\Debug\nutricion_examen.csprojAssemblyReference.cache
+C:\Users\Mariana\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutricion Examen\nutricion_examen\bin\Rotativa.dll

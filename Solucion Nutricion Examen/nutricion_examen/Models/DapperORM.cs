@@ -64,5 +64,21 @@ namespace nutricion_examen.Models
                
             }
         }
+        /// <summary>
+        /// Metodo que no requiere modelo
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="procedureName"></param>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public IEnumerable<string> ReturnListWithOutParam(string procedureName, DynamicParameters param = null)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                return con.Query<string>(procedureName, param, commandType: CommandType.StoredProcedure);
+
+            }
+        }
     }
 }

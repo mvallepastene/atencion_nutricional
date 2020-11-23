@@ -1,0 +1,78 @@
+﻿@model IEnumerable<nutricion_examen.Models.Nutricionista>
+@{
+    ViewBag.Title = "Reporte";
+}
+
+<div class="col-12">
+    <div class="card">
+        <div class="card-title">
+            <h4 class=" text-center">Reporte atenciones por periodo</h4>
+        </div>
+        <div class="card-body">
+
+
+            <form id="frmAgenda" class="form-normal" action="@Url.Action("getReport","Reporte")" method="post">
+
+                <div class="row">
+                    <div class="form-group mt-3 ml-2">
+                        <label>Fecha de Inicio</label>
+                        <input type="date" id="fechainicio" name="fecDes" class="form-control" placeholder="">
+                    </div>
+
+                    <div class="form-group mt-3 ml-2">
+                        <label>Fecha de Termino</label>
+                        <input type="date" id="fechafin" name="fecHas" class="form-control" placeholder="">
+                    </div>
+                    <div class="form-group mt-3 ml-2">
+                        <label>Nutricionista</label>
+                        <select class="form-control" id="profesional" name="nutri">
+                            <option value="Sin Usuario">Seleccione...</option>
+                            @foreach (var item in Model)
+                            {
+                                <option value="@item.Nombre">@item.Nombre</option>
+                            }
+
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" id="btnGrabar" class="btn btn-default"><span class="fa fa-list"></span> Generar Reporte</button>
+
+
+            </form>
+        </div>
+
+
+
+
+
+
+
+    </div>
+</div>
+    </div>
+
+
+@*<div class="col-12">
+        <h3 class="card-title">Reporte atenciones por periodo</h3>
+
+        <div class="form-group">
+            <label>Fecha de Inicio</label>
+            <input type="date" id="fechainicio" name="" class="form-control" placeholder="">
+        </div>
+
+        <div class="form-group">
+            <label>Fecha de Termino</label>
+            <input type="date" id="fechafin" name="" class="form-control" placeholder="">
+        </div>
+
+        <select name="nutri">
+            <option value=""></option>
+            <option value=""></option>
+        </select>
+
+    </div>*@
+@section scripts{
+    <script type="text/javascript">
+            //Generamos la creacion del reporte
+    </script>
+}
