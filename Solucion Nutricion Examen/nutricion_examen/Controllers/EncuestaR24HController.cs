@@ -21,7 +21,22 @@ namespace nutricion_examen.Controllers
         // GET: Encuesta_R24h/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            DynamicParameters param = new DynamicParameters();
+            param.Add("@id", id);
+
+
+
+            try
+            {
+                var result = DapperORM.ReturnList<EncuestaR24H>("sp_traer_EncuestaR24hById", param).FirstOrDefault<EncuestaR24H>();
+                return Json(new { res = result }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+
+                string error = ex.Message;
+                return Json(new { res = error }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         // GET: Encuesta_R24h/Create
@@ -80,17 +95,32 @@ namespace nutricion_examen.Controllers
 
         // POST: Encuesta_R24h/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(EncuestaR24H encuesta)
         {
             try
             {
                 // TODO: Add update logic here
 
-                return RedirectToAction("Index");
+                DynamicParameters param = new DynamicParameters();
+                param.Add("@idEncuesta", encuesta.Id_R24h);
+                param.Add("@dia", encuesta.Dia_De_Semana);
+                param.Add("@hora", encuesta.Hora);
+                param.Add("@minuta", encuesta.Minuta);
+                param.Add("@ingredientes", encuesta.Ingredientes);
+                param.Add("@medidas", encuesta.Medidas_Caseras);
+                param.Add("@cantidad", encuesta.Cantidad_Gr_Ml_Total);
+                param.Add("@observ", encuesta.Observaciones);
+                param.Add("@idFicha", encuesta.Id_Ficha);
+
+                int result = DapperORM.ExecuteReturnScalar<EncuestaR24H>("sp_UpdateEncuentaR24H", param);
+
+                
+                return Json(new { res = result},JsonRequestBehavior.AllowGet);
             }
-            catch
+            catch (Exception e)
             {
-                return View();
+                string error = e.Message;
+                return Json(new { res = error }, JsonRequestBehavior.AllowGet);
             }
         }
 

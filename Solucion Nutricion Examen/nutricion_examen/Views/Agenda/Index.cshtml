@@ -38,19 +38,27 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            
-                            <td>@item.Rut</td>
-                            <td>@item.Nombre @item.Apellido</td>
-                            <td>@item.Fecha_Nacimiento.ToString("dd-mm-yyyy")</td>
-                            <td>@item.Fecha_Cita.ToString("dd/mm/yyyy")</td>
-                            <td>@item.Hora_Cita</td>
-                            @if (@item.Id_Estado == 4)
-                            {
-                                <td>Activo</td>
-                            }
-                            <td><span class="btn btn-info" title="ver detalle" data-toggle="modal" data-target="#modal-default" onclick="cargarDetalle(@item.Id_Agenda)"><i class="fas fa-meh-rolling-eyes"></i></span></td>
-                        </tr>
+                    <tr>
+
+                        <td>@item.Rut</td>
+                        <td>@item.Nombre @item.Apellido</td>
+                        <td>@item.Fecha_Nacimiento.ToString("dd-mm-yyyy")</td>
+                        <td>@item.Fecha_Cita.ToString("dd/mm/yyyy")</td>
+                        <td>@item.Hora_Cita</td>
+                        @if (@item.Id_Estado == 4)
+                        {
+                            <td>Agendado</td>
+                        }
+                        else if (@item.Id_Estado == 5)
+                        {
+                            <td>Cancelado</td>
+                        }
+                        else if (@item.Id_Estado == 6)
+                        {
+                            <td>Atendido</td>
+                        }
+                        <td><span class="btn btn-info" title="ver detalle" data-toggle="modal" data-target="#modal-default" onclick="cargarDetalle(@item.Id_Agenda)"><i class="fas fa-meh-rolling-eyes"></i></span></td>
+                    </tr>
                     }
 
                 </tbody>
@@ -168,6 +176,7 @@
                 data: 'id=' + id,
                 type: 'get',
                 success: function (r) {
+                    console.log(r);
                        var datos = r.res;
                     $(datos).each(function (i, a) {
                         fnac = new Date(parseInt(a.Fecha_Nacimiento.replace("/Date(", "").replace(")/", ""), 10));
@@ -180,10 +189,12 @@
                         $("#email").val(a.Email);
                         $("#fec_cita").val(fcita);
                         $("#hora_cita").val(a.Hora_Cita);
-                        if (a.Id_Estado == 1)
-                            $("#estado").val("Activo");
-                        else
-                            $("#estado").val("Sin Estado");
+                        if (a.Id_Estado == 4)
+                            $("#estado").val("Agendado");
+                        else if (a.Id_Estado == 5)
+                            $("#estado").val("Cancelado");
+                        else (a.Id_Estado == 6)
+                        $("#estado").val("Atendido");
                         $('#id').val(a.Id_Agenda);
                     });
                 }

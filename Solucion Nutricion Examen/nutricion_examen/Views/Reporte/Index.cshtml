@@ -11,7 +11,7 @@
         <div class="card-body">
 
 
-            <form id="frmAgenda" class="form-normal" action="@Url.Action("getReport","Reporte")" method="post">
+            <form id="frmAgenda" class="form-normal" action="@Url.Action("Print","Reporte")" method="post">
 
                 <div class="row">
                     <div class="form-group mt-3 ml-2">
@@ -26,7 +26,7 @@
                     <div class="form-group mt-3 ml-2">
                         <label>Nutricionista</label>
                         <select class="form-control" id="profesional" name="nutri">
-                            <option value="Sin Usuario">Seleccione...</option>
+                            <option value="null">Seleccione...</option>
                             @foreach (var item in Model)
                             {
                                 <option value="@item.Nombre">@item.Nombre</option>

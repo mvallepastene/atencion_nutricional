@@ -20,7 +20,7 @@ namespace nutricion_examen.Controllers
             return View(DapperORM.ReturnList<Nutricionista>("sp_traer_nutri"));
         }
 
-        public ActionResult getReport(DateTime fecDes, DateTime fecHas, string nutri = "")
+        public ActionResult getReport(DateTime fecDes, DateTime fecHas, string nutri)
         {
             DynamicParameters param = new DynamicParameters();
             param.Add("@fechaDesde", fecDes);
@@ -33,9 +33,9 @@ namespace nutricion_examen.Controllers
             return View(DapperORM.ReturnList<Reporte>("sp_traerPacientesDia", param).ToList());
         }
         [HttpPost]
-        public ActionResult Print(DateTime fecDes, DateTime fecHas, string nutri = "")
+        public ActionResult Print(DateTime fecdes, DateTime fechas, string nutri)
         {
-            return new ActionAsPdf("getReport", new { fecdes = fecDes, fechas = fecHas, Nutri = nutri} ) { FileName = "Reporte_"+DateTime.Now+".pdf" };
+            return new ActionAsPdf("getReport", new { fecDes = fecdes, fecHas = fechas, Nutri = nutri} ) { FileName = "Reporte_"+DateTime.Now+".pdf" };
         }
 
 

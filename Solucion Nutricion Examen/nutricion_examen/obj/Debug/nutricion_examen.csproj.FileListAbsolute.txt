@@ -495,6 +495,7 @@ C:\Users\Mariana\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutric
 C:\Users\Mariana\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutricion Examen\nutricion_examen\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Mariana\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutricion Examen\nutricion_examen\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Mariana\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutricion Examen\nutricion_examen\bin\Newtonsoft.Json.dll
+C:\Users\Mariana\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutricion Examen\nutricion_examen\bin\Rotativa.dll
 C:\Users\Mariana\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutricion Examen\nutricion_examen\bin\System.Web.Helpers.dll
 C:\Users\Mariana\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutricion Examen\nutricion_examen\bin\System.Web.Mvc.dll
 C:\Users\Mariana\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutricion Examen\nutricion_examen\bin\System.Web.Optimization.dll
@@ -521,9 +522,8 @@ C:\Users\Mariana\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutric
 C:\Users\Mariana\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutricion Examen\nutricion_examen\bin\es\System.Web.WebPages.resources.dll
 C:\Users\Mariana\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutricion Examen\nutricion_examen\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\Mariana\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutricion Examen\nutricion_examen\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\Mariana\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutricion Examen\nutricion_examen\obj\Debug\nutricion_examen.csprojAssemblyReference.cache
 C:\Users\Mariana\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutricion Examen\nutricion_examen\obj\Debug\nutricion_examen.csproj.CoreCompileInputs.cache
 C:\Users\Mariana\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutricion Examen\nutricion_examen\obj\Debug\nutricion_examen.csproj.CopyComplete
 C:\Users\Mariana\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutricion Examen\nutricion_examen\obj\Debug\nutricion_examen.dll
 C:\Users\Mariana\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutricion Examen\nutricion_examen\obj\Debug\nutricion_examen.pdb
-C:\Users\Mariana\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutricion Examen\nutricion_examen\obj\Debug\nutricion_examen.csprojAssemblyReference.cache
-C:\Users\Mariana\Source\Repos\mvallepastene\atencion_nutricional\Solucion Nutricion Examen\nutricion_examen\bin\Rotativa.dll

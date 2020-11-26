@@ -433,7 +433,7 @@
                 + '<td>#MEDIDASCA#</td>'
                 + '<td>#CANTIDAD#</td>'
                 + '<td>#OBSERVACIONES#</td>'
-                + '<td style="text-align: center;"><span class="btn btn-warning btn-xs" onclick="editarItem(#ID#)"><span class="fas fa-pen"></span></span></td>'
+                + '<td style="text-align: center;"><span class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-default" onclick="editarItem(#ID#)"><span class="fas fa-pen"></span></span></td>'
                 + '</tr>';
 
             $.ajax({
@@ -441,7 +441,7 @@
                 type: 'get',
                 data: 'id='+id,
                 success: function (r) {
-                    console.log(r);
+
                     var dato = r.res;
                     if (dato != null) {
                         var row = "";
@@ -478,7 +478,27 @@
         }
 
         function editarItem(id) {
-            console.log(id);
+            $.ajax({
+                url: '@Url.Action("Details","EncuestaR24H")',
+                method: 'get',
+                data: 'id=' + id,
+                success: function (r) {
+                    console.log("Datos Retornados: " + r.res);
+                    var datos = r.res
+                    
+                    $(datos).each(function (i, e) {
+                        $('#id_fichaU').val(e.Id_Ficha);
+                        $('#id_r24hU').val(e.Id_R24h);
+                        $('#diaU').val(e.Dia_De_Semana);
+                        $('#horaU').val(e.Hora);
+                        $('#minutaU').val(e.Minuta);
+                        $('#ingredientesU').val(e.Ingredientes);
+                        $('#med_casU').val(e.Medidas_Caseras);
+                        $('#cantU').val(e.Cantidad_Gr_Ml_Total);
+                        $('#observU').val(e.Observaciones);
+                    });
+                }
+            });
         }
 
         //funcion que recupera el id del usuario
@@ -500,6 +520,41 @@
                 }
             });
         }
+
+
+        function UpdateEncuesta() {
+               var obj = {
+                   Id_R24h: $('#id_r24hU').val(),
+                Dia_De_Semana: $('#diaU').val(),
+                Hora: $('#horaU').val(),
+                Minuta: $('#minutaU').val(),
+                Ingredientes: $('#ingredientesU').val(),
+                Medidas_Caseras: $('#med_casU').val(),
+                Cantidad_Gr_Ml_Total: $('#cantU').val(),
+                Observaciones: $('observU').val(),
+
+            }
+
+            console.log(obj);
+
+            $.ajax({
+                url: '@Url.Action("Edit","EncuestaR24H")',
+                type: 'post',
+                data: obj,
+               success: function (r) {
+                    
+                    cosole.log(r.res);
+                    if (r.res == 1) {
+                        alertify.success("Admin", "Actualizado Correctamente");
+                        cargarItems($('#id_fichaU').val());
+                    } else {
+                        alertify.error("Admin", "Error al actualizar");
+                        console.log(res);
+                    }
+                }
+            })
+        }
+
 
 
     </script>

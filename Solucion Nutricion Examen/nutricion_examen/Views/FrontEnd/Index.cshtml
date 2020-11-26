@@ -322,19 +322,21 @@
                     Email:$('#email').val(),
                     Fecha_Cita : $('#fechcita').val(),
                     Hora_Cita : $('#horacita').val(),
-                    Id_Estado : 6
+                    Id_Estado : 4
                 }
-                console.log(agenda);
+                //console.log(agenda);
             //utilizamos Ajax para enviar el objeto al controlador que crea la Agenda
 
                 $.ajax({
                 url:'@Url.Action("Create","Agenda")',
                 method:'post',
                 data:agenda,
-                success: function (r) {
-                        console.log(r.res);
-                        if (r.res == 1) {
-                            alertify.success("Agenda Creada con Exito");
+                    success: function (r) {
+                        let valor = jQuery.parseJSON(r.res);
+                        console.log(valor);
+                        if (valor == 1) {
+                            alert("Agenda Creada con Exito!!");
+                            //alertify.success("Agenda Creada con Exito");
                         } else {
                             alertify.error("Ha Ocurrido un Error: " + r.res);
                             //mostramos el error por consola

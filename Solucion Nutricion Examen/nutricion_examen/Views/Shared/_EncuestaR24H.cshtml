@@ -33,33 +33,33 @@
                         <label>Observaciones</label>
                         <textarea class="form-control" name="observacion" id="observacion"></textarea>
                     </div>
-                    <div class="form-group col-md-2">                        
-                        <input type="hidden"  name="id_ficha" id="id_ficha" value="" >
+                    <div class="form-group col-md-2">
+                        <input type="hidden" name="id_ficha" id="id_ficha" value="">
                     </div>
                 </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label>Día de Semana</label>
-                            <select class="form-control" id="dia_semana" name="dia_de_semana">
-                                <option value="">Selecciona un Día</option>
-                                <option value="Lunes">Lunes</option>
-                                <option value="Martes">Martes</option>
-                                <option value="Miercoles">Miercoles</option>
-                                <option value="Jueves">Jueves</option>
-                                <option value="Viernes">Viernes</option>
-                                <option value="Sabado">Sabado</option>
-                                <option value="Domingo">Domingo</option>
-                            </select>
-                        </div>
-                        
-
-                        <div class="form-group mt-4">
-                            <!--<span class="btn btn-primary" id="btnAgregar"><i class="fas fa-plus"></i>Agregar Fila</span>-->
-                            <button type="button" onclick="insertEncuesta()" class="btn btn-primary" id="btnGuardar" title="Agregar"><i class="fas fa-plus"></i></button>
-
-                        </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label>Día de Semana</label>
+                        <select class="form-control" id="dia_semana" name="dia_de_semana">
+                            <option value="">Selecciona un Día</option>
+                            <option value="Lunes">Lunes</option>
+                            <option value="Martes">Martes</option>
+                            <option value="Miercoles">Miercoles</option>
+                            <option value="Jueves">Jueves</option>
+                            <option value="Viernes">Viernes</option>
+                            <option value="Sabado">Sabado</option>
+                            <option value="Domingo">Domingo</option>
+                        </select>
                     </div>
+
+
+                    <div class="form-group mt-4">
+                        <!--<span class="btn btn-primary" id="btnAgregar"><i class="fas fa-plus"></i>Agregar Fila</span>-->
+                        <button type="button" onclick="insertEncuesta()" class="btn btn-primary" id="btnGuardar" title="Agregar"><i class="fas fa-plus"></i></button>
+
+                    </div>
+                </div>
 
             </form>
 
@@ -77,7 +77,7 @@
                             <th>Editar</th>
                         </tr>
                     </thead>
-                    
+
                 </table>
             </div>
         </div>
@@ -85,14 +85,92 @@
     </div>
 </div>
 
+@*Modal*@
+<!--MODAL-->
+<div class="modal fade bd-example-modal-lg" id="modal-default">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Detalle Encuesta</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+               
+                    <input type="hidden" id="id_r24hU" name="id_r24hU" />
+                    <input type="hidden" id="id_fichaU" name="id_fichaU" />
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <!-- text input -->
+                            <div class="form-group">
+                                <label>Día</label>
+                                <input type="text" id="diaU" name="diaU" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Hora</label>
+                                <input type="text" id="horaU" name="horaU" class="form-control" placeholder="Enter ...">
+                            </div>
+                        </div>
 
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Minuta</label>
+                                <input type="text" id="minutaU" name="minutaU" class="form-control">
+                            </div>
+                        </div>
 
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Ingredientes</label>
+                                <input type="text" id="ingredientesU" name="ingredientesU" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Medidas Caseras</label>
+                                <input type="text" id="med_casU" name="med_casU" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Cantidad</label>
+                                <input type="text" id="cantU" name="cantU" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Observaciones</label>
+                                <input type="text" id="observU" name="observU" class="form-control">
+                            </div>
+                        </div>
+
+                    </div>
+                
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" click="UpdateEncuesta()" data-dismiss="modal"> Actualizar</button>
+                
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 
 
 
 
 @section scripts{
     <script type="text/javascript">
+      
 
 
 
