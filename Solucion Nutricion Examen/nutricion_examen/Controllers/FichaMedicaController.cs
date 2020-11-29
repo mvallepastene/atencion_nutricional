@@ -42,6 +42,7 @@ namespace nutricion_examen.Controllers
         [HttpPost]
         public ActionResult Create(Ficha_Medica_Paciente fmp)
         {
+            
             try
             {
                 // TODO: Add insert logic here

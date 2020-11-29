@@ -47,7 +47,8 @@
                             <td>@item.Especialidad</td>
 
                             <td>
-                                <span class="btn btn-warning" id="btnEdit" title="Edit" data-toggle="modal" data-target="#modal-default" onclick="traerNutricionista(@item.Id_Nutricionista)"><i class="fas fa-pen"></i></span> 
+                                <span class="btn btn-warning" id="btnEdit" title="Edit" data-toggle="modal" data-target="#modal-default" onclick="traerNutricionista(@item.Id_Nutricionista)"><i class="fas fa-pen"></i></span>
+                               |
                                 <span class="btn btn-danger" id="btnDelete" title="Delete" onclick="deleteNutri(@item.Id_Nutricionista)"><i class="fas fa-trash"></i></span>
                             </td>
                         </tr>
@@ -173,8 +174,11 @@
                 type: 'get',
                 data: 'id=' + id,
                 success: function (r) {
+                    console.log(r.res);
                     datos = r.res;
+                    
                     $(datos).each(function (i, n) {
+                        
                         $('#idNutriU').val(n.Id_Nutricionista);
                         $('#rutU').val(n.Rut);
                         $('#nombreU').val(n.Nombre);
@@ -189,6 +193,19 @@
             });
         }
 
+        //formato fecha
+        function fixFecha(fecha) {
+            if (fecha == null) {
+                return '';
+            }
+            else {
+                var codigo_fecha = parseInt(fecha.replace("/Date(", "").replace(")/", ""));
+                var fecha1 = new Date(codigo_fecha).toLocaleDateString("es-CL");
+                var fecha_formato = $.format.date(fecha1, "dd-MM-yy");
+
+                return fecha_formato;
+            }
+        }
 
         //enviamos los datos para su actualizacion
         $('#btnSave').click(function (e) {
@@ -217,6 +234,7 @@
                 success: function (r) {
                     if (r.res == 1) {
                         alertify.success("Nutricionista Actualizado Corréctamente!");
+                        location.reload();
                     } else {
                         alertify.error("No se pudo Actualizar... Error: " + r.res);
                         console.log(r.res);

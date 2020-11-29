@@ -209,7 +209,7 @@
             else {
                 var codigo_fecha = parseInt(fecha.replace("/Date(", "").replace(")/", ""));
                 var fecha1 = new Date(codigo_fecha).toLocaleDateString("es-CL");
-                var fecha_formato = $.format.d(fecha1, "dd-MM-yyyy");
+                var fecha_formato = $.format.date(fecha1, "dd-MM-yyyy");
 
                 return fecha_formato;
             }

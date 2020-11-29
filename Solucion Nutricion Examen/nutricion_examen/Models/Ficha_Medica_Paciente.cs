@@ -35,7 +35,21 @@ namespace nutricion_examen.Models
         public float Amdr_Lip { get; set; }
         public float Peso_Requerido { get; set; }
         public DateTime Prox_Control { get; set; }
-        public DateTime Fecha_Creacion { get; set; }
+        private string fecha_Creacion;
+
+        public string Fecha_Creacion
+        {
+            get {  return fecha_Creacion;}
+            set
+            {
+                if (fecha_Creacion is DateTime)
+                {
+                   fecha_Creacion.ToString() ; 
+                }
+                fecha_Creacion = value;
+            }
+        }
+
         public string Nombre_Nutri { get; set; }
 
     }

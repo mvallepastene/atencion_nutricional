@@ -483,7 +483,7 @@
                 method: 'get',
                 data: 'id=' + id,
                 success: function (r) {
-                    console.log("Datos Retornados: " + r.res);
+                    
                     var datos = r.res
                     
                     $(datos).each(function (i, e) {
@@ -522,8 +522,13 @@
         }
 
 
+        $('#btnUpdateEncuesta').click(function (e) {
+            e.preventDefault();
+            UpdateEncuesta();
+        });
+
         function UpdateEncuesta() {
-               var obj = {
+               var encuesta = {
                    Id_R24h: $('#id_r24hU').val(),
                 Dia_De_Semana: $('#diaU').val(),
                 Hora: $('#horaU').val(),
@@ -531,25 +536,26 @@
                 Ingredientes: $('#ingredientesU').val(),
                 Medidas_Caseras: $('#med_casU').val(),
                 Cantidad_Gr_Ml_Total: $('#cantU').val(),
-                Observaciones: $('observU').val(),
+                   Observaciones: $('#observU').val(),
+                   Id_Ficha: $('#id_fichaU').val()
 
             }
 
-            console.log(obj);
+            console.log(encuesta);
 
             $.ajax({
-                url: '@Url.Action("Edit","EncuestaR24H")',
+                url: '@Url.Action("Create","EncuestaR24H")',
                 type: 'post',
-                data: obj,
+                data: encuesta,
                success: function (r) {
                     
-                    cosole.log(r.res);
+                    //cosole.log(r.res);
                     if (r.res == 1) {
-                        alertify.success("Admin", "Actualizado Correctamente");
+                        alertify.success("Actualizado Correctamente");
                         cargarItems($('#id_fichaU').val());
                     } else {
-                        alertify.error("Admin", "Error al actualizar");
-                        console.log(res);
+                        alertify.error("Error al actualizar: " + r.res);
+                        console.log(r.res);
                     }
                 }
             })

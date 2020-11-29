@@ -55,15 +55,18 @@ namespace nutricion_examen.Controllers
         [HttpPost]
         public ActionResult Create(Nutricionista nutricionista)
         {
+            
+            DateTime fecha = DateTime.Parse(nutricionista.Fecha_Nacimiento);
             try
             {
                 DynamicParameters param = new DynamicParameters();
+                
                 param.Add("@id", nutricionista.Id_Nutricionista);
                 param.Add("@rut", nutricionista.Rut);
                 param.Add("@nombre", nutricionista.Nombre);
                 param.Add("@apellido", nutricionista.Apellido);
                 param.Add("@edad", nutricionista.Edad);
-                param.Add("@fecha_nac", nutricionista.Fecha_Nacimiento);
+                param.Add("@fecha_nac",  fecha.ToString("dd-MM-yyyy"));
                 param.Add("@tel", nutricionista.Numero_Tel);
                 param.Add("@email", nutricionista.Email);
                 param.Add("@especialidad", nutricionista.Especialidad);
@@ -80,7 +83,7 @@ namespace nutricion_examen.Controllers
             }
         }
 
-        // GET: Nutricionista/Edit/5
+        // GET: Nutricionista/Edit/5 -- Este metodo actualemnte
         public ActionResult Edit(int id)
         {
             return View();
